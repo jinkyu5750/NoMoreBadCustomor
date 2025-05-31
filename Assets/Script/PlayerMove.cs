@@ -2,14 +2,22 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private Animator ani;
-    [SerializeField] private float speed;
-    private bool isRun;
 
+    enum attack { Running,Upper,}
+    private Animator ani;
+    private Rigidbody2D rig;
+    private CapsuleCollider2D col;
+
+    private bool isRun = false;
+
+    [SerializeField] private float speed;
     private void Start()
     {
         ani = GetComponent<Animator>();
-        isRun = false;
+        rig = GetComponent<Rigidbody2D>(); 
+        col = GetComponent<CapsuleCollider2D>();
+
+        
     }
 
     private void Update()
@@ -20,11 +28,20 @@ public class PlayerMove : MonoBehaviour
             isRun = true;
         }
 
-        if (isRun == true)
-            transform.Translate(new Vector2(1, 0) * Time.deltaTime * speed);
 
+        Move();
     }
 
+    private void Move()
+    {
+        if (isRun == true)
+            transform.Translate(new Vector2(1, 0) * Time.deltaTime * speed);
+    }
+
+    private void Attack()
+    {
+        ani.SetInteger("Attack",)
+    }
 }
 
 
