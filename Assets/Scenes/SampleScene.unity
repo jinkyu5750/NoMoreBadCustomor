@@ -255,7 +255,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
+  m_XDamping: 0.7
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 1
@@ -1209,7 +1209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2731480fe0fbc524d863cdae5f1e0575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  runSpeed: 0
+  dashPower: 10
 --- !u!4 &1583217892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4306520786601056263, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
