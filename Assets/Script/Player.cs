@@ -1,4 +1,6 @@
+using NUnit.Framework.Constraints;
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 
@@ -12,26 +14,26 @@ public class Player : MonoBehaviour
 
     private bool canAttack = true;
     private bool isDead = false;
+    private bool isRunning = false;
+
     [SerializeField] private float runSpeed;
     [SerializeField] private float dashTime = 0.5f;
     [SerializeField] private float dashPower;
-    private int life = 3;
+    [SerializeField] private int life = 3;
 
     [SerializeField] private GameObject dashEffect;
-
+    private GameObject runDust;
     [SerializeField] private Vector2 attackBoxSize;
 
-    private BoxCollider2D[] attackCol = new BoxCollider2D[3];
-    private BoxCollider2D upperAttackCol;
-    private BoxCollider2D lowerAttackCol;
+
     private float max_runSpeed;
     private void Start()
     {
         ani = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
-
-        attackCol = GetComponentsInChildren<BoxCollider2D>();
+        runDust = transform.GetChild(0).gameObject;
+      
     }
 
     private void Update()
@@ -41,6 +43,7 @@ public class Player : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.D)))
         {
+            isRunning =true ;
             ani.SetBool("IsRun", true);
         }
 
@@ -59,15 +62,22 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (ani.GetCurrentAnimatorStateInfo(0).IsName("Run"))
-            transform.Translate(new Vector2(1, 0) * Time.deltaTime * runSpeed);
+        if (isRunning)
+        {
+            rig.velocity = new Vector2(1, 0) * runSpeed;
+            runDust.SetActive(true);
+        }
+        else
+            runDust.SetActive(false);
     }
+
 
     private IEnumerator Attack(attack dir)
     {
+        isRunning = false;
         canAttack = false;
         ani.SetInteger("Attack", (int)dir);
-        Collider2D hit;
+     
         switch (dir)
         {      
             case attack.Dash: //트레일넣을까말까..
@@ -81,8 +91,7 @@ public class Player : MonoBehaviour
                         curTime -= Time.deltaTime;
                         yield return null;
                     }
-                    rig.velocity = new Vector2(runSpeed, rig.velocity.y);
-                    hit = Physics2D.OverlapBox(transform.position+ new Vector3(1,1,0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                    rig.velocity = new Vector2(runSpeed, rig.velocity.y);                             
                     break;
                 }
 
@@ -90,74 +99,80 @@ public class Player : MonoBehaviour
                 break;
             case attack.Lower:
                 break;
+
         }
 
+        yield return new WaitForSeconds(0.5f);
+        canAttack = true;
+        isRunning = true;
+        ani.SetInteger("Attack", 0);
     }
+ 
+    public void AttackAniEvent(string attackDir)
+    {
+
+        Collider2D hit = new Collider2D();
+        switch (attackDir)
+        {
+            case "Dash":
+                hit = Physics2D.OverlapBox(transform.position + new Vector3(1, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                break;
+            case "Upper":
+
+                break;
+            case "Lower":
+
+                break;
+
+        }
+        if (hit != null)
+        {
+            Debug.Log("맞았다");
+            hit.gameObject.GetComponent<Enemy>().EnemyDead();
+        }
+
+
+
+    }
+
+    public IEnumerator Hit(Collider2D col)
+    {
+
+        isRunning = false; canAttack = false;
+        life--;
+
+        ani.SetTrigger("Hit");
+
+        Vector2 hitDir = (transform.position - col.transform.position).normalized;
+        rig.AddForce(hitDir * 20, ForceMode2D.Impulse);
+
+        yield return new WaitForSeconds(0.5f);
+        isRunning = true;   canAttack = true;
+    }
+    private void Dead()
+    {
+        isDead = true;
+        ani.SetTrigger("Dead");
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Enemy"))
+            StartCoroutine(Hit(collision));  
+       
+    }
+
+
+
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
     }
 
-    private void Dead()
-    {
-        isDead = true;
-        ani.SetTrigger("Dead");
-    }
-    /*   public void SetAttackAniParameter()
-       {
-           canAttack = true;
-           ani.SetInteger("Attack", 0);
-       }
-   */
-
-
-    public void OnOffAttackCol(string attackDir)
-    {
-        StartCoroutine(OnOffAttackColCoroutine(attackDir));
-    }
-    public IEnumerator OnOffAttackColCoroutine(string attackDir)
-    {
-        switch (attackDir)
-        {
-            case "Dash": //attackCol[0].enabled = isOn ? true : false; 삼항연산자떠올리고 기발하다 ㅋㅋ 생각했는데 =isOn이 더 기발하네.. 근데 파라미터 두개는 못씀 에바
-                attackCol[0].enabled = true;
-                yield return new WaitForSeconds(0.3f);
-                attackCol[0].enabled = false;
-                break;
-            case "Upper":
-                attackCol[1].enabled = true;
-                yield return null;
-                attackCol[1].enabled = false;
-                break;
-            case "Lower":
-                attackCol[2].enabled = true;
-                yield return null; 
-                attackCol[2].enabled = false;
-                break;
-
-        }
-
-        canAttack = true;
-        ani.SetInteger("Attack", 0);
-
-    }
- 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-
-        if (collision.gameObject.tag.Equals("Enemy"))
-        {
-
-            Vector2 hitDir = (transform.position - collision.transform.position).normalized;
-            rig.AddForce(hitDir * 5, ForceMode2D.Impulse);
-            life--;
-
-        }
-
-       
-    }
 }
 
 
