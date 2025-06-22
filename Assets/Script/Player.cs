@@ -1,8 +1,10 @@
+using Cinemachine;
 using NUnit.Framework.Constraints;
 using System.Collections;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
-
+using Cinemachine;
+using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
     private GameObject runDust;
     [SerializeField] private Vector2 attackBoxSize;
 
-
+    [SerializeField] CinemachineVirtualCamera cinemachine;
     private float max_runSpeed;
     private void Start()
     {
@@ -142,11 +144,18 @@ public class Player : MonoBehaviour
         life--;
 
         ani.SetTrigger("Hit");
+        
+        CinemachineBasicMultiChannelPerlin per = cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
+        per.m_AmplitudeGain = 1;
+        per.m_FrequencyGain = 3;
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
-        rig.AddForce(hitDir * 20, ForceMode2D.Impulse);
+        rig.AddForce(hitDir * 13, ForceMode2D.Impulse);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
+        per.m_AmplitudeGain = 0;
+        per.m_FrequencyGain = 0;
+        yield return new WaitForSeconds(0.3f);
         isRunning = true;   canAttack = true;
     }
     private void Dead()
