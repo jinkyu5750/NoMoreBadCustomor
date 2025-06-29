@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject dashEffect;
     private GameObject runDust;
     [SerializeField] private Vector2 attackBoxSize;
-
+    [SerializeField] private GameObject attackHitParticle;
     [SerializeField] CinemachineVirtualCamera cinemachine;
     private float max_runSpeed;
     private void Start()
@@ -133,7 +133,11 @@ public class Player : MonoBehaviour
             Debug.Log("¸Â¾Ò´Ù");
             StartCoroutine(ShakeCam(2.5f, 1, 0.1f));
             StartCoroutine(ZoomInCam());
+
+            Vector2 randomCircle = Random.insideUnitCircle * 0.5f;
+            Instantiate(attackHitParticle,hit.transform.position + new Vector3(randomCircle.x,randomCircle.y,0), Quaternion.identity);
             hit.gameObject.GetComponent<Enemy>().EnemyDead();
+            
         }
 
 
@@ -169,9 +173,9 @@ public class Player : MonoBehaviour
 
     public IEnumerator ZoomInCam()
     {
-    //    cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(5f, 4.5f, 0.3f,1);
+        //    cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(5f, 4.5f, 0.3f,1);
         yield return new WaitForSeconds(0.5f);
-        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(4.5f,5, 0.5f);
+        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(4.5f, 5, 0.5f);
     }
     private void Dead()
     {
