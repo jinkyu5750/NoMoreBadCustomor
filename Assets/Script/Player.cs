@@ -1,10 +1,6 @@
 using Cinemachine;
-using NUnit.Framework.Constraints;
 using System.Collections;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-using Cinemachine;
-using Unity.Mathematics;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +9,7 @@ public class Player : MonoBehaviour
     private Animator ani;
     private Rigidbody2D rig;
     private CapsuleCollider2D col;
+    private SpriteRenderer sp;
 
     private bool canAttack = true;
     private bool isDead = false;
@@ -34,8 +31,9 @@ public class Player : MonoBehaviour
         ani = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+        sp = GetComponent<SpriteRenderer>();
         runDust = transform.GetChild(0).gameObject;
-      
+
     }
 
     private void Update()
@@ -45,7 +43,7 @@ public class Player : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.D)))
         {
-            isRunning =true ;
+            isRunning = true;
             ani.SetBool("IsRun", true);
         }
 
@@ -79,12 +77,13 @@ public class Player : MonoBehaviour
         isRunning = false;
         canAttack = false;
         ani.SetInteger("Attack", (int)dir);
-     
+
         switch (dir)
-        {      
-            case attack.Dash: //트레일넣을까말까..
+        {
+            case attack.Dash:
                 {
                     Instantiate(dashEffect, transform.position, transform.rotation);
+                    GetComponent<GhostEffect>().IsGhostOn = true;
                     float curTime = dashTime;
 
                     rig.velocity = Vector2.right * dashPower;
@@ -93,7 +92,8 @@ public class Player : MonoBehaviour
                         curTime -= Time.deltaTime;
                         yield return null;
                     }
-                    rig.velocity = new Vector2(runSpeed, rig.velocity.y);                             
+                    rig.velocity = new Vector2(runSpeed, rig.velocity.y);
+                    GetComponent<GhostEffect>().IsGhostOn = false;
                     break;
                 }
 
@@ -104,12 +104,13 @@ public class Player : MonoBehaviour
 
         }
 
+
         yield return new WaitForSeconds(0.5f);
         canAttack = true;
         isRunning = true;
         ani.SetInteger("Attack", 0);
     }
- 
+
     public void AttackAniEvent(string attackDir)
     {
 
@@ -130,6 +131,8 @@ public class Player : MonoBehaviour
         if (hit != null)
         {
             Debug.Log("맞았다");
+            StartCoroutine(ShakeCam(2.5f, 1, 0.1f));
+            StartCoroutine(ZoomInCam());
             hit.gameObject.GetComponent<Enemy>().EnemyDead();
         }
 
@@ -140,23 +143,35 @@ public class Player : MonoBehaviour
     public IEnumerator Hit(Collider2D col)
     {
 
-        isRunning = false; canAttack = false;
+        isRunning = false; canAttack = false; sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
 
         ani.SetTrigger("Hit");
-        
+
+        Vector2 hitDir = (transform.position - col.transform.position).normalized;
+        rig.AddForce(hitDir * 15, ForceMode2D.Impulse);
+        StartCoroutine(ShakeCam(2, 1, 0.2f));
+
+        yield return new WaitForSeconds(0.5f);
+        isRunning = true; canAttack = true; sp.material.color = Color.white;
+    }
+
+    public IEnumerator ShakeCam(float amplitude, float frequncy, float time)
+    {
         CinemachineBasicMultiChannelPerlin per = cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
-        per.m_AmplitudeGain = 1;
-        per.m_FrequencyGain = 3;
-        Vector2 hitDir = (transform.position - col.transform.position).normalized;
-        rig.AddForce(hitDir * 13, ForceMode2D.Impulse);
-
-        yield return new WaitForSeconds(0.2f);
+        per.m_AmplitudeGain = amplitude;
+        per.m_FrequencyGain = frequncy;
+        yield return new WaitForSeconds(time);
         per.m_AmplitudeGain = 0;
         per.m_FrequencyGain = 0;
-        yield return new WaitForSeconds(0.3f);
-        isRunning = true;   canAttack = true;
+    }
+
+    public IEnumerator ZoomInCam()
+    {
+    //    cinemachine.m_Lens.OrthographicSize = Mathf.SmoothDamp(5f, 4.5f, 0.3f,1);
+        yield return new WaitForSeconds(0.5f);
+        cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(4.5f,5, 0.5f);
     }
     private void Dead()
     {
@@ -169,8 +184,8 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Enemy"))
-            StartCoroutine(Hit(collision));  
-       
+            StartCoroutine(Hit(collision));
+
     }
 
 
