@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,47 +8,44 @@ public class PlayerAttack : MonoBehaviour
 
     private Player player;
     public enum attack { Dash = 1, Upper, Lower }
-    [SerializeField] private bool canAttack = true; 
-    
+    [SerializeField] private bool canAttack = true;
+
     [SerializeField] private float dashTime = 0.5f;
     [SerializeField] private float dashPower;
 
     [SerializeField] private Vector2 attackBoxSize;
-    
+
     public void InitPlayer(Player player)
     {
         this.player = player;
     }
-    
-    
+
+
     void Start()
     {
         camera_Shake_Zoom = GetComponent<Camera_Shake_Zoom>();
     }
 
-   
+
     public IEnumerator Attack(attack dir)
     {
         if (canAttack == false) yield break;
 
-
+        player.isRunning = false;
         player.components.ani.SetInteger("Attack", (int)dir);
 
         switch (dir)
         {
             case attack.Dash:
                 {
-              
-                    ParticleManager.instance.UseObject("DashDust",transform.position);
-                    GetComponent<GhostEffect>().IsGhostOn = true;
-                    float curTime = dashTime;
 
+                    ParticleManager.instance.UseObject("DashDust", transform.position);
+
+                    GetComponent<GhostEffect>().IsGhostOn = true;
                     player.components.rig.velocity = Vector2.right * dashPower;
-                    while (curTime > 0)
-                    {
-                        curTime -= Time.deltaTime;
-                        yield return null;
-                    }
+
+                    yield return new WaitForSeconds(dashTime);
+
                     player.components.rig.velocity = new Vector2(player.runSpeed, player.components.rig.velocity.y);
                     GetComponent<GhostEffect>().IsGhostOn = false;
                     break;

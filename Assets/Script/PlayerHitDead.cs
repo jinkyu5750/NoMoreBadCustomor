@@ -23,7 +23,7 @@ public class PlayerHitDead : MonoBehaviour
 
     public IEnumerator Hit(Collider2D col)
     {
-
+        player.isRunning = false;
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
 

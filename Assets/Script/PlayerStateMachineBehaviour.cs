@@ -8,7 +8,7 @@ public class PlayerStateMachineBehaviour : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
     {
         // 달리기 -> 공격,피격
-        animator.GetComponent<Player>().isRunning = false;
+      //  animator.GetComponent<Player>().isRunning = false;
         animator.GetComponent<PlayerAttack>().SetCanAttack(false);
     }
 
