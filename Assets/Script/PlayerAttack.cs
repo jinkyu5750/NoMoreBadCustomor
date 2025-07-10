@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 
     private Player player;
     public enum attack { Dash = 1, Upper, Lower }
-    private bool canAttack = true; 
+    [SerializeField] private bool canAttack = true; 
     
     [SerializeField] private float dashTime = 0.5f;
     [SerializeField] private float dashPower;
@@ -31,7 +31,8 @@ public class PlayerAttack : MonoBehaviour
    
     public IEnumerator Attack(attack dir)
     {
-        if (canAttack == false) yield return null;
+        if (canAttack == false) yield break;
+
 
         player.components.ani.SetInteger("Attack", (int)dir);
 
@@ -39,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
         {
             case attack.Dash:
                 {
-                    Debug.Log("asd");
+              
                     ParticleManager.instance.UseObject("DashDust",transform.position);
                     GetComponent<GhostEffect>().IsGhostOn = true;
                     float curTime = dashTime;
@@ -63,8 +64,6 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        yield return new WaitForSeconds(0.5f);
-        player.components.ani.SetInteger("Attack", 0);
     }
 
     public void AttackAniEvent(string attackDir)

@@ -24,6 +24,8 @@ public class PlayerStateMachineBehaviour : StateMachineBehaviour
         //공격,피격 -> 달리기
         animator.GetComponent<Player>().isRunning = true;
         animator.GetComponent<PlayerAttack>().SetCanAttack(true);
+
+        animator.GetComponent<Player>().components.ani.SetInteger("Attack", 0);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

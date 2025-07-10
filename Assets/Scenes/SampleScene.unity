@@ -1394,7 +1394,7 @@ MonoBehaviour:
     returnTime: 0
   - objectName: GhostEffect
     prefab: {fileID: 5722265352863173392, guid: ee4b5af6cd79485438a5bcb73788526c, type: 3}
-    count: 10
+    count: 30
     returnTime: 0
   tfPoolParent: {fileID: 1154305820}
 --- !u!4 &1154305820
@@ -1869,6 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ab98081e5753440ada586e55853633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAttack: 1
   dashTime: 0.5
   dashPower: 10
   attackBoxSize: {x: 1.7, y: 2}
