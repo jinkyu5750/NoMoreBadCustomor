@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Components
@@ -11,13 +10,16 @@ public class Components
 }
 public class Player : MonoBehaviour
 {
-
+    //isGround .. 만 있으면 될거같은데 
+    //점프공격하고 내려올때 허우적 -> isGround == false && canAttack == true;(getInteger(0)) 
+    // 대쉬공격 -> isGround == true && canAttack == false
+    // Run -> 땅에 붙어있으면서 공격할수있는상태
     public Components components { get; private set; }
-  
-    public bool isRunning = false; // 제거대상
+
+    public bool isGround; // 제거대상
 
 
-    [SerializeField ]private float _runSpeed;
+    [SerializeField] private float _runSpeed;
     public float runSpeed { get { return _runSpeed; } private set { _runSpeed = value; } }
 
     private PlayerAttack playerAttack;
@@ -47,14 +49,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-
+       
         if (playerHitDead.isDead) return;
-
-        if ((Input.GetKeyDown(KeyCode.D)))
-        {
-            isRunning = true;
-            components.ani.SetBool("IsRun", true);
-        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -71,7 +67,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (isRunning)
+        if (isGround && playerAttack.canAttack) // 바닥에 붙어있으면서 공격이 가능한 상태
         {
             components.rig.velocity = new Vector2(1, 0) * runSpeed;
             runDust.SetActive(true);
@@ -89,8 +85,24 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = true;
+            components.ani.SetBool("IsRun", true);
+        }
 
-  
+
+    }
+
+    private void OnCollisionExit2D(Collision2D collision) //이거 왠지 쎼함.. 뛸때 울퉁불퉁해서
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            isGround = false;
+    }
+
+
 
 
 }

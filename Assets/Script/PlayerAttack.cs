@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    Camera_Shake_Zoom camera_Shake_Zoom;
+    CameraShakeZoom cameraShakeZoom;
 
     private Player player;
     public enum attack { Dash = 1, Upper, Lower }
-    [SerializeField] private bool canAttack = true;
+
+    [SerializeField] private bool _canAttack = true;
+    public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
     [SerializeField] private float dashTime = 0.5f;
     [SerializeField] private float dashPower;
@@ -23,7 +25,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        camera_Shake_Zoom = GetComponent<Camera_Shake_Zoom>();
+        cameraShakeZoom = GetComponent<CameraShakeZoom>();
     }
 
 
@@ -31,9 +33,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack == false) yield break;
 
-        player.isRunning = false;
+        canAttack = false;
         player.components.ani.SetInteger("Attack", (int)dir);
-
+        
         switch (dir)
         {
             case attack.Dash:
@@ -81,8 +83,8 @@ public class PlayerAttack : MonoBehaviour
         if (hit != null)
         {
             Debug.Log("¸Â¾Ò´Ù");
-            StartCoroutine(camera_Shake_Zoom.ShakeCam(2.5f, 1, 0.1f));
-            StartCoroutine(camera_Shake_Zoom.ZoomInCam());
+            StartCoroutine(cameraShakeZoom.ShakeCam(2.5f, 1, 0.1f));
+            StartCoroutine(cameraShakeZoom.ZoomInCam());
 
             Vector2 randomCircle = Random.insideUnitCircle * 0.5f;
             // Instantiate(attackHitParticle, hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
