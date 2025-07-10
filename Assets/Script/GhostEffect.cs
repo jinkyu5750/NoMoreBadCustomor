@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GhostEffect : MonoBehaviour
 {
-    [SerializeField] private GameObject ghostPrefeb;
     private SpriteRenderer sp;
     [SerializeField] private float ghostDelay;
     private float curGhostDelay;
@@ -38,9 +37,8 @@ public class GhostEffect : MonoBehaviour
                 curGhostDelay -= Time.deltaTime;
             else
             {
-                GameObject ghost = Instantiate(ghostPrefeb, transform.position, transform.rotation);
+                GameObject ghost = ParticleManager.instance.UseObject_GhostEffect("GhostEffect", transform.position);
                 ghost.GetComponent<SpriteRenderer>().sprite = sp.sprite;
-                Destroy(ghost, 1f);
                 curGhostDelay = ghostDelay;
             }
         }
