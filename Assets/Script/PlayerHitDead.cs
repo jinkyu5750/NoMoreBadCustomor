@@ -4,16 +4,14 @@ using UnityEngine;
 public class PlayerHitDead : MonoBehaviour
 {
     private Player player;
-    Camera_Shake_Zoom camera_Shake_Zoom;
+    CameraShakeZoom cameraShakeZoom;
 
     [SerializeField] private int _life = 3; 
-    
-    
     public int life { get { return _life; } private set { _life = value; } }
     public bool isDead { get; private set; } = false;
     void Start()
     {
-        camera_Shake_Zoom = GetComponent<Camera_Shake_Zoom>();
+        cameraShakeZoom = GetComponent<CameraShakeZoom>();
     }
 
     public void InitPlayer(Player player)
@@ -23,7 +21,7 @@ public class PlayerHitDead : MonoBehaviour
 
     public IEnumerator Hit(Collider2D col)
     {
-        player.isRunning = false;
+   
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
 
@@ -31,7 +29,7 @@ public class PlayerHitDead : MonoBehaviour
 
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
         player.components.rig.AddForce(hitDir * 15, ForceMode2D.Impulse);
-        StartCoroutine(camera_Shake_Zoom.ShakeCam(2, 1, 0.2f));
+        StartCoroutine(cameraShakeZoom.ShakeCam(2, 1, 0.2f));
 
         yield return new WaitForSeconds(0.5f);
         player.components.sp.material.color = Color.white;
