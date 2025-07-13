@@ -14,7 +14,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private float dashTime = 0.5f;
     [SerializeField] private float dashPower;
-
+    [SerializeField] private float jumpTime = 0.5f;
+    [SerializeField] private float jumpPower;
     [SerializeField] private Vector2 attackBoxSize;
 
     public void InitPlayer(Player player)
@@ -54,6 +55,13 @@ public class PlayerAttack : MonoBehaviour
                 }
 
             case attack.Upper:
+                {
+                    // player.isGround = false;
+
+                    player.components.rig.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+                    yield return new WaitForSeconds(jumpTime);
+                //    player.components.rig.velocity = new Vector2(player.runSpeed, player.components.rig.velocity.y);
+                }
                 break;
             case attack.Lower:
                 break;
