@@ -30,7 +30,7 @@ public class PlayerHitDead : MonoBehaviour
         player.components.ani.SetTrigger("Hit");
 
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
-        player.components.rig.AddForce(hitDir * 12, ForceMode2D.Impulse);
+        player.components.rig.AddForce(hitDir * 14, ForceMode2D.Impulse);
         StartCoroutine(cameraShakeZoom.ShakeCam(2, 1, 0.2f));
 
         yield return new WaitForSeconds(0.5f);

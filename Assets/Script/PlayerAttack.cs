@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private float dashTime = 0.5f;
     [SerializeField] private float dashPower;
-    [SerializeField] private float jumpTime = 0.5f;
+   
     [SerializeField] private float jumpPower;
     [SerializeField] private Vector2 attackBoxSize;
 
@@ -37,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
         if(player.components.rig.velocity.y < 0f)
         {
             player.components.rig.gravityScale = gravityScale;
+           
         }
         else
             player.components.rig.gravityScale = g;
@@ -67,9 +68,12 @@ public class PlayerAttack : MonoBehaviour
 
             case attack.Upper:
                 {
-                    // player.isGround = false;
+
+                    ParticleManager.instance.UseObject("DoubleJump", transform.position + new Vector3(0,-0.5f,0));
                     player.components.rig.velocity = new Vector2(player.components.rig.velocity.x, 0);
                     player.components.rig.AddForce(Vector2.up * jumpPower,ForceMode2D.Impulse);
+        
+                   
 
                 }
                 break;
