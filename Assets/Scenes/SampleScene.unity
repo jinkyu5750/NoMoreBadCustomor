@@ -18168,8 +18168,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 678385329}
     - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: g
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
       propertyPath: jumpPower
-      value: 7
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: gravityScale
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7581354871797196105, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
       propertyPath: m_Name

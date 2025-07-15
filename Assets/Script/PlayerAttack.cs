@@ -18,6 +18,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private Vector2 attackBoxSize;
 
+    [SerializeField] private float g;
+    [SerializeField] private float gravityScale;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -30,6 +32,15 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if(player.components.rig.velocity.y < 0f)
+        {
+            player.components.rig.gravityScale = gravityScale;
+        }
+        else
+            player.components.rig.gravityScale = g;
+    }
     public IEnumerator Attack(attack dir)
     {
         if (canAttack == false) yield break;
@@ -57,10 +68,9 @@ public class PlayerAttack : MonoBehaviour
             case attack.Upper:
                 {
                     // player.isGround = false;
+                    player.components.rig.velocity = new Vector2(player.components.rig.velocity.x, 0);
+                    player.components.rig.AddForce(Vector2.up * jumpPower,ForceMode2D.Impulse);
 
-                    player.components.rig.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-                    yield return new WaitForSeconds(jumpTime);
-                //    player.components.rig.velocity = new Vector2(player.runSpeed, player.components.rig.velocity.y);
                 }
                 break;
             case attack.Lower:
