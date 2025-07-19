@@ -7,8 +7,10 @@ public class PlayerStateMachineBehaviour : StateMachineBehaviour
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
     {
-        // 달리기 -> 공격,피격
-     //   animator.GetComponent<PlayerAttack>().SetCanAttack(false);
+  //      animator.GetComponent<PlayerAttack>().SetCurAttackCombo();
+        animator.GetComponent<PlayerAttack>().SetCanAttack(true,0);
+   
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,9 +23,9 @@ public class PlayerStateMachineBehaviour : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //공격,피격 -> 달리기
-        animator.GetComponent<PlayerAttack>().SetCanAttack(true);
 
-        animator.GetComponent<Player>().components.ani.SetInteger("Attack", 0);
+
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
