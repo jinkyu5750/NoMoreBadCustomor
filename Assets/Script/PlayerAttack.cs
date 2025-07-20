@@ -23,6 +23,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private int max_Combo = 3;
     [SerializeField] private int curCombo = 0;
+
+    [SerializeField] private float max_ComboTime = 0.3f;
+    [SerializeField]private float curComboTime = 0;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -39,18 +42,25 @@ public class PlayerAttack : MonoBehaviour
     {
         if (player.components.rig.velocity.y < 0f)
         {
-            if (curAttack == attack.Dash)
-            {
- 
+            if (curAttack == attack.Dash) 
                 player.components.rig.gravityScale = 0;
-            }
-            else
-            {
+            else 
                 player.components.rig.gravityScale = gravityScale;
-            }
+
         }
         else
             player.components.rig.gravityScale = g;
+
+/*        if(curCombo>0)
+        {
+            curComboTime += Time.deltaTime;
+        }
+
+        if(curComboTime >= max_ComboTime)
+        {
+            curComboTime = 0;
+            curCombo = 0;
+        }*/
     }
     public IEnumerator Attack(attack dir)
     {
@@ -59,8 +69,9 @@ public class PlayerAttack : MonoBehaviour
 
         if (canAttack == false || curAttack == dir || curCombo >= max_Combo) yield break;
 
-        curCombo++;
-        curAttack = dir;
+       //curComboTime = 0;
+   //     curCombo++;
+        curAttack = dir; // 공격이끝나면 초기화해줘야하고 , 공격끝나고 n초안에 공격없으면 combo = 0 ,
         SetCanAttack(false, (int)dir);
 
         switch (dir)
@@ -102,23 +113,25 @@ public class PlayerAttack : MonoBehaviour
     public void AttackAniEvent(string attackDir)
     {
 
+        SetCanAttack(true, 0);
+
         Collider2D hit = new Collider2D();
         switch (attackDir)
         {
             case "Dash":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(1, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
                 player.components.rig.gravityScale = g;
+                StartCoroutine(Timer(0.3f));
                 break;
             case "Upper":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 2, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                StartCoroutine(Timer(0.5f));
                 break;
             case "Lower":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
                 break;
 
         }
-
-        SetCanAttack(true, 0);
 
         if (hit != null)
         {
@@ -134,7 +147,25 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+    public IEnumerator Timer(float time)
+    {
 
+        while(time>=0) // 맥스콤보일때처리필요
+        {
+            if (canAttack == false)
+            {
+                curCombo++;
+                yield break;
+            }
+
+           time -= Time.deltaTime;
+            yield return null;
+        }
+
+        curCombo = 0;
+        curAttack = 0;
+
+    }
     public void SetCanAttack(bool canAttack)
     {
         this.canAttack = canAttack;

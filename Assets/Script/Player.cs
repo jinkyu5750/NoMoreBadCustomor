@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             ParticleManager.instance.UseObject("LandingDust", transform.position);
-            playerAttack.SetCurAttackCombo();
+          //  playerAttack.SetCurAttackCombo();
             isGround = true;
             components.ani.SetBool("IsGround", true);
             components.ani.SetBool("IsRun", true);
