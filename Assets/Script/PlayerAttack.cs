@@ -12,20 +12,20 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private bool _canAttack = true;
     public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
-    [SerializeField] private float dashTime = 0.5f;
-    [SerializeField] private float dashPower;
-    [SerializeField] private float jumpPower;
+    private float dashTime = 0.4f;
+    private float dashPower = 10;
+    private float jumpPower = 8;
+    private float dropPower = 10;
 
-    [SerializeField] private Vector2 attackBoxSize;
+    private Vector2 attackBoxSize = new Vector2(1.7f, 2);
 
-    [SerializeField] private float g;
-    [SerializeField] private float gravityScale;
+    private float g = 1.3f;
+    private float gravityScale = 3.3f;
 
-    [SerializeField] private int max_Combo = 3;
+    [SerializeField] private int max_Combo = 2;
     [SerializeField] private int curCombo = 0;
 
-    [SerializeField] private float max_ComboTime = 0.3f;
-    [SerializeField]private float curComboTime = 0;
+
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -42,44 +42,39 @@ public class PlayerAttack : MonoBehaviour
     {
         if (player.components.rig.velocity.y < 0f)
         {
-            if (curAttack == attack.Dash) 
+            if (curAttack == attack.Dash)
                 player.components.rig.gravityScale = 0;
-            else 
+            else
                 player.components.rig.gravityScale = gravityScale;
 
         }
         else
             player.components.rig.gravityScale = g;
 
-/*        if(curCombo>0)
-        {
-            curComboTime += Time.deltaTime;
-        }
 
-        if(curComboTime >= max_ComboTime)
-        {
-            curComboTime = 0;
+        if (player.components.ani.GetBool("IsGround"))
             curCombo = 0;
-        }*/
     }
     public IEnumerator Attack(attack dir)
     {
-        // 하고싶은것 : 같은 공격으로는 캔슬이 불가능, 다른 공격으로는 캔슬 가능 // 선입력 X , 타이밍맞춰서
-        // canAttack이 켜지면 공격하되, 이전 공격이랑 같으면안됨, 최대3회
 
-        if (canAttack == false || curAttack == dir || curCombo >= max_Combo) yield break;
+        if (!canAttack || curCombo >= max_Combo) yield break;
 
-       //curComboTime = 0;
-   //     curCombo++;
-        curAttack = dir; // 공격이끝나면 초기화해줘야하고 , 공격끝나고 n초안에 공격없으면 combo = 0 ,
-        SetCanAttack(false, (int)dir);
+        curAttack = dir; // 직전했던 공격은 못한다는 컨셉 폐기...
+
+        SetCanAttack(0);
+        player.components.ani.SetInteger("Attack", (int)dir);
+
+        if (!player.components.ani.GetBool("IsGround"))
+            curCombo++;
+
 
         switch (dir)
         {
             case attack.Dash:
                 {
 
-                    ParticleManager.instance.UseObject("DashDust", transform.position);
+                    ParticleManager.instance.UseObject("DashDust", transform.position, Quaternion.identity);
 
                     GetComponent<GhostEffect>().IsGhostOn = true;
                     player.components.rig.velocity = Vector2.right * dashPower;
@@ -94,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
             case attack.Upper:
                 {
 
-                    ParticleManager.instance.UseObject("DoubleJump", transform.position + new Vector3(0, -0.5f, 0));
+                    ParticleManager.instance.UseObject("DoubleJump", transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
                     player.components.rig.velocity = new Vector2(player.components.rig.velocity.x, 0);
                     player.components.rig.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
 
@@ -103,6 +98,19 @@ public class PlayerAttack : MonoBehaviour
                 }
                 break;
             case attack.Lower:
+                {
+                    if (player.components.ani.GetBool("IsGround") == true)
+                    {
+                        curAttack = 0;
+                        SetCanAttack(1);
+                        player.components.ani.SetInteger("Attack", 0);
+                        yield break;
+                    }
+
+                    ParticleManager.instance.UseObject("DoubleJump", transform.position + new Vector3(0, 2f, 0), Quaternion.Euler(new Vector3(0, 0, 180f)));
+                    player.components.rig.velocity = Vector2.zero;
+                    player.components.rig.AddForce(Vector2.down * dropPower, ForceMode2D.Impulse);
+                }
                 break;
 
         }
@@ -113,23 +121,27 @@ public class PlayerAttack : MonoBehaviour
     public void AttackAniEvent(string attackDir)
     {
 
-        SetCanAttack(true, 0);
+        if (attackDir != "Lower") // Lower은 애니메이션이벤트로 따로처리
+        {
+            SetCanAttack(1);
+            player.components.ani.SetInteger("Attack", 0);
+        }
 
-        Collider2D hit = new Collider2D();
+        Collider2D hit = null;
         switch (attackDir)
         {
             case "Dash":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(1, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
                 player.components.rig.gravityScale = g;
-                StartCoroutine(Timer(0.3f));
                 break;
             case "Upper":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 2, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
-                StartCoroutine(Timer(0.5f));
                 break;
             case "Lower":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity);
                 break;
+
 
         }
 
@@ -140,52 +152,30 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(cameraShakeZoom.ZoomInCam());
 
             Vector2 randomCircle = Random.insideUnitCircle * 1f;
-            ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0));
+            ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
             hit.gameObject.GetComponent<Enemy>().EnemyDead();
         }
 
     }
 
 
-    public IEnumerator Timer(float time)
+    public void SetCanAttack(int canAttack)
     {
+        this.canAttack = canAttack == 1;
+    }
 
-        while(time>=0) // 맥스콤보일때처리필요
+
+    public void SetCurAttack() // DashAttack 애니메이션이벤트용
+    {
+        curAttack = 0;
+    }
+
+
+    /*    void OnDrawGizmos()
         {
-            if (canAttack == false)
-            {
-                curCombo++;
-                yield break;
-            }
-
-           time -= Time.deltaTime;
-            yield return null;
-        }
-
-        curCombo = 0;
-        curAttack = 0;
-
-    }
-    public void SetCanAttack(bool canAttack)
-    {
-        this.canAttack = canAttack;
-    }
-    public void SetCanAttack(bool canAttack, int i)
-    {
-        this.canAttack = canAttack;
-        player.components.ani.SetInteger("Attack", i);
-
-    }
-    public void SetCurAttackCombo()
-    {
-        curCombo = 0;
-        curAttack = 0;
-    }
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 1, 0), attackBoxSize);
-    }
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, 1, 0), attackBoxSize);
+        }*/
 }

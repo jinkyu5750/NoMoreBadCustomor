@@ -63,7 +63,12 @@ public class Player : MonoBehaviour
 
         }
 
-        if (playerHitDead.life == 0)
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
+        }
+
+            if (playerHitDead.life == 0)
             playerHitDead.Dead();
 
         Move();
@@ -87,7 +92,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            playerAttack.SetCanAttack(false);
+            playerAttack.SetCanAttack(0);
             StartCoroutine(playerHitDead.Hit(collision));
         }
     }
@@ -96,7 +101,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            ParticleManager.instance.UseObject("LandingDust", transform.position);
+            ParticleManager.instance.UseObject("LandingDust", transform.position, Quaternion.identity);
           //  playerAttack.SetCurAttackCombo();
             isGround = true;
             components.ani.SetBool("IsGround", true);

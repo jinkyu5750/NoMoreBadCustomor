@@ -37,6 +37,7 @@ public class PlayerHitDead : MonoBehaviour
         player.components.sp.material.color = Color.white;
         yield return new WaitForSeconds(1f);
         player.components.ani.SetTrigger("WakeUp");
+
     }
 
 

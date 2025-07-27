@@ -7,8 +7,8 @@ public class PlayerStateMachineBehaviour : StateMachineBehaviour
     
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) 
     {
-  //      animator.GetComponent<PlayerAttack>().SetCurAttackCombo();
-        animator.GetComponent<PlayerAttack>().SetCanAttack(true,0);
+  
+        animator.GetComponent<PlayerAttack>().SetCanAttack(1);
    
 
     }
