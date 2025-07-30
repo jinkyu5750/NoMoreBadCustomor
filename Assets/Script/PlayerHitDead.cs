@@ -1,18 +1,18 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class PlayerHitDead : MonoBehaviour
 {
     private Player player;
-    CameraShakeZoom cameraShakeZoom;
+    [SerializeField] private CameraShakeProfile hitProfile;
 
     [SerializeField] private int _life = 3; 
     public int life { get { return _life; } private set { _life = value; } }
     public bool isDead { get; private set; } = false;
-    void Start()
-    {
-        cameraShakeZoom = GetComponent<CameraShakeZoom>();
-    }
+
+
 
     public void InitPlayer(Player player)
     {
@@ -31,7 +31,8 @@ public class PlayerHitDead : MonoBehaviour
 
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
         player.components.rig.AddForce(hitDir * 14, ForceMode2D.Impulse);
-        StartCoroutine(cameraShakeZoom.ShakeCam(2, 1, 0.2f));
+        CameraShakeManager.instance.ShakeCameraFromProfile(hitProfile,col.gameObject.GetComponent<CinemachineImpulseSource>());
+       
 
         yield return new WaitForSeconds(0.5f);
         player.components.sp.material.color = Color.white;
