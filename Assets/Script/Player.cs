@@ -57,8 +57,18 @@ public class Player : MonoBehaviour
             StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
 
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
 
-        if (playerHitDead.life == 0)
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
+        }
+
+            if (playerHitDead.life == 0)
             playerHitDead.Dead();
 
         Move();
@@ -81,15 +91,20 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Enemy"))
+        {
+            playerAttack.SetCanAttack(0);
             StartCoroutine(playerHitDead.Hit(collision));
-
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            ParticleManager.instance.UseObject("LandingDust", transform.position, Quaternion.identity);
+          //  playerAttack.SetCurAttackCombo();
             isGround = true;
+            components.ani.SetBool("IsGround", true);
             components.ani.SetBool("IsRun", true);
         }
 
@@ -99,7 +114,10 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision) //¿Ã∞≈ øÿ¡ˆ õ„«‘.. ∂€∂ß øÔ≈¸∫“≈¸«ÿº≠
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
+            components.ani.SetBool("IsGround", false);
             isGround = false;
+        }
     }
 
 

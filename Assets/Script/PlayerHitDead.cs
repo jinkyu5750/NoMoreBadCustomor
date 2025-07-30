@@ -1,18 +1,18 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using UnityEngineInternal;
 
 public class PlayerHitDead : MonoBehaviour
 {
     private Player player;
-    CameraShakeZoom cameraShakeZoom;
+    [SerializeField] private CameraShakeProfile hitProfile;
 
     [SerializeField] private int _life = 3; 
     public int life { get { return _life; } private set { _life = value; } }
     public bool isDead { get; private set; } = false;
-    void Start()
-    {
-        cameraShakeZoom = GetComponent<CameraShakeZoom>();
-    }
+
+
 
     public void InitPlayer(Player player)
     {
@@ -21,6 +21,8 @@ public class PlayerHitDead : MonoBehaviour
 
     public IEnumerator Hit(Collider2D col)
     {
+        //튕겨나가서, 1초정도 있다가 일어나자
+        // 스프라이트를 쪼개야할듯 등에
    
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
@@ -28,11 +30,15 @@ public class PlayerHitDead : MonoBehaviour
         player.components.ani.SetTrigger("Hit");
 
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
-        player.components.rig.AddForce(hitDir * 15, ForceMode2D.Impulse);
-        StartCoroutine(cameraShakeZoom.ShakeCam(2, 1, 0.2f));
+        player.components.rig.AddForce(hitDir * 14, ForceMode2D.Impulse);
+        CameraShakeManager.instance.ShakeCameraFromProfile(hitProfile,col.gameObject.GetComponent<CinemachineImpulseSource>());
+       
 
         yield return new WaitForSeconds(0.5f);
         player.components.sp.material.color = Color.white;
+        yield return new WaitForSeconds(1f);
+        player.components.ani.SetTrigger("WakeUp");
+
     }
 
 

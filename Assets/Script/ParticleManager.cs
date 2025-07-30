@@ -68,12 +68,13 @@ public class ParticleManager : MonoBehaviour
     }
 
 
-    public void UseObject(string objectName, Vector3 pos)
+    public void UseObject(string objectName, Vector3 pos,Quaternion rot)
     {
 
         GameObject obj = objectPoolList[objectName].Dequeue();
         obj.SetActive(true);
         obj.transform.position = pos;
+        obj.transform.rotation = rot;
 
         float returnTime = GetReturnTime(obj);
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
