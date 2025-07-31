@@ -1,10 +1,10 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
 
 public class PlayerAttack : MonoBehaviour
 {
-    CameraShakeZoom cameraShakeZoom;
 
     private Player player;
     public enum attack { Dash = 1, Upper, Lower }
@@ -22,21 +22,21 @@ public class PlayerAttack : MonoBehaviour
     private float g = 1.3f;
     private float gravityScale = 3.3f;
 
-    [SerializeField] private int max_Combo = 2;
-    [SerializeField] private int curCombo = 0;
+     private int max_Combo = 2;
+     private int curCombo = 0;
 
-
+    [SerializeField] CameraShakeProfile attackProfile;
+    [SerializeField] CameraShakeProfile groundSlamProfile;
+    private CinemachineImpulseSource impulseSource;
     public void InitPlayer(Player player)
     {
         this.player = player;
     }
 
-
-    void Start()
+    private void Start()
     {
-        cameraShakeZoom = GetComponent<CameraShakeZoom>();
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
-
 
     private void Update()
     {
@@ -126,7 +126,7 @@ public class PlayerAttack : MonoBehaviour
             SetCanAttack(1);
             player.components.ani.SetInteger("Attack", 0);
         }
-
+        Debug.Log("한번");
         Collider2D hit = null;
         switch (attackDir)
         {
@@ -139,6 +139,8 @@ public class PlayerAttack : MonoBehaviour
                 break;
             case "Lower":
                 hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                CameraManager.instance.ShakeCameraFromProfile(groundSlamProfile, impulseSource);
+                Debug.Log("한번");
                 ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity);
                 break;
 
@@ -148,12 +150,12 @@ public class PlayerAttack : MonoBehaviour
         if (hit != null)
         {
 
-            StartCoroutine(cameraShakeZoom.ShakeCam(2.5f, 1, 0.1f));
-            StartCoroutine(cameraShakeZoom.ZoomInCam());
+            CameraManager.instance.ShakeCameraFromProfile(attackProfile,hit.gameObject.GetComponent<CinemachineImpulseSource>());
+            StartCoroutine(CameraManager.instance.ZoomInCam());
 
             Vector2 randomCircle = Random.insideUnitCircle * 1f;
             ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
-            hit.gameObject.GetComponent<Enemy>().EnemyDead();
+       //     hit.gameObject.GetComponent<Enemy>().EnemyDead();
         }
 
     }

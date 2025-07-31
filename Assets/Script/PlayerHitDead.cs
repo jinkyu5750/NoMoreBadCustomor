@@ -31,7 +31,7 @@ public class PlayerHitDead : MonoBehaviour
 
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
         player.components.rig.AddForce(hitDir * 14, ForceMode2D.Impulse);
-        CameraShakeManager.instance.ShakeCameraFromProfile(hitProfile,col.gameObject.GetComponent<CinemachineImpulseSource>());
+       // CameraManager.instance.ShakeCameraFromProfile(hitProfile,col.gameObject.GetComponent<CinemachineImpulseSource>());
        
 
         yield return new WaitForSeconds(0.5f);
