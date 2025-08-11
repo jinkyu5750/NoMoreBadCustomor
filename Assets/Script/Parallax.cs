@@ -7,6 +7,8 @@ public class Parallax : MonoBehaviour
     private float length, startPos;
     [SerializeField] private Camera cam;
     [SerializeField] private float parallaxPower;
+
+    private int oldPlatform, newPlatform;
     void Start()
     {
         cam = Camera.main;
@@ -22,7 +24,19 @@ public class Parallax : MonoBehaviour
 
         transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
 
-        if (temp > startPos + length) startPos += length;
-        else if (temp < startPos - length) startPos -= length;
+        if (temp > startPos + length)
+        {
+            startPos += length;
+
+            newPlatform = Random.Range(1, 4);
+            ParticleManager.instance.UseObject($"Platform{newPlatform}", new Vector3(startPos, transform.position.y, 0f),Quaternion.identity);
+        }
+        else if (temp < startPos - length) 
+        {
+            startPos -= length;
+
+            int num = Random.Range(0, 3);
+            ParticleManager.instance.UseObject($"Platform{newPlatform}", new Vector3(startPos, transform.position.y, 0f), Quaternion.identity);
+        }
     }
 }
