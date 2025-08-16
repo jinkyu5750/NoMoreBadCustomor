@@ -75,8 +75,8 @@ public class ParticleManager : MonoBehaviour
         obj.SetActive(true);
         obj.transform.position = pos;
         obj.transform.rotation = rot;
-
-        float returnTime = GetReturnTime(obj);
+       
+        float returnTime = GetReturnTime(objectName);
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
 
     }
@@ -88,20 +88,39 @@ public class ParticleManager : MonoBehaviour
         obj.SetActive(true);
         obj.transform.position = pos;
 
-        float returnTime = GetReturnTime(obj);
+        float returnTime = GetReturnTime(objectName);
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
         return obj;
     }
 
-    public float GetReturnTime(GameObject obj)
+    public float GetReturnTime(String objName)
     {
-        ParticleSystem ps = obj.GetComponent<ParticleSystem>();
+        ParticleSystem ps = objectPoolList[objName].Peek().GetComponent<ParticleSystem>();
+
         if (ps != null)
         {
             return ps.main.duration;
         }
         else
-            return 1f;
+        {
+            for(int i=0; i<objectInfos.Length;i++)
+            {
+                if (objectInfos[i].objectName == objName)
+                {
+                    if (objectInfos[i].returnTime != 0)
+                        return objectInfos[i].returnTime;
+                    else 
+                        return 1f;
+                                      
+                }
+
+            }
+
+
+            Debug.Log("문제생겼는데요?");
+            return 0;
+
+        }
     }
     public IEnumerator ReturnObject(string objectName, GameObject obj, float returnTime)
     {
