@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlatformGenerator : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlatformGenerator : MonoBehaviour
     //°¢ ÇÃ·§Æû¿¡ ½ºÅ©¸³Æ® ºÎÂø, ¸Â´êÀ¸¸é ´ÙÀ½ ÇÃ·§Æû »ý¼º, ExitÇÏ¸é ¸®ÅÏ(°Á REturnTimeÁà¼­ ¾ø¾Ö±â·ÎÇÏÁÒ Exit X), ÇÃ·§Æû »ý¼º x += 23.5
 
     [SerializeField]private bool isGenerated = false;
+    private Vector3 spawnPoint;
 
     private void OnEnable()
     {
@@ -18,9 +20,12 @@ public class PlatformGenerator : MonoBehaviour
       
         if(collision.gameObject.CompareTag("Player") && isGenerated == false)
         {
+            spawnPoint = transform.Find("SpawnPoint").position;
+  
             isGenerated = true;
             int num = Random.Range(1, 4);
-            ParticleManager.instance.UseObject($"Platform{num}", transform.parent.parent.position+new Vector3(23.5f,0,0),Quaternion.identity);
+            ParticleManager.instance.UseObject($"Platform{num}",spawnPoint+new Vector3(3,0,0),Quaternion.identity);
+   
         }
         else
         {

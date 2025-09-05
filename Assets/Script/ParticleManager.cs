@@ -22,7 +22,8 @@ public class ParticleManager : MonoBehaviour
     public static ParticleManager instance;
 
     [SerializeField] ObjectInfo[] objectInfos = null;
-
+    [Header("풀 리필 갯수")]
+    [SerializeField] int refillCount = 7;
     [Header("오브젝트 풀의 위치")]
     [SerializeField] Transform tfPoolParent;
 
@@ -67,28 +68,66 @@ public class ParticleManager : MonoBehaviour
         return tempQ;
     }
 
-
-    public void UseObject(string objectName, Vector3 pos,Quaternion rot)
+    public void FillQueue(string objectName)
     {
+        for (int i = 0; i < objectInfos.Length; i++)
+        {
+            if (objectInfos[i].objectName == objectName)
+            {
+                for (int j = 0; j < refillCount; j++)
+                {
+                    GameObject clone = Instantiate(objectInfos[i].prefab) as GameObject;
+                    clone.SetActive(false);
+                    clone.transform.SetParent(tfPoolParent);
+                    objectPoolList[objectName].Enqueue(clone);
+                }
+            }
+        }
+
+    }
+    public void UseObject(string objectName, Vector3 pos, Quaternion rot)
+    {
+        if (!objectPoolList.ContainsKey(objectName))
+        {
+            Debug.LogWarning($"Object pool for '{objectName}' not found!");
+            return;
+        }
+
+        if (objectPoolList[objectName].Count == 0)
+            FillQueue(objectName);
+
+        float returnTime = GetReturnTime(objectName);
 
         GameObject obj = objectPoolList[objectName].Dequeue();
         obj.SetActive(true);
         obj.transform.position = pos;
         obj.transform.rotation = rot;
-       
-        float returnTime = GetReturnTime(objectName);
+
+   
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
 
     }
 
+
     public GameObject UseObject_GhostEffect(string objectName, Vector3 pos)
     {
+
+        if (!objectPoolList.ContainsKey(objectName))
+        {
+            Debug.LogWarning($"Object pool for '{objectName}' not found!");
+            return null;
+        }
+
+        if (objectPoolList[objectName].Count == 0)
+            FillQueue(objectName);
+
+        float returnTime = GetReturnTime(objectName);
 
         GameObject obj = objectPoolList[objectName].Dequeue();
         obj.SetActive(true);
         obj.transform.position = pos;
 
-        float returnTime = GetReturnTime(objectName);
+       
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
         return obj;
     }
@@ -103,16 +142,10 @@ public class ParticleManager : MonoBehaviour
         }
         else
         {
-            for(int i=0; i<objectInfos.Length;i++)
+            for (int i = 0; i < objectInfos.Length; i++)
             {
                 if (objectInfos[i].objectName == objName)
-                {
-                    if (objectInfos[i].returnTime != 0)
-                        return objectInfos[i].returnTime;
-                    else 
-                        return 1f;
-                                      
-                }
+                    return objectInfos[i].returnTime != 0 ? objectInfos[i].returnTime : 1f;
 
             }
 
