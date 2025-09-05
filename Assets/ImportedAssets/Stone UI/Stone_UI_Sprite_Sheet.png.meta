@@ -1,0 +1,3042 @@
+fileFormatVersion: 2
+guid: 1da17b538be5eab4d8ee52b461184608
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -528298247683571893
+    second: Stone_UI_Sprite_Sheet_0
+  - first:
+      213: 4316063174364090720
+    second: Stone_UI_Sprite_Sheet_1
+  - first:
+      213: 7675813737050267097
+    second: Stone_UI_Sprite_Sheet_2
+  - first:
+      213: 1772743875330239845
+    second: Stone_UI_Sprite_Sheet_3
+  - first:
+      213: -7002932659986690328
+    second: Stone_UI_Sprite_Sheet_4
+  - first:
+      213: 2579283688922889281
+    second: Stone_UI_Sprite_Sheet_5
+  - first:
+      213: 424555857499245675
+    second: Stone_UI_Sprite_Sheet_6
+  - first:
+      213: -5037928553955175546
+    second: Stone_UI_Sprite_Sheet_7
+  - first:
+      213: -5404160512947488066
+    second: Stone_UI_Sprite_Sheet_8
+  - first:
+      213: -2395947133910712372
+    second: Stone_UI_Sprite_Sheet_9
+  - first:
+      213: 2569629661990294841
+    second: Stone_UI_Sprite_Sheet_10
+  - first:
+      213: 2802884283951808470
+    second: Stone_UI_Sprite_Sheet_11
+  - first:
+      213: 2310416495936622974
+    second: Stone_UI_Sprite_Sheet_12
+  - first:
+      213: 465698560015648433
+    second: Stone_UI_Sprite_Sheet_13
+  - first:
+      213: -6673246056837633175
+    second: Stone_UI_Sprite_Sheet_14
+  - first:
+      213: 3468626997851779485
+    second: Stone_UI_Sprite_Sheet_15
+  - first:
+      213: 6433652578517822008
+    second: Stone_UI_Sprite_Sheet_16
+  - first:
+      213: -4218952238716971025
+    second: Stone_UI_Sprite_Sheet_17
+  - first:
+      213: -8785477050579775595
+    second: Stone_UI_Sprite_Sheet_18
+  - first:
+      213: 8765136664497842719
+    second: Stone_UI_Sprite_Sheet_19
+  - first:
+      213: 7642814172360110126
+    second: Stone_UI_Sprite_Sheet_20
+  - first:
+      213: 2843658022021941016
+    second: Stone_UI_Sprite_Sheet_21
+  - first:
+      213: 3223478104084474929
+    second: Stone_UI_Sprite_Sheet_22
+  - first:
+      213: 5777202200612816293
+    second: Stone_UI_Sprite_Sheet_23
+  - first:
+      213: 6235650733529169425
+    second: Stone_UI_Sprite_Sheet_24
+  - first:
+      213: 7509362640759661512
+    second: Stone_UI_Sprite_Sheet_25
+  - first:
+      213: -7810251129895188191
+    second: Stone_UI_Sprite_Sheet_26
+  - first:
+      213: -1534092446994208832
+    second: Stone_UI_Sprite_Sheet_27
+  - first:
+      213: -2403507854858566204
+    second: Stone_UI_Sprite_Sheet_28
+  - first:
+      213: -544890429443434670
+    second: Stone_UI_Sprite_Sheet_29
+  - first:
+      213: -101102326569790637
+    second: Stone_UI_Sprite_Sheet_30
+  - first:
+      213: 5595288628545923870
+    second: Stone_UI_Sprite_Sheet_31
+  - first:
+      213: 3449599794831536417
+    second: Stone_UI_Sprite_Sheet_32
+  - first:
+      213: 5443913143410313454
+    second: Stone_UI_Sprite_Sheet_33
+  - first:
+      213: -5118448437161782004
+    second: Stone_UI_Sprite_Sheet_34
+  - first:
+      213: -7736475775080915025
+    second: Stone_UI_Sprite_Sheet_35
+  - first:
+      213: 8633760390920620548
+    second: Stone_UI_Sprite_Sheet_36
+  - first:
+      213: 3777533041114414310
+    second: Stone_UI_Sprite_Sheet_37
+  - first:
+      213: -3615009804259286106
+    second: Stone_UI_Sprite_Sheet_38
+  - first:
+      213: -3658349845918674824
+    second: Stone_UI_Sprite_Sheet_39
+  - first:
+      213: 7761781441437830567
+    second: Stone_UI_Sprite_Sheet_40
+  - first:
+      213: 5192581630332931413
+    second: Stone_UI_Sprite_Sheet_41
+  - first:
+      213: -2666731615216746292
+    second: Stone_UI_Sprite_Sheet_42
+  - first:
+      213: 3641007100447804720
+    second: Stone_UI_Sprite_Sheet_43
+  - first:
+      213: -2346677326485784984
+    second: Stone_UI_Sprite_Sheet_44
+  - first:
+      213: 4929600451377167507
+    second: Stone_UI_Sprite_Sheet_45
+  - first:
+      213: -8965536666098304829
+    second: Stone_UI_Sprite_Sheet_46
+  - first:
+      213: -7554444651423619761
+    second: Stone_UI_Sprite_Sheet_47
+  - first:
+      213: 8277438254840426109
+    second: Stone_UI_Sprite_Sheet_48
+  - first:
+      213: 4675007428825316332
+    second: Stone_UI_Sprite_Sheet_49
+  - first:
+      213: -5400271912466773715
+    second: Stone_UI_Sprite_Sheet_50
+  - first:
+      213: -3625132478150043880
+    second: Stone_UI_Sprite_Sheet_51
+  - first:
+      213: -8258699028993658015
+    second: Stone_UI_Sprite_Sheet_52
+  - first:
+      213: 4428185202125541492
+    second: Stone_UI_Sprite_Sheet_53
+  - first:
+      213: 7486671606542737012
+    second: Stone_UI_Sprite_Sheet_54
+  - first:
+      213: 6648815954002285245
+    second: Stone_UI_Sprite_Sheet_55
+  - first:
+      213: 932211954925086894
+    second: Stone_UI_Sprite_Sheet_56
+  - first:
+      213: -2651463212287895207
+    second: Stone_UI_Sprite_Sheet_57
+  - first:
+      213: 1984985239126913661
+    second: Stone_UI_Sprite_Sheet_58
+  - first:
+      213: -8750218810785406941
+    second: Stone_UI_Sprite_Sheet_59
+  - first:
+      213: 3440393945282156545
+    second: Stone_UI_Sprite_Sheet_60
+  - first:
+      213: 7889019790803792597
+    second: Stone_UI_Sprite_Sheet_61
+  - first:
+      213: -4066633695633136605
+    second: Stone_UI_Sprite_Sheet_62
+  - first:
+      213: 4845979753337413568
+    second: Stone_UI_Sprite_Sheet_63
+  - first:
+      213: 4710664723412424717
+    second: Stone_UI_Sprite_Sheet_64
+  - first:
+      213: -1016658392886226389
+    second: Stone_UI_Sprite_Sheet_65
+  - first:
+      213: -1822891869802459928
+    second: Stone_UI_Sprite_Sheet_66
+  - first:
+      213: 8584922914878816991
+    second: Stone_UI_Sprite_Sheet_67
+  - first:
+      213: 7630468367093328692
+    second: Stone_UI_Sprite_Sheet_68
+  - first:
+      213: 7144175909599745932
+    second: Stone_UI_Sprite_Sheet_69
+  - first:
+      213: 8413023960689316297
+    second: Stone_UI_Sprite_Sheet_70
+  - first:
+      213: 4794592924189344098
+    second: Stone_UI_Sprite_Sheet_71
+  - first:
+      213: -6694133256680582937
+    second: Stone_UI_Sprite_Sheet_72
+  - first:
+      213: 64054472817841485
+    second: Stone_UI_Sprite_Sheet_73
+  - first:
+      213: -6185157906904453637
+    second: Stone_UI_Sprite_Sheet_74
+  - first:
+      213: 4430996234396795379
+    second: Stone_UI_Sprite_Sheet_75
+  - first:
+      213: 6772737501587551821
+    second: Stone_UI_Sprite_Sheet_76
+  - first:
+      213: -2164369767866377597
+    second: Stone_UI_Sprite_Sheet_77
+  - first:
+      213: 7655437448130217361
+    second: Stone_UI_Sprite_Sheet_78
+  - first:
+      213: -5074272335687291580
+    second: Stone_UI_Sprite_Sheet_79
+  - first:
+      213: -6931656089852587624
+    second: Stone_UI_Sprite_Sheet_80
+  - first:
+      213: 5682304560919748690
+    second: Stone_UI_Sprite_Sheet_81
+  - first:
+      213: 3902085660856073403
+    second: Stone_UI_Sprite_Sheet_82
+  - first:
+      213: -1225418670703341236
+    second: Stone_UI_Sprite_Sheet_83
+  - first:
+      213: -1416155968428374960
+    second: Stone_UI_Sprite_Sheet_84
+  - first:
+      213: -5177961675404838938
+    second: Stone_UI_Sprite_Sheet_85
+  - first:
+      213: -7904722603436077592
+    second: Stone_UI_Sprite_Sheet_86
+  - first:
+      213: 7710800355888913617
+    second: Stone_UI_Sprite_Sheet_87
+  - first:
+      213: 320483934266883005
+    second: Stone_UI_Sprite_Sheet_88
+  - first:
+      213: 6872315488528781200
+    second: Stone_UI_Sprite_Sheet_89
+  - first:
+      213: -2698757906539342110
+    second: Stone_UI_Sprite_Sheet_90
+  - first:
+      213: -4083080162875709161
+    second: Stone_UI_Sprite_Sheet_91
+  - first:
+      213: -2065311038221786061
+    second: Stone_UI_Sprite_Sheet_92
+  - first:
+      213: 3363607739275975357
+    second: Stone_UI_Sprite_Sheet_93
+  - first:
+      213: 2340402835754237467
+    second: Stone_UI_Sprite_Sheet_94
+  - first:
+      213: 7325960464937015590
+    second: Stone_UI_Sprite_Sheet_95
+  - first:
+      213: -5451526286345487139
+    second: Stone_UI_Sprite_Sheet_96
+  - first:
+      213: 5927247743939962941
+    second: Stone_UI_Sprite_Sheet_97
+  - first:
+      213: 1834640445163917216
+    second: Stone_UI_Sprite_Sheet_98
+  - first:
+      213: 7587437536271806358
+    second: Stone_UI_Sprite_Sheet_99
+  - first:
+      213: 3745698970302522606
+    second: Stone_UI_Sprite_Sheet_100
+  - first:
+      213: 1078599704986951558
+    second: Stone_UI_Sprite_Sheet_101
+  - first:
+      213: 67728934551972345
+    second: Stone_UI_Sprite_Sheet_102
+  - first:
+      213: 672960264530961719
+    second: Stone_UI_Sprite_Sheet_103
+  - first:
+      213: -5805375706627985482
+    second: Stone_UI_Sprite_Sheet_104
+  - first:
+      213: -5332215946976700591
+    second: Stone_UI_Sprite_Sheet_105
+  - first:
+      213: -4260953162521136629
+    second: Stone_UI_Sprite_Sheet_106
+  - first:
+      213: 4974625002127002132
+    second: Stone_UI_Sprite_Sheet_107
+  - first:
+      213: 6164846515530105017
+    second: Stone_UI_Sprite_Sheet_108
+  - first:
+      213: -2430923751371734522
+    second: Stone_UI_Sprite_Sheet_109
+  - first:
+      213: 2303251178677897423
+    second: Stone_UI_Sprite_Sheet_110
+  - first:
+      213: 9030978208481824134
+    second: Stone_UI_Sprite_Sheet_111
+  - first:
+      213: -2497959008846141696
+    second: Stone_UI_Sprite_Sheet_112
+  - first:
+      213: 2287513315941279555
+    second: Stone_UI_Sprite_Sheet_113
+  - first:
+      213: -6558203326511375493
+    second: Stone_UI_Sprite_Sheet_114
+  - first:
+      213: 3197932275864304697
+    second: Stone_UI_Sprite_Sheet_115
+  - first:
+      213: 8752078982953470796
+    second: Stone_UI_Sprite_Sheet_116
+  - first:
+      213: 9206532172944345808
+    second: Stone_UI_Sprite_Sheet_117
+  - first:
+      213: 2455639312692457511
+    second: Stone_UI_Sprite_Sheet_118
+  - first:
+      213: 472941715297960783
+    second: Stone_UI_Sprite_Sheet_119
+  - first:
+      213: -2623150836830228960
+    second: Stone_UI_Sprite_Sheet_120
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 175
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a877c8caa2a3a464aae1af3cb3d8ed9d
+      internalID: 44330753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 340
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1023eebbc1ad5a94aaf585e1069927ba
+      internalID: -1114903573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 327
+        width: 47
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1414ccb555e810943847199dd06d16fb
+      internalID: 484273010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 327
+        width: 47
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7ad69c5463f140449ba3f3077158fa3
+      internalID: 1956601720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 327
+        width: 46
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36d3aa65b7d63dd44aafb43a7166668e
+      internalID: -71201185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 327
+        width: 46
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a54897d0dcf9d14fb6478a18f9d240b
+      internalID: 45822269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 324
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e62368908770e94aa353faf45a50256
+      internalID: 1850251372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 308
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06a93fd5288b06941be4ff52aaa890e3
+      internalID: 1396761061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 295
+        width: 47
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7577c5a32f284b345a97438f8390977e
+      internalID: 1790288344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 295
+        width: 47
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d64a9a5f9217104797b5240a3152eda
+      internalID: 702767597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 295
+        width: 46
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 317a121783ec2d743b68121fcbc71aca
+      internalID: -818746164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 295
+        width: 46
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba44e6495634fd46b75add6f911f159
+      internalID: -2021328415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 292
+        width: 24
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f7e263274719e045b4ff119b8736cc1
+      internalID: 1717324135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 273
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 213b759bad1f7f845a57a773150f6c0c
+      internalID: -1181135360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 284
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddba952dd79984948bf1fb14a3fe7adf
+      internalID: 1036175078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 284
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39ddc6679872b264ca2dbecf4ce37809
+      internalID: -433047674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 256
+        width: 64
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09932ed55f96df34eb693c18d4252181
+      internalID: -1913189602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 257
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f9eb8d2bbb6ee244bc5a9850a8ef11c
+      internalID: 1997483231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 263
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d20ae77481472e649a6fac0b45d257c0
+      internalID: -1377554576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 263
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3355a7d861a6ea2429284fa41d4e6ccc
+      internalID: -437511742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 262
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a02c71d5aba54324b941e73e4adac9e4
+      internalID: -1965022909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 262
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccd098a0ed57cc748bc41d463909a1f3
+      internalID: 1045566761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 268
+        width: 16
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d7aa62833b58843b781e9a99ba9188
+      internalID: -756362829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 268
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70136f31179a2b147bc373282a5558fc
+      internalID: -29403085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 241
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1e2fd960fc62c489e8f7e7211b640d
+      internalID: 1578552747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 211
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007b988ae38103b4db8a5ea332e55699
+      internalID: 194641276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 208
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4af62cd87f8f184d9b216fb0015cfac
+      internalID: 1561371072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 212
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b9ff4727522ddc4e87808925d3469d1
+      internalID: 1017223273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 208
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc61e2fc38e11a47a3f4ee0bf3831ac
+      internalID: 1663890525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96333d5b990984e4aa0037f2b5261940
+      internalID: 1593858725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe10364c6fd5db0489abeaeb62ed770e
+      internalID: -528510445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 224
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8b931422abec2a4eb5064558dc2654f
+      internalID: -155363106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 225
+        width: 24
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 174bffa663d573945aa3edd052c38ebf
+      internalID: -140911481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 160
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a86cab14e43ea641843ee6e2a6f0399
+      internalID: 1987888851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 177
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fac7d661a47a54fb3cccb2618af944
+      internalID: -1000781724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 145
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a365f006ee7e9ba48aacdddc82896efd
+      internalID: -2106821412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 177
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ad0c234d4eb544395e535c897ea591
+      internalID: 1528713517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 145
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8a57ef18b97994b864e2df0de06a8a
+      internalID: 314075579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 177
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5068bdde8d49d15459d8184a87ae03f4
+      internalID: -1618671512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 145
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f168f74989b1384dbf2445afa014281
+      internalID: -43354518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 177
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc106fd6d9686fa4fa5b64218fab1627
+      internalID: -1467622217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 145
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87a9504a6c40e9d49a75d7fa7f3566f7
+      internalID: 1987464788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 177
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0982873777735804caa0f1b1c3adb89c
+      internalID: 1290371415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 145
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0c7b4308f287bc46ae7c9be0d56d4ae
+      internalID: 781485103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 174
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d641080182ceb443a11eb67ca5f5511
+      internalID: -1170184773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 208
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6080905e6625b4f887b724d3268d41
+      internalID: -1617078354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 174
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ec8d5ac0c5de14fadf22e32458e761
+      internalID: -1275051319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 208
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 174c322df367cb847ab02cb300045894
+      internalID: -4835303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 208
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a49210097fb6a947bf87870dc655bfc
+      internalID: -764105823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 174
+        width: 14
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012a43f8c081b70499441c2f077fa0f3
+      internalID: 1128020161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_50
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 162
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f2d16a47f839746ae0117f6e3160b0
+      internalID: -332416539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_51
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 132
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fff77556c439f1543b366dacadadd446
+      internalID: -360271910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_52
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 132
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b44e821c75bb0bb4aa7bd1a815f3992d
+      internalID: -1130705349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_53
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 132
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1404e6a9d4e3d2649958f8a56a3ad8ae
+      internalID: 548715619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_54
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 132
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19188dbdff949464bb8a7edbd0272aba
+      internalID: -300428416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_55
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 132
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e687e71da7593c44aaeb502938c2f43f
+      internalID: -47702051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_56
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 145
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637a368642a2a1e498a70733cb7c6eaf
+      internalID: -2143264093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_57
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 96
+        width: 24
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229ff95348fba4a40bcec943cbcd330e
+      internalID: -67060190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_58
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 129
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22bfce4975b6d747b930da5b0c72a3f
+      internalID: -1262973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_59
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 113
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64384a8c62959c4a8837501b8875b1a
+      internalID: -845219501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_60
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 113
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9dc00c675a98d4ab47e8dcd1833b34
+      internalID: -230341270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_61
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 113
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0eadc845db02504191c4feebb16ce61
+      internalID: 1808134044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_62
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 113
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d066ad990fe3ab4eb8b9281ea5b1f75
+      internalID: -1030902127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_63
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 113
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 788254f1ca00d0a418f2d2ea99dec0af
+      internalID: -670275429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_64
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 102
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96f6f4cbd110a7442959e2797b9ac0fd
+      internalID: 1533672133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_65
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 102
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7d2efab6519bf48a5e76fba7a4ec67
+      internalID: 2063807852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_66
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 102
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b78b57679fdb2d42a4fe1148e1420ed
+      internalID: 10313797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_67
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 102
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c71f09a5ffe0dd48b602dc117d64cb2
+      internalID: -1295716375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_68
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 102
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c13b30544deb054cb79851e693c5594
+      internalID: 267273700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_69
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 113
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b3b1c84dd2f3244938a73d56f97c34
+      internalID: 969293213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_70
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 114
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e43dbba4f511eb4b8c2c87b6833b4d9
+      internalID: 890535978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_71
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 97
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5de893b738c9bea46a90bd7492a1ff05
+      internalID: 705720501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_72
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b352809761efb4e489916190d20f995d
+      internalID: 732981316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_73
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dae827c4b7b8904e8ee0e9972d5a144
+      internalID: -1892419571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_74
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f0d014786530864dad1dfdefd7121d0
+      internalID: -1295108391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_75
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a7e56a57241e314b9174463dda22d58
+      internalID: -2128078976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_76
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45eeca841bea6743a357fa1e04ef56c
+      internalID: 796120535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_77
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f21b209615cc84eb44c6f2cb1d2a41
+      internalID: 487952577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_78
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 71
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46901c20107cf124aaf2417ae26b23bf
+      internalID: -2098620079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_79
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 787d1ce7d3545d44bb2ed13210ccc424
+      internalID: -1240377328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_80
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 71
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2100d273f4e2b544b8cc3db4f1ef49d6
+      internalID: 1485409917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_81
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 71
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5011bc7bbf985e245a70d19963b80a3c
+      internalID: -1574884131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_82
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 71
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fa1ff3d4d61f444b3d2f9b5a863aa8
+      internalID: -375121351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_83
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 71
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a098886db9e17849a7dd62cd1698c45
+      internalID: -2087537854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_84
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 71
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 198099a1a5b9fb5469e9a3f6b8736364
+      internalID: 275704930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_85
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 84
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341fdcae2d61eda4da73d372f7668630
+      internalID: -230685037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_86
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 71
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6393c0a23e2e854da3ebecd4f3e9992
+      internalID: 1891301316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_87
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 39
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 219f473927f43144d9fbdda3165cd94d
+      internalID: 1253626624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_88
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 39
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc4b5bbdd07d4c4996ade358d126d22
+      internalID: -439387937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_89
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 39
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d51b070d9829564e8161ce68e688f5f
+      internalID: 286296386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_90
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 39
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dacc012c91519e4fabc6c586b9bf62a
+      internalID: 1549765588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_91
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 39
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ab784c85814f94a96022c561bc2d2e
+      internalID: -257142825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_92
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 39
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa48cda16dfa304abd2862bbc31dc62
+      internalID: 1749998364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_93
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 39
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96f9f925b3ffd243b01fcde3d587d0a
+      internalID: 1286558954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_94
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 39
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7762022318d9f9a4996cd637e73e382e
+      internalID: 774517409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_95
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 40
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60bc4993c1c00224d996ed85f8bdbbe0
+      internalID: 1990518340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_96
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 40
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b5195dbdd6c4342bb00a9911e201da
+      internalID: -802695174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_97
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 39
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee55c32b662a4bf45bcfbcacf3e74b0d
+      internalID: 1892137726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_98
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 39
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d61e4c241d73f408df4d95b8954caf
+      internalID: -699898875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_99
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 39
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb92c4c0307b5a743a61b890684d733f
+      internalID: -1771731354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_100
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 44
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db55c0fabce3bff4c85a29b4a0dc48a4
+      internalID: -30494748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_101
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 7
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b36bc62a4bf2d47b7696cdafa73748
+      internalID: -888980343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_102
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 7
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef99f4ad8e383d4fada3968efabef27
+      internalID: 1511669908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_103
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 7
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 655ca6ec9e9a5e84c9754bf39b75ff1a
+      internalID: 1536838738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_104
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 7
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42449ebd27b3a242962d03c533e3dd8
+      internalID: 707203197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_105
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 7
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786dd6ac86814484fa49215ea48985ea
+      internalID: 110414610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_106
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 7
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d024ee978306a1a45867e6ac3ea47147
+      internalID: -1294141925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_107
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 7
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977f17571d336814d85fecaf73498600
+      internalID: 1173793762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_108
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 7
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d42a1ed62b33824ba85153f33a4231f
+      internalID: -1995852653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_109
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 7
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cd73f0f432a2f742b45f7a8cc5cb6eb
+      internalID: 1735372139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_110
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 7
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e575f220545378458f15261b7110571
+      internalID: 357217261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_111
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 13
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0237131fb1d2b4cba22f2f33ae619b
+      internalID: -1915859947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_112
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 7
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52490d24614fc364c92984edb95e5697
+      internalID: -1631653072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_113
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 12
+        width: 18
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abccec9bf0524b4faabda5683ca8fe4
+      internalID: -1501516896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_114
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 7
+        width: 41
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff6232ac0e040e04fb8cabfc1686d167
+      internalID: 1145407433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_UI_Sprite_Sheet_115
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 7
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e32f9f33fa745e0418249c1a93653726
+      internalID: -1993417891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 8a1509b0cc4175345ad5e7fee92cee6f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Stone_UI_Sprite_Sheet_0: 44330753
+      Stone_UI_Sprite_Sheet_1: -1114903573
+      Stone_UI_Sprite_Sheet_10: -818746164
+      Stone_UI_Sprite_Sheet_100: -30494748
+      Stone_UI_Sprite_Sheet_101: -888980343
+      Stone_UI_Sprite_Sheet_102: 1511669908
+      Stone_UI_Sprite_Sheet_103: 1536838738
+      Stone_UI_Sprite_Sheet_104: 707203197
+      Stone_UI_Sprite_Sheet_105: 110414610
+      Stone_UI_Sprite_Sheet_106: -1294141925
+      Stone_UI_Sprite_Sheet_107: 1173793762
+      Stone_UI_Sprite_Sheet_108: -1995852653
+      Stone_UI_Sprite_Sheet_109: 1735372139
+      Stone_UI_Sprite_Sheet_11: -2021328415
+      Stone_UI_Sprite_Sheet_110: 357217261
+      Stone_UI_Sprite_Sheet_111: -1915859947
+      Stone_UI_Sprite_Sheet_112: -1631653072
+      Stone_UI_Sprite_Sheet_113: -1501516896
+      Stone_UI_Sprite_Sheet_114: 1145407433
+      Stone_UI_Sprite_Sheet_115: -1993417891
+      Stone_UI_Sprite_Sheet_12: 1717324135
+      Stone_UI_Sprite_Sheet_13: -1181135360
+      Stone_UI_Sprite_Sheet_14: 1036175078
+      Stone_UI_Sprite_Sheet_15: -433047674
+      Stone_UI_Sprite_Sheet_16: -1913189602
+      Stone_UI_Sprite_Sheet_17: 1997483231
+      Stone_UI_Sprite_Sheet_18: -1377554576
+      Stone_UI_Sprite_Sheet_19: -437511742
+      Stone_UI_Sprite_Sheet_2: 484273010
+      Stone_UI_Sprite_Sheet_20: -1965022909
+      Stone_UI_Sprite_Sheet_21: 1045566761
+      Stone_UI_Sprite_Sheet_22: -756362829
+      Stone_UI_Sprite_Sheet_23: -29403085
+      Stone_UI_Sprite_Sheet_24: 1578552747
+      Stone_UI_Sprite_Sheet_25: 194641276
+      Stone_UI_Sprite_Sheet_26: 1561371072
+      Stone_UI_Sprite_Sheet_27: 1017223273
+      Stone_UI_Sprite_Sheet_28: 1663890525
+      Stone_UI_Sprite_Sheet_29: 1593858725
+      Stone_UI_Sprite_Sheet_3: 1956601720
+      Stone_UI_Sprite_Sheet_30: -528510445
+      Stone_UI_Sprite_Sheet_31: -155363106
+      Stone_UI_Sprite_Sheet_32: -140911481
+      Stone_UI_Sprite_Sheet_33: 1987888851
+      Stone_UI_Sprite_Sheet_34: -1000781724
+      Stone_UI_Sprite_Sheet_35: -2106821412
+      Stone_UI_Sprite_Sheet_36: 1528713517
+      Stone_UI_Sprite_Sheet_37: 314075579
+      Stone_UI_Sprite_Sheet_38: -1618671512
+      Stone_UI_Sprite_Sheet_39: -43354518
+      Stone_UI_Sprite_Sheet_4: -71201185
+      Stone_UI_Sprite_Sheet_40: -1467622217
+      Stone_UI_Sprite_Sheet_41: 1987464788
+      Stone_UI_Sprite_Sheet_42: 1290371415
+      Stone_UI_Sprite_Sheet_43: 781485103
+      Stone_UI_Sprite_Sheet_44: -1170184773
+      Stone_UI_Sprite_Sheet_45: -1617078354
+      Stone_UI_Sprite_Sheet_46: -1275051319
+      Stone_UI_Sprite_Sheet_47: -4835303
+      Stone_UI_Sprite_Sheet_48: -764105823
+      Stone_UI_Sprite_Sheet_49: 1128020161
+      Stone_UI_Sprite_Sheet_5: 45822269
+      Stone_UI_Sprite_Sheet_50: -332416539
+      Stone_UI_Sprite_Sheet_51: -360271910
+      Stone_UI_Sprite_Sheet_52: -1130705349
+      Stone_UI_Sprite_Sheet_53: 548715619
+      Stone_UI_Sprite_Sheet_54: -300428416
+      Stone_UI_Sprite_Sheet_55: -47702051
+      Stone_UI_Sprite_Sheet_56: -2143264093
+      Stone_UI_Sprite_Sheet_57: -67060190
+      Stone_UI_Sprite_Sheet_58: -1262973
+      Stone_UI_Sprite_Sheet_59: -845219501
+      Stone_UI_Sprite_Sheet_6: 1850251372
+      Stone_UI_Sprite_Sheet_60: -230341270
+      Stone_UI_Sprite_Sheet_61: 1808134044
+      Stone_UI_Sprite_Sheet_62: -1030902127
+      Stone_UI_Sprite_Sheet_63: -670275429
+      Stone_UI_Sprite_Sheet_64: 1533672133
+      Stone_UI_Sprite_Sheet_65: 2063807852
+      Stone_UI_Sprite_Sheet_66: 10313797
+      Stone_UI_Sprite_Sheet_67: -1295716375
+      Stone_UI_Sprite_Sheet_68: 267273700
+      Stone_UI_Sprite_Sheet_69: 969293213
+      Stone_UI_Sprite_Sheet_7: 1396761061
+      Stone_UI_Sprite_Sheet_70: 890535978
+      Stone_UI_Sprite_Sheet_71: 705720501
+      Stone_UI_Sprite_Sheet_72: 732981316
+      Stone_UI_Sprite_Sheet_73: -1892419571
+      Stone_UI_Sprite_Sheet_74: -1295108391
+      Stone_UI_Sprite_Sheet_75: -2128078976
+      Stone_UI_Sprite_Sheet_76: 796120535
+      Stone_UI_Sprite_Sheet_77: 487952577
+      Stone_UI_Sprite_Sheet_78: -2098620079
+      Stone_UI_Sprite_Sheet_79: -1240377328
+      Stone_UI_Sprite_Sheet_8: 1790288344
+      Stone_UI_Sprite_Sheet_80: 1485409917
+      Stone_UI_Sprite_Sheet_81: -1574884131
+      Stone_UI_Sprite_Sheet_82: -375121351
+      Stone_UI_Sprite_Sheet_83: -2087537854
+      Stone_UI_Sprite_Sheet_84: 275704930
+      Stone_UI_Sprite_Sheet_85: -230685037
+      Stone_UI_Sprite_Sheet_86: 1891301316
+      Stone_UI_Sprite_Sheet_87: 1253626624
+      Stone_UI_Sprite_Sheet_88: -439387937
+      Stone_UI_Sprite_Sheet_89: 286296386
+      Stone_UI_Sprite_Sheet_9: 702767597
+      Stone_UI_Sprite_Sheet_90: 1549765588
+      Stone_UI_Sprite_Sheet_91: -257142825
+      Stone_UI_Sprite_Sheet_92: 1749998364
+      Stone_UI_Sprite_Sheet_93: 1286558954
+      Stone_UI_Sprite_Sheet_94: 774517409
+      Stone_UI_Sprite_Sheet_95: 1990518340
+      Stone_UI_Sprite_Sheet_96: -802695174
+      Stone_UI_Sprite_Sheet_97: 1892137726
+      Stone_UI_Sprite_Sheet_98: -699898875
+      Stone_UI_Sprite_Sheet_99: -1771731354
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

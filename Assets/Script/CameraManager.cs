@@ -10,7 +10,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cam;
     private CinemachineImpulseListener impulseListener;
     private CinemachineImpulseDefinition impulseDefinition;
-
+ 
     private void Awake()
     {
         if (instance == null)
@@ -23,6 +23,7 @@ public class CameraManager : MonoBehaviour
     {
         impulseListener = cam.GetComponent<CinemachineImpulseListener>();
     }
+
     public void ShakeCameraFromProfile(CameraShakeProfile profile, CinemachineImpulseSource impulseSource)
     {
         SetupCameraShakeSettings(profile, impulseSource);
@@ -50,9 +51,9 @@ public class CameraManager : MonoBehaviour
 
     public IEnumerator ZoomInCam()
     {
-        cam.m_Lens.OrthographicSize = 4.8f;
+        cam.m_Lens.OrthographicSize = 5.8f;
         yield return new WaitForSeconds(0.15f);
-        cam.m_Lens.OrthographicSize = 5f;
+        cam.m_Lens.OrthographicSize = 6f;
     }
 
 }

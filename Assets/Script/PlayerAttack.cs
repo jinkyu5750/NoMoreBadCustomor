@@ -126,41 +126,52 @@ public class PlayerAttack : MonoBehaviour
             SetCanAttack(1);
             player.components.ani.SetInteger("Attack", 0);
         }
-        Debug.Log("한번");
-        Collider2D hit = null;
+
         switch (attackDir)
         {
             case "Dash":
-                hit = Physics2D.OverlapBox(transform.position + new Vector3(1, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                StartCoroutine(AttackHitbox(transform.position + new Vector3(1, 1, 0), 0.3f));          
                 player.components.rig.gravityScale = g;
                 break;
             case "Upper":
-                hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 2, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                StartCoroutine(AttackHitbox(transform.position + new Vector3(0, 2, 0), 0.3f));
                 break;
             case "Lower":
-                hit = Physics2D.OverlapBox(transform.position + new Vector3(0, 1, 0), attackBoxSize, 0, LayerMask.GetMask("Enemy"));
-                CameraManager.instance.ShakeCameraFromProfile(groundSlamProfile, impulseSource);
-                Debug.Log("한번");
-                ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity);
+                StartCoroutine(AttackHitbox(transform.position + new Vector3(0, 0.3f, 0), 1f)); // 하단범위  . . . 조정이 필요할수도 
                 break;
 
-
         }
 
-        if (hit != null)
+  
+    }
+    IEnumerator AttackHitbox(Vector3 pos, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
         {
+            Collider2D hit = Physics2D.OverlapBox(pos, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+            if (hit != null)
+            {
 
-            CameraManager.instance.ShakeCameraFromProfile(attackProfile,hit.gameObject.GetComponent<CinemachineImpulseSource>());
-            StartCoroutine(CameraManager.instance.ZoomInCam());
+                CameraManager.instance.ShakeCameraFromProfile(attackProfile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
+                StartCoroutine(CameraManager.instance.ZoomInCam());
 
-            Vector2 randomCircle = Random.insideUnitCircle * 1f;
-            ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
-       //     hit.gameObject.GetComponent<Enemy>().EnemyDead();
+                Vector2 randomCircle = Random.insideUnitCircle * 1f;
+                ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
+                hit.gameObject.GetComponent<Enemy>().EnemyDead();
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-
     }
 
 
+    public void GroundSlamEffect()
+    {
+        CameraManager.instance.ShakeCameraFromProfile(groundSlamProfile, impulseSource);
+        ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity); 
+    }
     public void SetCanAttack(int canAttack)
     {
         this.canAttack = canAttack == 1;
@@ -172,12 +183,12 @@ public class PlayerAttack : MonoBehaviour
         curAttack = 0;
     }
 
-
-    /*    void OnDrawGizmos()
+/*
+        void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
             Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
-            Gizmos.DrawWireCube(transform.position + new Vector3(0, 1, 0), attackBoxSize);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize);
         }*/
 }

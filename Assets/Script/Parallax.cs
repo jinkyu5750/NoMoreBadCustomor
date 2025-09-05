@@ -17,7 +17,7 @@ public class Parallax : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float temp = cam.transform.position.x * (1 - parallaxPower);
         float dist = (cam.transform.position.x * parallaxPower);
@@ -27,16 +27,10 @@ public class Parallax : MonoBehaviour
         if (temp > startPos + length)
         {
             startPos += length;
-
-            newPlatform = Random.Range(1, 4);
-            ParticleManager.instance.UseObject($"Platform{newPlatform}", new Vector3(startPos, transform.position.y, 0f),Quaternion.identity);
         }
         else if (temp < startPos - length) 
         {
             startPos -= length;
-
-            int num = Random.Range(0, 3);
-            ParticleManager.instance.UseObject($"Platform{newPlatform}", new Vector3(startPos, transform.position.y, 0f), Quaternion.identity);
         }
     }
 }
