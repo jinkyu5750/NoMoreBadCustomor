@@ -1,67 +1,52 @@
 fileFormatVersion: 2
-guid: 0fde532b832fd9c4f8b42e65339cc374
+guid: c3056740306d752478b2f12b3790fa9b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5225540622116197949
-    second: 02_0
+      213: 7642239210352435030
+    second: mm-crawl_0
   - first:
-      213: -4287101317676662005
-    second: 02_1
+      213: -4646643819573565424
+    second: mm-crawl_1
   - first:
-      213: 6574457499336702476
-    second: 02_2
+      213: 8307152512651035024
+    second: mm-crawl_2
   - first:
-      213: 813639542560780024
-    second: 02_3
+      213: -54445679676193595
+    second: mm-crawl_3
   - first:
-      213: 4743604252110829558
-    second: 02_4
+      213: -145019286014699665
+    second: mm-crawl_4
   - first:
-      213: 8265534151042842254
-    second: 02_5
+      213: -7984336325675136224
+    second: mm-crawl_5
   - first:
-      213: -1067803521116911252
-    second: 02_6
+      213: 4877453704417069615
+    second: mm-crawl_6
   - first:
-      213: 2435825256731879224
-    second: 02_7
+      213: -7637235625606196721
+    second: mm-crawl_7
   - first:
-      213: 2098462217882119795
-    second: 02_8
+      213: 4003777128650395661
+    second: mm-crawl_8
   - first:
-      213: -9019039134122849718
-    second: 02_9
+      213: -2079231404392470295
+    second: mm-crawl_9
   - first:
-      213: -8283629354746321534
-    second: 02_10
+      213: 7665037911671998376
+    second: mm-crawl_10
   - first:
-      213: 6724322109435982770
-    second: 02_11
+      213: -2931317901865379340
+    second: mm-crawl_11
   - first:
-      213: -1950393254903311869
-    second: 02_12
+      213: 8166451613137566086
+    second: mm-crawl_12
   - first:
-      213: 6997297581218221387
-    second: 02_13
+      213: -7508454181508693798
+    second: mm-crawl_13
   - first:
-      213: -3498462860084906463
-    second: 02_14
-  - first:
-      213: -948106805065311055
-    second: 02_15
-  - first:
-      213: -4110939859654156382
-    second: 02_16
-  - first:
-      213: -1473317993211103201
-    second: 02_17
-  - first:
-      213: -3988174291572662308
-    second: 02_18
-  - first:
-      213: 3836142757610456476
-    second: 02_19
+      213: -2490271311418276229
+    second: mm-crawl_14
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -94,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -108,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -170,13 +155,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 02_0
+      name: mm-crawl_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 143
-        width: 65
-        height: 17
+        x: 4
+        y: 142
+        width: 57
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3c9e3638d762b77b0800000000000000
-      internalID: -5225540622116197949
+      spriteID: 65f5e9d4210be0a60800000000000000
+      internalID: 7642239210352435030
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_1
+      name: mm-crawl_1
       rect:
         serializedVersion: 2
-        x: 127
-        y: 143
-        width: 66
-        height: 17
+        x: 68
+        y: 141
+        width: 57
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +190,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0306cbc0182184c0800000000000000
-      internalID: -4287101317676662005
+      spriteID: 018ad88a01ec38fb0800000000000000
+      internalID: -4646643819573565424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_2
+      name: mm-crawl_2
       rect:
         serializedVersion: 2
-        x: 3
-        y: 115
-        width: 26
-        height: 26
+        x: 132
+        y: 141
+        width: 57
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +211,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c0afdde334a2d3b50800000000000000
-      internalID: 6574457499336702476
+      spriteID: 0910f83723fe84370800000000000000
+      internalID: 8307152512651035024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_3
+      name: mm-crawl_3
       rect:
         serializedVersion: 2
-        x: 35
-        y: 115
-        width: 26
-        height: 26
+        x: 194
+        y: 141
+        width: 61
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +232,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8feeb856ad0aa4b00800000000000000
-      internalID: 813639542560780024
+      spriteID: 5c4885b51f19e3ff0800000000000000
+      internalID: -54445679676193595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_4
+      name: mm-crawl_4
       rect:
         serializedVersion: 2
-        x: 67
-        y: 115
-        width: 26
-        height: 26
+        x: 258
+        y: 138
+        width: 61
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +253,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f739124feaa4d140800000000000000
-      internalID: 4743604252110829558
+      spriteID: f67538b4ab9ccfdf0800000000000000
+      internalID: -145019286014699665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_5
+      name: mm-crawl_5
       rect:
         serializedVersion: 2
-        x: 99
-        y: 115
-        width: 26
-        height: 26
+        x: 7
+        y: 78
+        width: 56
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,20 +274,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8eb4c7848315b270800000000000000
-      internalID: 8265534151042842254
+      spriteID: 02bc2e42a60f13190800000000000000
+      internalID: -7984336325675136224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_6
+      name: mm-crawl_6
       rect:
         serializedVersion: 2
-        x: 131
-        y: 115
-        width: 26
-        height: 26
+        x: 71
+        y: 78
+        width: 56
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,20 +295,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c694ae1ea566e21f0800000000000000
-      internalID: -1067803521116911252
+      spriteID: f2a41346d4230b340800000000000000
+      internalID: 4877453704417069615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_7
+      name: mm-crawl_7
       rect:
         serializedVersion: 2
-        x: 163
-        y: 115
-        width: 26
-        height: 26
+        x: 135
+        y: 78
+        width: 56
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,20 +316,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 837ad6a5a2acdc120800000000000000
-      internalID: 2435825256731879224
+      spriteID: f02d8cd89a6130690800000000000000
+      internalID: -7637235625606196721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_8
+      name: mm-crawl_8
       rect:
         serializedVersion: 2
-        x: 195
-        y: 115
-        width: 26
-        height: 26
+        x: 197
+        y: 77
+        width: 60
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,20 +337,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 37e217fd44c3f1d10800000000000000
-      internalID: 2098462217882119795
+      spriteID: d005a09e516409730800000000000000
+      internalID: 4003777128650395661
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_9
+      name: mm-crawl_9
       rect:
         serializedVersion: 2
-        x: 227
-        y: 115
-        width: 26
-        height: 26
+        x: 260
+        y: 77
+        width: 60
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,20 +358,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4ac24341bfe5d280800000000000000
-      internalID: -9019039134122849718
+      spriteID: 9e8a95fcd061523e0800000000000000
+      internalID: -2079231404392470295
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_10
+      name: mm-crawl_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 63
-        width: 256
-        height: 50
+        x: 4
+        y: 16
+        width: 57
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,20 +379,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 285e85b8df2aa0d80800000000000000
-      internalID: -8283629354746321534
+      spriteID: 8a78c1b9e5faf5a60800000000000000
+      internalID: 7665037911671998376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_11
+      name: mm-crawl_11
       rect:
         serializedVersion: 2
-        x: 3
-        y: 35
-        width: 26
-        height: 26
+        x: 68
+        y: 15
+        width: 57
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,20 +400,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b3bc30e457915d50800000000000000
-      internalID: 6724322109435982770
+      spriteID: 4f9129726edd157d0800000000000000
+      internalID: -2931317901865379340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_12
+      name: mm-crawl_12
       rect:
         serializedVersion: 2
-        x: 35
-        y: 35
-        width: 26
-        height: 26
+        x: 132
+        y: 15
+        width: 57
+        height: 36
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,20 +421,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3029b251bafcee4e0800000000000000
-      internalID: -1950393254903311869
+      spriteID: 689fa747970155170800000000000000
+      internalID: 8166451613137566086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_13
+      name: mm-crawl_13
       rect:
         serializedVersion: 2
-        x: 67
-        y: 35
-        width: 26
-        height: 26
+        x: 194
+        y: 15
+        width: 61
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,20 +442,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b4d463ca3156b1160800000000000000
-      internalID: 6997297581218221387
+      spriteID: ad0c0e214bc9cc790800000000000000
+      internalID: -7508454181508693798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 02_14
+      name: mm-crawl_14
       rect:
         serializedVersion: 2
-        x: 99
-        y: 35
-        width: 26
-        height: 26
+        x: 258
+        y: 15
+        width: 61
+        height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,113 +463,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 126fdbc7096f27fc0800000000000000
-      internalID: -3498462860084906463
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_15
-      rect:
-        serializedVersion: 2
-        x: 131
-        y: 35
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1bc93f252e5a7d2f0800000000000000
-      internalID: -948106805065311055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_16
-      rect:
-        serializedVersion: 2
-        x: 163
-        y: 35
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2afd1547af103f6c0800000000000000
-      internalID: -4110939859654156382
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_17
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 35
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f18f5755719bd8be0800000000000000
-      internalID: -1473317993211103201
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_18
-      rect:
-        serializedVersion: 2
-        x: 227
-        y: 35
-        width: 26
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cdf5770bc9827a8c0800000000000000
-      internalID: -3988174291572662308
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 02_19
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c950f076387bc3530800000000000000
-      internalID: 3836142757610456476
+      spriteID: b764190bf67c07dd0800000000000000
+      internalID: -2490271311418276229
       vertices: []
       indices: 
       edges: []
@@ -600,26 +480,21 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      02_0: -5225540622116197949
-      02_1: -4287101317676662005
-      02_10: -8283629354746321534
-      02_11: 6724322109435982770
-      02_12: -1950393254903311869
-      02_13: 6997297581218221387
-      02_14: -3498462860084906463
-      02_15: -948106805065311055
-      02_16: -4110939859654156382
-      02_17: -1473317993211103201
-      02_18: -3988174291572662308
-      02_19: 3836142757610456476
-      02_2: 6574457499336702476
-      02_3: 813639542560780024
-      02_4: 4743604252110829558
-      02_5: 8265534151042842254
-      02_6: -1067803521116911252
-      02_7: 2435825256731879224
-      02_8: 2098462217882119795
-      02_9: -9019039134122849718
+      mm-crawl_0: 7642239210352435030
+      mm-crawl_1: -4646643819573565424
+      mm-crawl_10: 7665037911671998376
+      mm-crawl_11: -2931317901865379340
+      mm-crawl_12: 8166451613137566086
+      mm-crawl_13: -7508454181508693798
+      mm-crawl_14: -2490271311418276229
+      mm-crawl_2: 8307152512651035024
+      mm-crawl_3: -54445679676193595
+      mm-crawl_4: -145019286014699665
+      mm-crawl_5: -7984336325675136224
+      mm-crawl_6: 4877453704417069615
+      mm-crawl_7: -7637235625606196721
+      mm-crawl_8: 4003777128650395661
+      mm-crawl_9: -2079231404392470295
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
