@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
     private Image skillGageBar;
     [SerializeField] private Text skillGageText;
     [SerializeField] private Ease ease;
+    [SerializeField] private Text scoreText;
 
     Tweener shakeSkillGage;
     private void Awake()
@@ -49,6 +51,10 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void UpdateScore(int score)
+    {
+        scoreText.text = score.ToString();
+    }
     public void FullSkillGageBar()
     {
         skillGage.GetComponentInChildren<Animator>().enabled = true;

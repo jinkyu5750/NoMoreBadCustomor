@@ -163,6 +163,7 @@ public class PlayerAttack : MonoBehaviour
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
                 hit.gameObject.GetComponent<Enemy>().EnemyDead();
                 GaneSkillGage();
+                ScoreManager.instance.MonsterScore();
             }
 
             elapsed += Time.deltaTime;
