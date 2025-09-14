@@ -22,12 +22,15 @@ public class PlayerAttack : MonoBehaviour
     private float g = 1.3f;
     private float gravityScale = 3.3f;
 
-     private int max_Combo = 2;
-     private int curCombo = 0;
+    private int max_Combo = 2;
+    private int curCombo = 0;
 
     [SerializeField] CameraShakeProfile attackProfile;
     [SerializeField] CameraShakeProfile groundSlamProfile;
     private CinemachineImpulseSource impulseSource;
+
+
+    private float skillGage = 0;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -130,7 +133,7 @@ public class PlayerAttack : MonoBehaviour
         switch (attackDir)
         {
             case "Dash":
-                StartCoroutine(AttackHitbox(transform.position + new Vector3(1, 1, 0), 0.3f));          
+                StartCoroutine(AttackHitbox(transform.position + new Vector3(1, 1, 0), 0.3f));
                 player.components.rig.gravityScale = g;
                 break;
             case "Upper":
@@ -142,7 +145,7 @@ public class PlayerAttack : MonoBehaviour
 
         }
 
-  
+
     }
     IEnumerator AttackHitbox(Vector3 pos, float duration)
     {
@@ -159,6 +162,8 @@ public class PlayerAttack : MonoBehaviour
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
                 hit.gameObject.GetComponent<Enemy>().EnemyDead();
+                GaneSkillGage();
+                ScoreManager.instance.MonsterScore();
             }
 
             elapsed += Time.deltaTime;
@@ -167,10 +172,25 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+    public void GaneSkillGage()
+    {
+        skillGage += 925 + Random.Range(-3, 5); // 100±îÁö ´ë·« 6~7È¸
+        UIManager.Instance.UpdateSkillGage(skillGage);
+    }
+    public void UseSkill()
+    {
+        if (skillGage < 100) return;
+
+        skillGage = 0;
+        UIManager.Instance.UpdateSkillGage(0);
+        UIManager.Instance.ResetSkillGageBar();
+        //¼ï¼¡¼¡¼¡¼ï¼¡
+    }
+
     public void GroundSlamEffect()
     {
         CameraManager.instance.ShakeCameraFromProfile(groundSlamProfile, impulseSource);
-        ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity); 
+        ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity);
     }
     public void SetCanAttack(int canAttack)
     {
@@ -183,12 +203,12 @@ public class PlayerAttack : MonoBehaviour
         curAttack = 0;
     }
 
-/*
-        void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
-            Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
-            Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize);
-        }*/
+    /*
+            void OnDrawGizmos()
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
+                Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
+                Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize);
+            }*/
 }

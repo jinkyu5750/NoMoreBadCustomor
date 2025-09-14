@@ -9,12 +9,17 @@ public class PlayerHitDead : MonoBehaviour
     [SerializeField] float knockbackPower;
     [SerializeField] float hitCoolTime = 1;
     float hitCurTime = 0;
-    [SerializeField] private int _life = 3;
+    [SerializeField] private int life_Max = 3;
+    [SerializeField] private int _life;
     public int life { get { return _life; } private set { _life = value; } }
     public bool isDead { get; private set; } = false;
 
 
 
+    private void Start()
+    {
+        life = life_Max;
+    }
     private void Update()
     {
         if(hitCurTime > 0 )
@@ -38,7 +43,7 @@ public class PlayerHitDead : MonoBehaviour
 
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
-
+        UIManager.Instance.UpdateHPBar((float)life/life_Max);
         player.components.ani.SetTrigger("Hit");
 
         Vector2 hitDir = (transform.position - col.transform.position).normalized;
