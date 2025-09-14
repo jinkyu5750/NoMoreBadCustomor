@@ -469,6 +469,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InitPlatform
       objectReference: {fileID: 0}
+    - target: {fileID: 7461048368471529004, guid: 641eb79a8b34cf540959b49614936f19, type: 3}
+      propertyPath: m_Name
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -543,7 +547,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1574,6 +1578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60f10bcf24651fd4294ecbd279a9056d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterScore: 15
+  receiptScore: 3
 --- !u!4 &771746703
 Transform:
   m_ObjectHideFlags: 0
@@ -1951,6 +1957,10 @@ MonoBehaviour:
   - objectName: Platform3
     prefab: {fileID: 5510139199481899644, guid: c86aaf95f52f44f46941af02c37f2cd7, type: 3}
     count: 2
+    returnTime: 20
+  - objectName: Receipt
+    prefab: {fileID: 5118501075488108385, guid: 3c856d1c43880214da0acea148cf09ad, type: 3}
+    count: 20
     returnTime: 20
   refillCount: 7
   tfPoolParent: {fileID: 1154305820}

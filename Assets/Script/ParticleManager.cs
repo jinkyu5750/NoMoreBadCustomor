@@ -17,7 +17,7 @@ public class ObjectInfo
 public class ParticleManager : MonoBehaviour
 {
 
-
+    
 
     public static ParticleManager instance;
 
@@ -103,7 +103,9 @@ public class ParticleManager : MonoBehaviour
         obj.transform.position = pos;
         obj.transform.rotation = rot;
 
-   
+        if (objectName.StartsWith("Platform"))
+            ReceiptSpawner(obj);
+
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
 
     }
@@ -127,7 +129,7 @@ public class ParticleManager : MonoBehaviour
         obj.SetActive(true);
         obj.transform.position = pos;
 
-       
+
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
         return obj;
     }
@@ -157,8 +159,58 @@ public class ParticleManager : MonoBehaviour
     }
     public IEnumerator ReturnObject(string objectName, GameObject obj, float returnTime)
     {
+
         yield return new WaitForSeconds(returnTime);
-        obj.SetActive(false);
+        if (obj.activeSelf)
+            obj.SetActive(false);
         objectPoolList[objectName].Enqueue(obj);
     }
+
+    public void ReceiptSpawner(GameObject platform)
+    {
+        float spawnInterval = 1f;
+        Transform _lines = platform.transform.Find("Pivot/Platform/Lines");
+        int lineCnt = _lines.childCount;
+        LineRenderer[] lines = new LineRenderer[lineCnt];
+
+
+        for (int i = 0; i < lineCnt; i++)
+        {
+            lines[i] = _lines.GetChild(i).GetComponent<LineRenderer>();
+            int vertexCnt = lines[i].positionCount;
+            Vector3[] pos = new Vector3[vertexCnt];
+            lines[i].GetPositions(pos);
+
+            float lineLength = 0f;
+            for (int j = 0; j < vertexCnt - 1; j++)
+                lineLength += Vector3.Distance(pos[j], pos[j + 1]);
+
+            float distanceFromSpawn = 0f;
+            int currentSegment = 0;
+            float segmentStartDistance = 0f;
+
+            while (distanceFromSpawn <= lineLength)
+            {
+                float segmentLength = Vector3.Distance(pos[currentSegment], pos[currentSegment + 1]);
+                float t = (distanceFromSpawn - segmentStartDistance) / segmentLength;
+                t = Mathf.Clamp01(t);
+
+                Vector3 spawnPos = Vector3.Lerp(pos[currentSegment], pos[currentSegment + 1], t);
+                Vector3 worldSpawnPos = lines[i].transform.TransformPoint(spawnPos);
+
+                UseObject("Receipt", worldSpawnPos, Quaternion.identity);
+ 
+                distanceFromSpawn += spawnInterval;
+
+                while (currentSegment < vertexCnt - 1 && (distanceFromSpawn - segmentStartDistance) > segmentLength)
+                {
+                    segmentStartDistance += segmentLength;
+                    currentSegment++;
+                    if (currentSegment >= vertexCnt - 1) break;
+                    segmentLength = Vector3.Distance(pos[currentSegment], pos[currentSegment + 1]);
+                }
+            }
+        }
+    }
+    //플랫폼에서 라인들을 다 받아와
 }

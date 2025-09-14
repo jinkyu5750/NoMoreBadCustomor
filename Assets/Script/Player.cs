@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-       
+
         if (playerHitDead.isDead) return;
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
             StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
         }
 
-            if (playerHitDead.life == 0)
+        if (playerHitDead.life == 0)
             playerHitDead.Dead();
 
         Move();
@@ -95,6 +95,12 @@ public class Player : MonoBehaviour
             playerAttack.SetCanAttack(0);
             StartCoroutine(playerHitDead.Hit(collision));
         }
+
+        if (collision.gameObject.tag.Equals("Receipt"))
+        {
+            collision.gameObject.SetActive(false);
+            ScoreManager.instance.ReceiptScore();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -102,7 +108,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             ParticleManager.instance.UseObject("LandingDust", transform.position, Quaternion.identity);
-          //  playerAttack.SetCurAttackCombo();
+            //  playerAttack.SetCurAttackCombo();
             isGround = true;
             components.ani.SetBool("IsGround", true);
             components.ani.SetBool("IsRun", true);
