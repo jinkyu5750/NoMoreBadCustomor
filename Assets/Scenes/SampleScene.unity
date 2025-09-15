@@ -547,7 +547,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 5.625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1959,7 +1959,7 @@ MonoBehaviour:
     count: 2
     returnTime: 20
   - objectName: Receipt
-    prefab: {fileID: 5118501075488108385, guid: 3c856d1c43880214da0acea148cf09ad, type: 3}
+    prefab: {fileID: 6131277764259573781, guid: 96b4525b311f49c49b1d75ab91ebcf65, type: 3}
     count: 20
     returnTime: 20
   refillCount: 7
@@ -2263,6 +2263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1818971381}
   - component: {fileID: 1818971382}
+  - component: {fileID: 1818971383}
   m_Layer: 0
   m_Name: 3_0 (2)
   m_TagString: Untagged
@@ -2339,6 +2340,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1818971383
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1818971380}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 210d37e49e86cbb4fbe98dff20a1a7f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1929260193
 GameObject:
   m_ObjectHideFlags: 0
