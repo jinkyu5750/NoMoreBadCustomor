@@ -203,6 +203,17 @@ public class PlayerAttack : MonoBehaviour
         curAttack = 0;
     }
 
+    public void HitDuringDash()
+    {
+        if (curAttack != attack.Dash) return;
+
+        StopCoroutine("Attack");     
+        player.components.ani.SetInteger("Attack", 0);
+        canAttack = false;
+        curAttack = 0;
+
+    }
+  
     /*
             void OnDrawGizmos()
             {

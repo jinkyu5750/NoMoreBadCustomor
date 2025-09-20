@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHitDead : MonoBehaviour
@@ -22,7 +21,7 @@ public class PlayerHitDead : MonoBehaviour
     }
     private void Update()
     {
-        if(hitCurTime > 0 )
+        if (hitCurTime > 0)
         {
             hitCurTime -= Time.deltaTime;
         }
@@ -38,19 +37,19 @@ public class PlayerHitDead : MonoBehaviour
         if (hitCurTime > 0) yield break;
 
         hitCurTime = hitCoolTime;
-        //튕겨나가서, 1초정도 있다가 일어나자
-        // 스프라이트를 쪼개야할듯 등에
+
+        GetComponent<PlayerAttack>().HitDuringDash();
 
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
-        UIManager.Instance.UpdateHPBar((float)life/life_Max);
+        UIManager.Instance.UpdateHPBar((float)life / life_Max);
         player.components.ani.SetTrigger("Hit");
 
-        Vector2 hitDir = (transform.position - col.transform.position).normalized;
-        if (player.isGround)
-            player.components.rig.velocity = hitDir * knockbackPower;
-        else
-            player.components.rig.velocity = hitDir * knockbackPower / 2;
+
+        Vector2 hitDir = Vector2.left;
+        player.components.rig.velocity = Vector2.zero;
+        player.components.rig.velocity = hitDir * knockbackPower;
+
         // CameraManager.instance.ShakeCameraFromProfile(hitProfile,col.gameObject.GetComponent<CinemachineImpulseSource>());
 
 
@@ -60,6 +59,8 @@ public class PlayerHitDead : MonoBehaviour
         player.components.ani.SetTrigger("WakeUp");
 
     }
+
+
 
 
     public void Dead()
