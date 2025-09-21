@@ -29,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] CameraShakeProfile groundSlamProfile;
     private CinemachineImpulseSource impulseSource;
 
-
     private float skillGage = 0;
     public void InitPlayer(Player player)
     {
@@ -53,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
             player.components.rig.gravityScale = g;
+
 
 
         if (player.components.ani.GetBool("IsGround"))
@@ -83,6 +83,12 @@ public class PlayerAttack : MonoBehaviour
                     player.components.rig.velocity = Vector2.right * dashPower;
 
                     yield return new WaitForSeconds(dashTime);
+
+                    if (curAttack != attack.Dash) // 중간에 피격당한경우
+                    {
+                        GetComponent<GhostEffect>().IsGhostOn = false;
+                        yield break;
+                    }
 
                     player.components.rig.velocity = new Vector2(player.runSpeed, player.components.rig.velocity.y);
                     GetComponent<GhostEffect>().IsGhostOn = false;
@@ -133,35 +139,46 @@ public class PlayerAttack : MonoBehaviour
         switch (attackDir)
         {
             case "Dash":
-                StartCoroutine(AttackHitbox(transform.position + new Vector3(1, 1, 0), 0.3f));
+                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
                 player.components.rig.gravityScale = g;
                 break;
             case "Upper":
-                StartCoroutine(AttackHitbox(transform.position + new Vector3(0, 2, 0), 0.3f));
+                StartCoroutine(AttackHitbox(new Vector3(0, 2, 0), attackBoxSize, 0.3f));
                 break;
             case "Lower":
-                StartCoroutine(AttackHitbox(transform.position + new Vector3(0, 0.3f, 0), 1f)); // 하단범위  . . . 조정이 필요할수도 
+                StartCoroutine(AttackHitbox(new Vector3(0, 0.3f, 0), attackBoxSize, 1f));
                 break;
 
         }
 
 
     }
-    IEnumerator AttackHitbox(Vector3 pos, float duration)
+    IEnumerator AttackHitbox(Vector3 posOffset, Vector2 boxSize, float duration)
     {
+        Vector3 pos = transform.position + posOffset;
+
         float elapsed = 0f;
         while (elapsed < duration)
         {
-            Collider2D hit = Physics2D.OverlapBox(pos, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+
+            Collider2D hit = new Collider2D();
+
+            if (curAttack == attack.Lower) // 하단공격은 캐릭터를따라 쭉 포지션 업데이트
+                hit = Physics2D.OverlapBox(transform.position + posOffset, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+            else
+                hit = Physics2D.OverlapBox(pos, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+
             if (hit != null)
             {
+
+                hit.gameObject.GetComponent<Enemy>().EnemyDead();
 
                 CameraManager.instance.ShakeCameraFromProfile(attackProfile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
                 StartCoroutine(CameraManager.instance.ZoomInCam());
 
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
-                hit.gameObject.GetComponent<Enemy>().EnemyDead();
+
                 GaneSkillGage();
                 ScoreManager.instance.MonsterScore();
             }
@@ -169,8 +186,8 @@ public class PlayerAttack : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-    }
 
+    }
 
     public void GaneSkillGage()
     {
@@ -207,19 +224,18 @@ public class PlayerAttack : MonoBehaviour
     {
         if (curAttack != attack.Dash) return;
 
-        StopCoroutine("Attack");     
         player.components.ani.SetInteger("Attack", 0);
         canAttack = false;
         curAttack = 0;
 
     }
-  
-    /*
-            void OnDrawGizmos()
-            {
-                Gizmos.color = Color.red;
-                Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
-                Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
-                Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize);
-            }*/
+
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        /*        Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
+                Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);*/
+        Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));
+    }
 }
