@@ -1,5 +1,6 @@
 using Cinemachine;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -201,6 +202,14 @@ public class PlayerAttack : MonoBehaviour
         skillGage = 0;
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
+
+
+        for (int i = 0; i < 5; i++)
+        {
+            Collider2D enemy = Physics2D.OverlapBox(transform.position + new Vector3(7.5f, 0.5f, 0), new Vector3(15, 10, 0), 0, LayerMask.GetMask("Enemy"));// 光姶走
+
+            Vector3 enemyPos = enemy.transform.position;
+        }
         //種次次次種次
     }
 
