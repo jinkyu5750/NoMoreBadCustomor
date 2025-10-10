@@ -1,6 +1,5 @@
 using Cinemachine;
 using System.Collections;
-using Unity.Mathematics;
 using UnityEngine;
 
 
@@ -8,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
 
     private Player player;
+
     public enum attack { Dash = 1, Upper, Lower }
     private attack curAttack;
     [SerializeField] private bool _canAttack = true;
@@ -30,7 +30,14 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] CameraShakeProfile groundSlamProfile;
     private CinemachineImpulseSource impulseSource;
 
+
+    [SerializeField] CinemachineVirtualCamera skillCam;
     private float skillGage = 0;
+    private bool isSkill = false;
+    private bool nextSkill = false;
+
+    public float slowFactor = 0.05f;
+    public float slowLength = 1f;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -43,6 +50,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        Time.timeScale += (1f / slowLength) * Time.unscaledDeltaTime;
+        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
+
+        if (isSkill)
+        {
+            player.components.rig.gravityScale = 0;
+            return;
+        }
         if (player.components.rig.velocity.y < 0f)
         {
             if (curAttack == attack.Dash)
@@ -59,6 +76,9 @@ public class PlayerAttack : MonoBehaviour
         if (player.components.ani.GetBool("IsGround"))
             curCombo = 0;
     }
+
+
+    #region 기본공격 
     public IEnumerator Attack(attack dir)
     {
 
@@ -80,6 +100,7 @@ public class PlayerAttack : MonoBehaviour
 
                     ParticleManager.instance.UseObject("DashDust", transform.position, Quaternion.identity);
 
+                    GetComponent<GhostEffect>().SetDelay("Dash");
                     GetComponent<GhostEffect>().IsGhostOn = true;
                     player.components.rig.velocity = Vector2.right * dashPower;
 
@@ -128,6 +149,115 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
+    #endregion
+
+
+    #region 스킬
+    public void GaneSkillGage()
+    {
+        if (isSkill) return;
+
+        skillGage += 925 + Random.Range(-3, 5); // 100까지 대략 6~7회
+        UIManager.Instance.UpdateSkillGage(skillGage);
+
+    }
+
+    public void UseSkill_Button()
+    {
+        StartCoroutine(UseSkill());
+    }
+    IEnumerator UseSkill()
+    {
+        if (skillGage < 100 || !player.components.ani.GetBool("IsGround") || !canAttack) yield break;
+
+        isSkill = true;
+        canAttack = false;
+        skillGage = 0;
+        UIManager.Instance.UpdateSkillGage(0);
+        UIManager.Instance.ResetSkillGageBar();
+
+        UIManager.Instance.MoveSkillPanel(true);
+        skillCam.Priority = 11;
+        player.components.col.enabled = false;
+        player.components.rig.velocity = Vector3.zero;
+        player.components.ani.SetBool("SkillOn", true); //선동작
+        yield return new WaitForSeconds(3f);
+        player.components.ani.SetTrigger("SkillStart");
+        GetComponent<GhostEffect>().IsGhostOn = true;
+     
+
+        for (int i = 0; i < 5; i++)
+        {
+            nextSkill = false;
+            GetComponent<GhostEffect>().SetDelay("SkillDash");
+            int skillNum = Random.Range(1, 6);
+
+            Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0), 0, LayerMask.GetMask("Enemy"));// 몹감지
+            Collider2D enemy = null;
+            float minDistance = float.MaxValue;
+            foreach (Collider2D c in enemies)
+            {
+                float distance = Vector3.Distance(transform.position, c.transform.position);
+                if (distance < minDistance)
+                {
+                    enemy = c;
+                    minDistance = distance;
+                }
+            }
+
+            if (enemy == null) break;
+
+            Vector3 enemyPos = enemy.transform.position;
+            CalCamAngle (enemyPos); 
+
+            //공격모션이끝나고 여기로 넘어가야하는데
+            enemyPos -= new Vector3(0, 0.5f, 0); //보정
+            while (Vector3.Distance(transform.position, enemyPos) > 1f)
+            {
+                player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
+                yield return null;
+            }
+
+            player.components.rig.velocity = Vector3.zero;
+            player.components.ani.SetInteger("SkillNum", skillNum);
+            GetComponent<GhostEffect>().SetDelay("SkillAttack");
+
+            yield return new WaitForSeconds(0.5f);
+            player.components.ani.SetInteger("SkillNum", 0);
+
+            DoSlowMotion();
+            yield return new WaitUntil(() => nextSkill == true);
+        }
+
+
+       // 가까운 플랫폼 스폰포인트로... 
+        player.components.col.enabled = true;
+        player.components.ani.SetBool("SkillOn", false);
+        GetComponent<GhostEffect>().IsGhostOn = false;
+        isSkill = false;
+        UIManager.Instance.MoveSkillPanel(false);
+        skillCam.Priority = 9;
+        skillCam.m_Lens.Dutch = 0;
+
+
+    }
+    public void DoSlowMotion()
+    {
+        Time.timeScale = slowFactor;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+    }
+
+    public void CalCamAngle(Vector3 enemyPos)
+    {
+        float angle = Mathf.Atan2(enemyPos.y, enemyPos.x) * Mathf.Rad2Deg;
+        skillCam.m_Lens.Dutch = angle;
+    }
+
+
+    #endregion 스킬종료 후 착지 어케해야할까.. 끝에 바닥에 떨어지는걸.. 어카지
+
+
+    #region 타격을 위한 메소드(히트박스) // 애니메이션 이벤트 
     public void AttackAniEvent(string attackDir)
     {
 
@@ -148,6 +278,9 @@ public class PlayerAttack : MonoBehaviour
                 break;
             case "Lower":
                 StartCoroutine(AttackHitbox(new Vector3(0, 0.3f, 0), attackBoxSize, 1f));
+                break;
+            case "Skill":
+                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize + new Vector2(5, 5), 0.3f));
                 break;
 
         }
@@ -181,7 +314,7 @@ public class PlayerAttack : MonoBehaviour
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
 
                 GaneSkillGage();
-                ScoreManager.instance.MonsterScore();
+                ScoreManager.instance.MonsterScore(isSkill);
             }
 
             elapsed += Time.deltaTime;
@@ -189,46 +322,30 @@ public class PlayerAttack : MonoBehaviour
         }
 
     }
-
-    public void GaneSkillGage()
-    {
-        skillGage += 925 + Random.Range(-3, 5); // 100까지 대략 6~7회
-        UIManager.Instance.UpdateSkillGage(skillGage);
-    }
-    public void UseSkill()
-    {
-        if (skillGage < 100) return;
-
-        skillGage = 0;
-        UIManager.Instance.UpdateSkillGage(0);
-        UIManager.Instance.ResetSkillGageBar();
+    #endregion
 
 
-        for (int i = 0; i < 5; i++)
-        {
-            Collider2D enemy = Physics2D.OverlapBox(transform.position + new Vector3(7.5f, 0.5f, 0), new Vector3(15, 10, 0), 0, LayerMask.GetMask("Enemy"));// 몹감지
-
-            Vector3 enemyPos = enemy.transform.position;
-        }
-        //쇽샥샥샥쇽샥
-    }
-
+    #region 애니메이션 이벤트용
     public void GroundSlamEffect()
     {
         CameraManager.instance.ShakeCameraFromProfile(groundSlamProfile, impulseSource);
         ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity);
     }
+
     public void SetCanAttack(int canAttack)
     {
         this.canAttack = canAttack == 1;
     }
-
 
     public void SetCurAttack() // DashAttack 애니메이션이벤트용
     {
         curAttack = 0;
     }
 
+    public void SetNextSkill()
+    {
+        nextSkill = true;
+    }
     public void HitDuringDash()
     {
         if (curAttack != attack.Dash) return;
@@ -239,12 +356,14 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-
+    #endregion
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        /*        Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
-                Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);*/
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));
+        /*  Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
+          Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
+          Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));*/
+
+        Gizmos.DrawWireCube(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0));
     }
 }
