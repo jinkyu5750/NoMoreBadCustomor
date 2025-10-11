@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera skillCam;
     private float skillGage = 0;
     private bool isSkill = false;
-    private bool nextSkill = false;
+    private bool nextAttack_Skill = false;
 
     public float slowFactor = 0.05f;
     public float slowLength = 1f;
@@ -173,22 +173,26 @@ public class PlayerAttack : MonoBehaviour
         isSkill = true;
         canAttack = false;
         skillGage = 0;
+
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
-
         UIManager.Instance.MoveSkillPanel(true);
         skillCam.Priority = 11;
+
         player.components.col.enabled = false;
         player.components.rig.velocity = Vector3.zero;
         player.components.ani.SetBool("SkillOn", true); //선동작
+
+        // 여기까지 UI세팅과 필요한 변수 세팅
+
         yield return new WaitForSeconds(3f);
         player.components.ani.SetTrigger("SkillStart");
         GetComponent<GhostEffect>().IsGhostOn = true;
      
-
+        //공격시작
         for (int i = 0; i < 5; i++)
         {
-            nextSkill = false;
+            nextAttack_Skill = false;
             GetComponent<GhostEffect>().SetDelay("SkillDash");
             int skillNum = Random.Range(1, 6);
 
@@ -209,9 +213,9 @@ public class PlayerAttack : MonoBehaviour
 
             Vector3 enemyPos = enemy.transform.position;
             CalCamAngle (enemyPos); 
-
-            //공격모션이끝나고 여기로 넘어가야하는데
-            enemyPos -= new Vector3(0, 0.5f, 0); //보정
+          
+            enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
+            yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             while (Vector3.Distance(transform.position, enemyPos) > 1f)
             {
                 player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
@@ -226,7 +230,8 @@ public class PlayerAttack : MonoBehaviour
             player.components.ani.SetInteger("SkillNum", 0);
 
             DoSlowMotion();
-            yield return new WaitUntil(() => nextSkill == true);
+            yield return new WaitUntil(() => nextAttack_Skill == true);
+           
         }
 
 
@@ -342,9 +347,9 @@ public class PlayerAttack : MonoBehaviour
         curAttack = 0;
     }
 
-    public void SetNextSkill()
+    public void SetnextAttack_Skill()
     {
-        nextSkill = true;
+        nextAttack_Skill = true;
     }
     public void HitDuringDash()
     {
