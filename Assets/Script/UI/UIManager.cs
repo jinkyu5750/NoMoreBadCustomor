@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Ease ease;
     [SerializeField] private Text scoreText;
 
+
+    //로비 씬 내 UI
+    [SerializeField] private Button playButton;
     Tweener shakeSkillGage;
     private void Awake()
     {
@@ -89,4 +92,12 @@ public class UIManager : MonoBehaviour
         menuPanel.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
+
+    public void ClickPlayButton()
+    {
+        //몇초 기다렸다가 
+
+        LoadingManager.instance.LoadScene("PlayScene"); // 로딩창만든걸띄웠지만 심리스어쩌구 그렇게..해야됨
+    }
+
 }

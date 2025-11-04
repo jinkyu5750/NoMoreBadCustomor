@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroScene.unity
     guid: 6208fb01f7428104c80d7e44e7e5767c
   - enabled: 1
+    path: Assets/Scenes/RobbyScene.unity
+    guid: 59e1e0276bf634e45a17e9bd51630755
+  - enabled: 1
     path: Assets/Scenes/PlayScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
