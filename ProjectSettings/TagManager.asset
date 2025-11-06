@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Ground
   - Receipt
+  - RobbyBoundary
   layers:
   - Default
   - TransparentFX
