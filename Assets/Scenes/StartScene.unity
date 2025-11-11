@@ -349,7 +349,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &797497063
 GameObject:
@@ -831,6 +831,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.735849
       objectReference: {fileID: 0}
+    - target: {fileID: 2498987132829180849, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2867082807124887650, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_Value
       value: 0
@@ -843,12 +847,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4401142538381904165, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4737157114304601153, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4737157114304601153, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862293665739755325, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7314791596935676647, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
@@ -938,6 +950,10 @@ PrefabInstance:
     - target: {fileID: 8093809129548000771, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_SortingOrder
       value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8672393130218948391, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

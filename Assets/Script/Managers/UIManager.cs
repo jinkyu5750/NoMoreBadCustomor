@@ -93,11 +93,6 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void ClickPlayButton()
-    {
-        //몇초 기다렸다가 
 
-        LoadingManager.instance.LoadScene("PlayScene"); // 로딩창만든걸띄웠지만 심리스어쩌구 그렇게..해야됨
-    }
 
 }

@@ -47,7 +47,7 @@ public class LoadingManager : MonoBehaviour
     {
         progressBar = GetComponentInChildren<Slider>();
         canvasGroup = GetComponent<CanvasGroup>();
-        loadingGage = progressBar.GetComponentInChildren<TextMeshProUGUI>();    
+        loadingGage = progressBar.GetComponentInChildren<TextMeshProUGUI>();
 
     }
     public void LoadScene(string sceneName)
@@ -56,7 +56,10 @@ public class LoadingManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded; // 이게머지??
         loadSceneName = sceneName;
 
-        StartCoroutine(StartLoadScene());
+        if (loadSceneName.Equals("PlayScene"))
+            StartCoroutine(PlayLoadScene());
+        else
+            StartCoroutine(StartLoadScene());
     }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -84,7 +87,7 @@ public class LoadingManager : MonoBehaviour
 
             if (async.progress < 0.9f)
             {
-                progressBar.value = async.progress;                          
+                progressBar.value = async.progress;
             }
             else
             {
@@ -93,7 +96,7 @@ public class LoadingManager : MonoBehaviour
 
                 if (progressBar.value >= 1.0f)
                 {
-                    async.allowSceneActivation = true;   
+                    async.allowSceneActivation = true;
                     yield break;
                 }
             }
@@ -114,7 +117,28 @@ public class LoadingManager : MonoBehaviour
             canvasGroup.alpha = isFadeIn ? Mathf.Lerp(0.0f, 1.0f, timer) : Mathf.Lerp(1.0f, 0.0f, timer);
         }
 
-        if (!isFadeIn)
-            gameObject.SetActive(false);
+        /*        if (!isFadeIn)
+                    gameObject.SetActive(false);*/
+    }
+
+    public IEnumerator PlayLoadScene()
+    {
+
+        if (!GameManager.Instance.isGameStarted) yield break;
+
+        Debug.Log("플레이씬 로드 시작");
+
+        AsyncOperation async = SceneManager.LoadSceneAsync(loadSceneName);
+        async.allowSceneActivation = false;
+        while (!async.isDone)
+        {
+            yield return null;
+
+            if (async.progress >= 0.9f && GameManager.Instance.canLoadPlayScene)
+            {
+                async.allowSceneActivation = true;
+                yield break;
+            }
+        }
     }
 }
