@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Ease ease;
     [SerializeField] private Text scoreText;
 
+    [SerializeField] private Image skillPanel_Top;
+    [SerializeField] private Image skillPanel_Down;
+
     Tweener shakeSkillGage;
     private void Awake()
     {
@@ -89,4 +92,21 @@ public class UIManager : MonoBehaviour
         menuPanel.gameObject.SetActive(false);
         Time.timeScale = 1f;
     }
+
+    public void MoveSkillPanel(bool start)
+    {
+        if (start)
+        {
+            skillPanel_Top.rectTransform.DOAnchorPosY(0f, 0.5f).SetEase(ease);
+            skillPanel_Down.rectTransform.DOAnchorPosY(0f, 0.5f).SetEase(ease);
+        }
+        else
+        {
+            skillPanel_Top.rectTransform.DOAnchorPosY(300f, 0.5f).SetEase(ease);
+            skillPanel_Down.rectTransform.DOAnchorPosY(-300f, 0.5f).SetEase(ease);
+        }
+
+    }
+
+    
 }
