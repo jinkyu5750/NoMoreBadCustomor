@@ -46,7 +46,7 @@ public class Player_Robby : MonoBehaviour
             }
 
             if (isMoveCam)
-                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, new Vector3(18f, 0, -10), ref camRefSpeed, 2);
+                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, new Vector3(18f, 0, -10), ref camRefSpeed, 0.5f);
 
             if (Vector2.Distance(transform.position, stopPos.position) <= 0.5f)
             {
@@ -111,7 +111,7 @@ public class Player_Robby : MonoBehaviour
         sp.flipX = false;
         ani.SetBool("Walk",false);
         ani.SetBool("StartPlay",true);
-        rig.velocity = Vector2.right * (walkSpeed + 2);
+        rig.velocity = Vector2.right * (walkSpeed + 5);
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -121,6 +121,9 @@ public class Player_Robby : MonoBehaviour
             if (collision.gameObject.name.Equals("RightWall") && GameManager.Instance.isGameStarted)
             {
                 isMoveCam = true;
+                LoadingManager.instance.SwitchLoadingImage(false);
+                StartCoroutine(LoadingManager.instance.Fade(true));
+
             }
             else
                 curDir = (int)curDir < 0 ? CurDir.Right : CurDir.Left;

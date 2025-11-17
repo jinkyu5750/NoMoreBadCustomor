@@ -32,6 +32,9 @@ public class LoadingManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI loadingGage;
 
+    private GameObject loadingImage;
+    private GameObject robbyToPlayFade;
+
     public string loadSceneName;
     private void Awake()
     {
@@ -49,6 +52,9 @@ public class LoadingManager : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
         loadingGage = progressBar.GetComponentInChildren<TextMeshProUGUI>();
 
+        loadingImage = transform.Find("Loading...").gameObject;
+        robbyToPlayFade = transform.Find("LobbyToPlayFade").gameObject;
+
     }
     public void LoadScene(string sceneName)
     {
@@ -60,6 +66,7 @@ public class LoadingManager : MonoBehaviour
             StartCoroutine(PlayLoadScene());
         else
             StartCoroutine(StartLoadScene());
+
     }
 
     private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
@@ -72,6 +79,7 @@ public class LoadingManager : MonoBehaviour
     }
     private IEnumerator StartLoadScene()
     {
+        SwitchLoadingImage(true);
         progressBar.value = 0;
 
         yield return StartCoroutine(Fade(true));
@@ -104,7 +112,7 @@ public class LoadingManager : MonoBehaviour
             loadingGage.text = Mathf.FloorToInt(progressBar.value * 100).ToString() + "%";
         }
     }
-    private IEnumerator Fade(bool isFadeIn)
+    public IEnumerator Fade(bool isFadeIn)
     {
         float timer = 0.0f;
 
@@ -128,6 +136,8 @@ public class LoadingManager : MonoBehaviour
 
         Debug.Log("플레이씬 로드 시작");
 
+        // yield return StartCoroutine(Fade(true));
+        
         AsyncOperation async = SceneManager.LoadSceneAsync(loadSceneName);
         async.allowSceneActivation = false;
         while (!async.isDone)
@@ -140,5 +150,11 @@ public class LoadingManager : MonoBehaviour
                 yield break;
             }
         }
+    }
+
+    public void SwitchLoadingImage(bool isLoadingImage)
+    {
+        loadingImage.gameObject.SetActive(isLoadingImage);
+        robbyToPlayFade.gameObject.SetActive(!isLoadingImage);
     }
 }

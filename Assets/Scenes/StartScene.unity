@@ -334,23 +334,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &777198539 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3857171467447279065, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-  m_PrefabInstance: {fileID: 1857247065}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &777198545
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 777198539}
-  m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 0
-  m_IgnoreParentGroups: 0
 --- !u!1 &797497063
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,57 +798,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 246591739289529393, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_text
-      value: LOaDiNg . . .
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498987132829180849, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_Color.b
-      value: 0.735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498987132829180849, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_Color.g
-      value: 0.735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498987132829180849, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_Color.r
-      value: 0.735849
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498987132829180849, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2867082807124887650, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3857171467447279065, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_Name
       value: LoadingCanvasPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 3857171467447279065, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4401142538381904165, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737157114304601153, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4737157114304601153, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4862293665739755325, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7314791596935676647, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_text
-      value: '@@%'
       objectReference: {fileID: 0}
     - target: {fileID: 7698730447860361525, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_Pivot.x
@@ -947,21 +886,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8093809129548000771, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_SortingOrder
-      value: 999
-      objectReference: {fileID: 0}
-    - target: {fileID: 8672393130218948391, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3857171467447279065, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 777198545}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
 --- !u!1 &2032658322
 GameObject:
