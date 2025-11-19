@@ -2218,8 +2218,7 @@ MonoBehaviour:
   skillGageText: {fileID: 731140754}
   ease: 12
   scoreText: {fileID: 1143880358}
-  skillPanel_Top: {fileID: 1264649237}
-  skillPanel_Down: {fileID: 1799955311}
+  playButton: {fileID: 0}
 --- !u!4 &1096178806
 Transform:
   m_ObjectHideFlags: 0
@@ -3273,9 +3272,13 @@ PrefabInstance:
       value: -21
       objectReference: {fileID: 0}
     - target: {fileID: 4921384389854511438, guid: c46864abf6678d645ae0b62398171d03, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4921384389854511438, guid: c46864abf6678d645ae0b62398171d03, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6b11c8ae5ee83b7439c2f496fc0afe27, type: 3}
+      objectReference: {fileID: 3191122964850554743, guid: 6b11c8ae5ee83b7439c2f496fc0afe27, type: 3}
     - target: {fileID: 4921384389854511438, guid: c46864abf6678d645ae0b62398171d03, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3290,7 +3293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4921384389854511438, guid: c46864abf6678d645ae0b62398171d03, type: 3}
       propertyPath: m_FillAmount
-      value: 1
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 5251671844205637217, guid: c46864abf6678d645ae0b62398171d03, type: 3}
       propertyPath: m_Name

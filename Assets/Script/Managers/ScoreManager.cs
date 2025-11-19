@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    private int score=0;
+    private int score = 0;
     [SerializeField] int monsterScore = 15;
     [SerializeField] int receiptScore = 3;
     private void Awake()
@@ -13,9 +11,10 @@ public class ScoreManager : MonoBehaviour
         instance = this;
     }
 
-    public void MonsterScore()
+    public void MonsterScore(bool isSkill)
     {
-        score += monsterScore + Random.Range(0, monsterScore+1);
+
+        score += (isSkill ? monsterScore * 5 : monsterScore) + Random.Range(0, monsterScore + 1);
         UIManager.Instance.UpdateScore(score);
     }
 

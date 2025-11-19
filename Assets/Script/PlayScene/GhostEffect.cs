@@ -3,7 +3,12 @@ using UnityEngine;
 public class GhostEffect : MonoBehaviour
 {
     private SpriteRenderer sp;
-    [SerializeField] private float ghostDelay;
+
+    private float ghostDelay;
+    private float dashDelay = 0.05f;
+    private float skillDashDelay = 0.02f;
+    private float skillAttackDelay = 0.1f;
+
     private float curGhostDelay;
 
     private bool _isGhostOn;
@@ -20,7 +25,22 @@ public class GhostEffect : MonoBehaviour
         curGhostDelay = ghostDelay;
     }
 
+    public void SetDelay(string str)
+    {
+        switch (str)
+        {
+            case "Dash":
+                ghostDelay = dashDelay;
+                break;
+            case "SkillDash":
+                ghostDelay = skillDashDelay;
+                break;
+            case "SkillAttack":
+                ghostDelay = skillAttackDelay;
+                break;
 
+        }
+    }
     void Update()
     {
 
@@ -42,7 +62,7 @@ public class GhostEffect : MonoBehaviour
                 curGhostDelay = ghostDelay;
             }
         }
-  
+
     }
 
 
