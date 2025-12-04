@@ -18,8 +18,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Ease ease;
     [SerializeField] private Text scoreText;
 
+
+    //·Îºñ ¾À ³» UI
+    [SerializeField] private Button playButton;
+
     [SerializeField] private Image skillPanel_Top;
     [SerializeField] private Image skillPanel_Down;
+
 
     Tweener shakeSkillGage;
     private void Awake()
@@ -93,6 +98,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+
     public void MoveSkillPanel(bool start)
     {
         if (start)
@@ -109,4 +115,5 @@ public class UIManager : MonoBehaviour
     }
 
     
+
 }
