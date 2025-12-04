@@ -129,6 +129,11 @@ public class LoadingManager : MonoBehaviour
                     gameObject.SetActive(false);*/
     }
 
+    public IEnumerator DelayedFade(float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        StartCoroutine(Fade(true));
+    }
     public IEnumerator PlayLoadScene()
     {
 
@@ -146,6 +151,7 @@ public class LoadingManager : MonoBehaviour
 
             if (async.progress >= 0.9f && GameManager.Instance.canLoadPlayScene)
             {
+                Fade(false);
                 async.allowSceneActivation = true;
                 yield break;
             }

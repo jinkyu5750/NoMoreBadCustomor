@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ public class Player_Robby : MonoBehaviour
     [SerializeField] Transform stopPos;
     [SerializeField] private bool isMoveCam;
     Vector3 camRefSpeed = Vector3.zero;// 뭔지 모르겠음 
+
+    [SerializeField] CinemachineVirtualCamera vc;
     private void Start()
     {
         ani = GetComponent<Animator>();
@@ -46,7 +49,10 @@ public class Player_Robby : MonoBehaviour
             }
 
             if (isMoveCam)
-                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, new Vector3(18f, 0, -10), ref camRefSpeed, 0.5f);
+            {
+                vc.Follow = transform;
+            }
+                // Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, new Vector3(18f, 0, -10), ref camRefSpeed, 0.5f);
 
             if (Vector2.Distance(transform.position, stopPos.position) <= 0.5f)
             {
@@ -122,7 +128,7 @@ public class Player_Robby : MonoBehaviour
             {
                 isMoveCam = true;
                 LoadingManager.instance.SwitchLoadingImage(false);
-                StartCoroutine(LoadingManager.instance.Fade(true));
+                StartCoroutine(LoadingManager.instance.DelayedFade(0.5f));
 
             }
             else
