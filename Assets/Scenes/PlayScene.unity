@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 568397160}
   m_Layer: 0
   m_Name: 1_0
-  m_TagString: Untagged
+  m_TagString: FallingLIne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2247,7 +2247,7 @@ GameObject:
   - component: {fileID: 1126921341}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

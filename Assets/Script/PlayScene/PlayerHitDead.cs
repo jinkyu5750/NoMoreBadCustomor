@@ -60,7 +60,23 @@ public class PlayerHitDead : MonoBehaviour
 
     }
 
+    public IEnumerator Fall()
+    {
+        if (hitCurTime > 0) yield break;
 
+        hitCurTime = hitCoolTime;
+
+        GetComponent<PlayerAttack>().HitDuringDash();
+
+        life--;
+        UIManager.Instance.UpdateHPBar((float)life / life_Max);
+        player.components.ani.SetTrigger("Hit");
+
+        Collider2D spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(10, 10),LayerMask.NameToLayer("SpawnPoint"));
+        yield return new WaitForSeconds(1f);
+        transform.position = spawnPoint.transform.position; 
+
+    }
 
 
     public void Dead()
