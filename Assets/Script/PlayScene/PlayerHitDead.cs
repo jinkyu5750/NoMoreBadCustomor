@@ -62,19 +62,31 @@ public class PlayerHitDead : MonoBehaviour
 
     public IEnumerator Fall()
     {
-        if (hitCurTime > 0) yield break;
+        //  if (hitCurTime > 0) yield break; // 맞아서 튕겨져나갔을때 처리해야돼
 
         hitCurTime = hitCoolTime;
 
         GetComponent<PlayerAttack>().HitDuringDash();
 
-        life--;
-        UIManager.Instance.UpdateHPBar((float)life / life_Max);
+
         player.components.ani.SetTrigger("Hit");
 
-        Collider2D spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(10, 10),LayerMask.NameToLayer("SpawnPoint"));
+        yield return new WaitForSeconds(0.5f);
+
+        Collider2D spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(30, 30), 0,LayerMask.GetMask("SpawnPoint")); // 플랫폼이 동시에 사라지면..?
+          if (spawnPoint == null) // 플랫폼이 동시에 사라졌을때 처리
+              spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(50, 50),0, LayerMask.GetMask("SpawnPoint"));
+
+        Debug.Log(spawnPoint.gameObject.name);
+        Debug.Log("World : " + spawnPoint.transform.position);
+        Debug.Log("Local : " + spawnPoint.transform.localPosition);
+
+        transform.position = spawnPoint.transform.position + new Vector3(-4,10,0);
+        player.components.rig.velocity = Vector2.down;
         yield return new WaitForSeconds(1f);
-        transform.position = spawnPoint.transform.position; 
+        player.components.ani.SetTrigger("WakeUp");
+        life--;
+        UIManager.Instance.UpdateHPBar((float)life / life_Max);
 
     }
 

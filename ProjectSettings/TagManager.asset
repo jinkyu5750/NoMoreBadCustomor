@@ -9,7 +9,7 @@ TagManager:
   - Receipt
   - RobbyBoundary
   - Background
-  - FallingLIne
+  - FallingLine
   layers:
   - Default
   - TransparentFX
