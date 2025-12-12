@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,11 +16,24 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
             Destroy(gameObject);
     }
 
+    private void Update()
+    {
+        Debug.Log(isGameStarted);
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "LobbyScene")
+        {
+            isGameStarted = false;
+            canLoadPlayScene = false;
+        }
+    }
     public void StartGame()
     {
         if (isGameStarted) return;

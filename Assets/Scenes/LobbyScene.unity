@@ -506,7 +506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7581354871797196105, guid: 6a955a437484f8940a1d988f7321148d, type: 3}
       propertyPath: m_Name
-      value: PlayerPrefeb_Robby
+      value: PlayerPrefeb_Lobby
       objectReference: {fileID: 0}
     - target: {fileID: 8290742372668526159, guid: 6a955a437484f8940a1d988f7321148d, type: 3}
       propertyPath: m_Controller

@@ -33,7 +33,7 @@ public class LoadingManager : MonoBehaviour
     private TextMeshProUGUI loadingGage;
 
     private GameObject loadingImage;
-    private GameObject robbyToPlayFade;
+    private GameObject lobbyToPlayFade;
 
     public string loadSceneName;
     private void Awake()
@@ -53,7 +53,7 @@ public class LoadingManager : MonoBehaviour
         loadingGage = progressBar.GetComponentInChildren<TextMeshProUGUI>();
 
         loadingImage = transform.Find("Loading...").gameObject;
-        robbyToPlayFade = transform.Find("LobbyToPlayFade").gameObject;
+        lobbyToPlayFade = transform.Find("LobbyToPlayFade").gameObject;
 
     }
     public void LoadScene(string sceneName)
@@ -161,6 +161,6 @@ public class LoadingManager : MonoBehaviour
     public void SwitchLoadingImage(bool isLoadingImage)
     {
         loadingImage.gameObject.SetActive(isLoadingImage);
-        robbyToPlayFade.gameObject.SetActive(!isLoadingImage);
+        lobbyToPlayFade.gameObject.SetActive(!isLoadingImage);
     }
 }

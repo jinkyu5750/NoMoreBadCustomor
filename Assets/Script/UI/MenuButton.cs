@@ -15,7 +15,8 @@ public class MenuButton : MonoBehaviour
 
     public void ClickQuitButton()
     {
-
+        UIManager.Instance.HideMenuPanel();
+        LoadingManager.instance.LoadScene("LobbyScene");
     }
 
     public void ClickSettingsButton()
