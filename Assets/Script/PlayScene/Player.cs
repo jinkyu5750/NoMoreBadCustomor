@@ -110,7 +110,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("FallingLine"))
         {
-            Debug.Log("asdasd");
             StartCoroutine(playerHitDead.Fall());
         }
     }

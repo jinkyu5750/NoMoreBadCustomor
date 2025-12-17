@@ -73,15 +73,11 @@ public class PlayerHitDead : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        Collider2D spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(30, 30), 0,LayerMask.GetMask("SpawnPoint")); // 플랫폼이 동시에 사라지면..?
+        Collider2D spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(30, 30), 0,LayerMask.GetMask("SpawnPoint")); // 위치가 영.. 
           if (spawnPoint == null) // 플랫폼이 동시에 사라졌을때 처리
               spawnPoint = Physics2D.OverlapBox(transform.position, new Vector2(50, 50),0, LayerMask.GetMask("SpawnPoint"));
 
-        Debug.Log(spawnPoint.gameObject.name);
-        Debug.Log("World : " + spawnPoint.transform.position);
-        Debug.Log("Local : " + spawnPoint.transform.localPosition);
-
-        transform.position = spawnPoint.transform.position + new Vector3(-4,10,0);
+        transform.position = spawnPoint.transform.position + new Vector3(-10,10,0); 
         player.components.rig.velocity = Vector2.down;
         yield return new WaitForSeconds(1f);
         player.components.ani.SetTrigger("WakeUp");

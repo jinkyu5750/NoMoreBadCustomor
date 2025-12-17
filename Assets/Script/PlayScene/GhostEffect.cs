@@ -22,7 +22,7 @@ public class GhostEffect : MonoBehaviour
     void Start()
     {
         sp = GetComponent<SpriteRenderer>();
-        curGhostDelay = ghostDelay;
+        ghostDelay = dashDelay;
     }
 
     public void SetDelay(string str)

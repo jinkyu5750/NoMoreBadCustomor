@@ -50,16 +50,21 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        Time.timeScale += (1f / slowLength) * Time.unscaledDeltaTime;
-        Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
-        Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
+
+        if (Time.timeScale >= slowFactor) // Time.timeScale이 slowFactor 이상인 경우 즉, 슬로우모션적용 시 // 때문에 timeScale을 0으로 맞추는건 영향 안갈듯
+        {
+            Time.timeScale += (1f / slowLength) * Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
+            Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
 
         if (isSkill)
         {
-            player.components.rig.gravityScale = 0;
+            player.components.rig.gravityScale = 0;    
             return;
         }
+
         if (player.components.rig.velocity.y < 0f)
         {
             if (curAttack == attack.Dash)
