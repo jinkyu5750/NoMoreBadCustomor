@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image hpBar;
     [SerializeField] private Button stopButton;
     [SerializeField] private Image menuPanel;
+    [SerializeField] private Image resultPanel;
     [SerializeField] private Image skillGage;
     private Image skillGageBar;
     [SerializeField] private Text skillGageText;
@@ -114,6 +115,29 @@ public class UIManager : MonoBehaviour
 
     }
 
-    
+    public void ResultPanel(bool isActive) // 패널관련은 bool로 합쳐도될듯
+    {
+        resultPanel.gameObject.SetActive(isActive);
+        //여기서 스코어얻은걸로 게임매니저에도 업데이트..?
+        if (isActive)
+        {
+            transform.GetChild(2222).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();// 점수부분만 따로 뗄까 편하게
+            // transform.GetChild(2222).GetComponent<TextMeshProUGUI>().text = GameMa //게임매니저에서 플탐재야됨
+            
+            Sequence seq = DOTween.Sequence();
+            seq.Append(resultPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.05f).SetEase(ease));
+            seq.Append(resultPanel.transform.DOScale(new Vector2(0.95f, 0.95f), 0.05f).SetEase(ease));
+            seq.Play();
 
+        }
+        else
+        {
+            LoadingManager.instance.LoadScene("LobbyScene");
+
+            // 킨다음 점수,시간 업뎃
+        }
+
+
+    }
 }
+

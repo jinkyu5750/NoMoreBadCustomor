@@ -3,7 +3,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    private int score = 0;
+    private int _score = 0;
+    public int score {  get { return _score; } private set { _score = value; } }
     [SerializeField] int monsterScore = 15;
     [SerializeField] int receiptScore = 3;
     private void Awake()

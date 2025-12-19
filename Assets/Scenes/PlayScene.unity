@@ -2437,6 +2437,7 @@ MonoBehaviour:
   hpBar: {fileID: 128241208}
   stopButton: {fileID: 719900801}
   menuPanel: {fileID: 2024117411}
+  resultPanel: {fileID: 0}
   skillGage: {fileID: 2110837721}
   skillGageText: {fileID: 731140754}
   ease: 12
