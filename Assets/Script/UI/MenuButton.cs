@@ -10,12 +10,12 @@ public class MenuButton : MonoBehaviour
  
     public void ClickResumeButton()
     {
-        UIManager.Instance.HideMenuPanel();
+        UIManager.Instance.MenuPanel(false);
     }
 
     public void ClickQuitButton()
     {
-        UIManager.Instance.HideMenuPanel();
+        UIManager.Instance.MenuPanel(false);
         LoadingManager.instance.LoadScene("LobbyScene");
     }
 

@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     //플레이 씬 내 UI
     [SerializeField] private Image hpBar;
     [SerializeField] private Button stopButton;
+    [SerializeField] private Button resultExitButton;
+    [SerializeField] private Button resultRetryButton;
     [SerializeField] private Image menuPanel;
     [SerializeField] private Image resultPanel;
     [SerializeField] private Image skillGage;
@@ -39,7 +41,10 @@ public class UIManager : MonoBehaviour
     {
         skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
 
-        stopButton.onClick.AddListener(ShowMenuPanel);
+        stopButton.onClick.AddListener(() => MenuPanel(true));
+        resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
+        resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
+
         menuPanel.gameObject.SetActive(false);
     }
 
@@ -79,26 +84,50 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void ShowMenuPanel()
+    public void MenuPanel(bool isActive)
     {
-        menuPanel.gameObject.SetActive(true);
+        menuPanel.gameObject.SetActive(isActive);
 
-        Sequence seq = DOTween.Sequence();
-        seq.Append(menuPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.05f).SetEase(ease));
-        seq.Append(menuPanel.transform.DOScale(new Vector2(0.95f, 0.95f), 0.05f).SetEase(ease));
-        seq.SetUpdate(true); // timeScale에 영향받지 않음
-        seq.Play().OnComplete(() =>
+        if (isActive)
         {
-            Time.timeScale = 0f; // 애니메이션 완료 후 시간 정지
-        });
+
+            Sequence seq = DOTween.Sequence();
+            seq.Append(menuPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.05f).SetEase(ease));
+            seq.Append(menuPanel.transform.DOScale(new Vector2(0.95f, 0.95f), 0.05f).SetEase(ease));
+            seq.SetUpdate(true); // timeScale에 영향받지 않음
+            seq.Play().OnComplete(() =>
+            {
+                Time.timeScale = 0f; // 애니메이션 완료 후 시간 정지
+            });
+        }
+        else
+            Time.timeScale = 1f;
+
     }
 
-    public void HideMenuPanel()
-    {
-        menuPanel.gameObject.SetActive(false);
-        Time.timeScale = 1f;
-    }
+    public void ResultPanel(bool isActive, bool isRetry = false) // 채찍피티가혼낸점//  아래 중 하나라도 생기면 리팩토링 타이밍이야:
+    {                                                                              //  버튼마다 ResultPanel(false, true/false)가 난무한다
+        resultPanel.gameObject.SetActive(isActive);                               //  결과창에서 선택지가 3개 이상 된다
+                                                                                 //  네가 if (isActive) 안에 또 if를 넣기 시작한다
+        if (isActive)                                                           //  버튼마다 ResultPanel(false, true/false)가 난무한다
+        {
+            resultPanel.transform.Find("ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
+            resultPanel.transform.Find("TimeText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ((int)(ScoreManager.instance.playTime - 1f)).ToString() + " Sec";
 
+            resultPanel.rectTransform.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBounce);
+        }
+        else
+        {
+            if (isRetry)
+                LoadingManager.instance.LoadScene("PlayScene"); // 다시하기 // 페이드아웃필요할듯
+            else
+                LoadingManager.instance.LoadScene("LobbyScene"); // 나가기
+
+
+        }
+
+
+    }
 
     public void MoveSkillPanel(bool start)
     {
@@ -115,29 +144,5 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void ResultPanel(bool isActive) // 패널관련은 bool로 합쳐도될듯
-    {
-        resultPanel.gameObject.SetActive(isActive);
-        //여기서 스코어얻은걸로 게임매니저에도 업데이트..?
-        if (isActive)
-        {
-            transform.GetChild(2222).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();// 점수부분만 따로 뗄까 편하게
-            // transform.GetChild(2222).GetComponent<TextMeshProUGUI>().text = GameMa //게임매니저에서 플탐재야됨
-            
-            Sequence seq = DOTween.Sequence();
-            seq.Append(resultPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.05f).SetEase(ease));
-            seq.Append(resultPanel.transform.DOScale(new Vector2(0.95f, 0.95f), 0.05f).SetEase(ease));
-            seq.Play();
-
-        }
-        else
-        {
-            LoadingManager.instance.LoadScene("LobbyScene");
-
-            // 킨다음 점수,시간 업뎃
-        }
-
-
-    }
 }
 

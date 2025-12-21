@@ -83,9 +83,11 @@ public class PlayerHitDead : MonoBehaviour
     }
 
 
-    public void Dead()
+    public IEnumerator Dead()
     {
         isDead = true;
-        player.components.ani.SetTrigger("Dead");
+        player.components.ani.SetBool("Dead",true);
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.ResultPanel(true);
     }
 }

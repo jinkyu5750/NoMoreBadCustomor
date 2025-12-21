@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         }
 
         if (playerHitDead.life == 0)
-            playerHitDead.Dead();
+            StartCoroutine(playerHitDead.Dead());
 
         Move();
 

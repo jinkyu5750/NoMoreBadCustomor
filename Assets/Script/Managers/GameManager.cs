@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
 
     public bool isGameStarted { get; private set; } = false;
     public bool canLoadPlayScene { get; private set; } = false;
+
     private void Awake()
     {
         if(Instance == null)
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(isGameStarted);
+        
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
