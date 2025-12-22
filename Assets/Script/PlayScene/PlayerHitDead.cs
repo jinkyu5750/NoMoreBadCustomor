@@ -60,12 +60,34 @@ public class PlayerHitDead : MonoBehaviour
 
     }
 
+    public IEnumerator Fall()
+    {
+        //  if (hitCurTime > 0) yield break; // ¸Â¾Æ¼­ Æ¨°ÜÁ®³ª°¬À»¶§ Ã³¸®ÇØ¾ßµÅ
+
+        hitCurTime = hitCoolTime;
+
+        GetComponent<PlayerAttack>().HitDuringDash();
 
 
+        player.components.ani.SetTrigger("Hit");
 
-    public void Dead()
+        yield return new WaitForSeconds(0.5f);
+
+        transform.position = new Vector3(transform.position.x - 10f, 5f, 0);
+        player.components.rig.velocity = Vector2.down;
+        yield return new WaitForSeconds(1f);
+        player.components.ani.SetTrigger("WakeUp");
+        life--;
+        UIManager.Instance.UpdateHPBar((float)life / life_Max);
+
+    }
+
+
+    public IEnumerator Dead()
     {
         isDead = true;
-        player.components.ani.SetTrigger("Dead");
+        player.components.ani.SetBool("Dead",true);
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.ResultPanel(true);
     }
 }

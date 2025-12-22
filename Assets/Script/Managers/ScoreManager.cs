@@ -3,14 +3,22 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
-    private int score = 0;
+    private int _score = 0;
+    public int score {  get { return _score; } private set { _score = value; } }
+    public float playTime { get; private set; } = 0f; // score랑 표현이 같은건가..?
+
     [SerializeField] int monsterScore = 15;
     [SerializeField] int receiptScore = 3;
+
     private void Awake()
     {
         instance = this;
     }
 
+    private void Update()
+    {
+        playTime += Time.deltaTime;
+    }
     public void MonsterScore(bool isSkill)
     {
 

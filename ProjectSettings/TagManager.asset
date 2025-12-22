@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Receipt
   - RobbyBoundary
+  - Background
+  - FallingLine
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - Enemy
   - Player
-  - 
+  - SpawnPoint
   - 
   - 
   - 

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Components
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
         }
 
         if (playerHitDead.life == 0)
-            playerHitDead.Dead();
+            StartCoroutine(playerHitDead.Dead());
 
         Move();
 
@@ -101,8 +102,17 @@ public class Player : MonoBehaviour
             collision.gameObject.SetActive(false);
             ScoreManager.instance.ReceiptScore();
         }
+
+    
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("FallingLine"))
+        {
+            StartCoroutine(playerHitDead.Fall());
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
