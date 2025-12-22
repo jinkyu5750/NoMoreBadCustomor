@@ -10,7 +10,7 @@ public class StartSceneScript : MonoBehaviour
         if(Input.anyKeyDown)
         {
          //   LoadingManager.instance.LoadScene("IntroScene");
-            LoadingManager.instance.LoadScene("LobbyScene");
+            LoadingManager.instance.LoadScene("LobbyScene", true);
 
         }
     }

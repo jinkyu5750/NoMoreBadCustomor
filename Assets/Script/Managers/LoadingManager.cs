@@ -56,16 +56,20 @@ public class LoadingManager : MonoBehaviour
         lobbyToPlayFade = transform.Find("LobbyToPlayFade").gameObject;
 
     }
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName,bool isLodingBarLoad)
     {
         gameObject.SetActive(true);
         SceneManager.sceneLoaded += OnSceneLoaded; // 이게머지??
         loadSceneName = sceneName;
 
-        if (loadSceneName.Equals("PlayScene"))
-            StartCoroutine(PlayLoadScene());
+        if(isLodingBarLoad)
+        {
+            StartCoroutine(LoadScene_LoadingBar());
+        }
         else
-            StartCoroutine(StartLoadScene());
+        {
+            StartCoroutine(LoadScene_Fade());
+        }
 
     }
 
@@ -77,7 +81,7 @@ public class LoadingManager : MonoBehaviour
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
-    private IEnumerator StartLoadScene()
+    private IEnumerator LoadScene_LoadingBar()
     {
         SwitchLoadingImage(true);
         progressBar.value = 0;
@@ -134,26 +138,27 @@ public class LoadingManager : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         StartCoroutine(Fade(true));
     }
-    public IEnumerator PlayLoadScene()
+    public IEnumerator LoadScene_Fade()
     {
 
         if (!GameManager.Instance.isGameStarted) yield break;
 
-        Debug.Log("플레이씬 로드 시작");
+        // yield return StartCoroutine(Fade(true)); Fade는 DelayedFade를 이용
 
-        // yield return StartCoroutine(Fade(true));
-        
         AsyncOperation async = SceneManager.LoadSceneAsync(loadSceneName);
         async.allowSceneActivation = false;
         while (!async.isDone)
         {
             yield return null;
 
-            if (async.progress >= 0.9f && GameManager.Instance.canLoadPlayScene)
+            if (async.progress >= 0.9f)
             {
-                Fade(false);
-                async.allowSceneActivation = true;
-                yield break;
+                if (GameManager.Instance.canLoadPlayScene)
+                {
+                    Fade(false);
+                    async.allowSceneActivation = true;
+                    yield break;
+                }
             }
         }
     }

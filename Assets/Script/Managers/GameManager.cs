@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         if(canLoadPlayScene) return;
 
         canLoadPlayScene = true;
-        LoadingManager.instance.LoadScene("PlayScene");
+        LoadingManager.instance.LoadScene("PlayScene", false);
 
         Debug.Log("Load GameScene Started!");
 

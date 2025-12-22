@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
     public void ResultPanel(bool isActive, bool isRetry = false) // 채찍피티가혼낸점//  아래 중 하나라도 생기면 리팩토링 타이밍이야:
     {                                                                              //  버튼마다 ResultPanel(false, true/false)가 난무한다
         resultPanel.gameObject.SetActive(isActive);                               //  결과창에서 선택지가 3개 이상 된다
-                                                                                 //  네가 if (isActive) 안에 또 if를 넣기 시작한다
+                                                                                  //  네가 if (isActive) 안에 또 if를 넣기 시작한다
         if (isActive)                                                           //  버튼마다 ResultPanel(false, true/false)가 난무한다
         {
             resultPanel.transform.Find("ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
@@ -119,9 +119,9 @@ public class UIManager : MonoBehaviour
         else
         {
             if (isRetry)
-                LoadingManager.instance.LoadScene("PlayScene"); // 다시하기 // 페이드아웃필요할듯
+                LoadingManager.instance.LoadScene("PlayScene", true); // 다시하기 // 페이드아웃필요할듯
             else
-                LoadingManager.instance.LoadScene("LobbyScene"); // 나가기
+                LoadingManager.instance.LoadScene("LobbyScene", true); // 나가기
 
 
         }
