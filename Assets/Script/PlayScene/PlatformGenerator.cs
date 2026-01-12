@@ -33,7 +33,7 @@ public class PlatformGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log("ss");
+            Debug.Log("Platform Generator Error");
         }
     }
 

@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "ChatGPT Image 2026\uB144 1\uC6D4 11\uC77C \uC624\uD6C4 11_37_36_0": 7233895517030710506
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
