@@ -17,7 +17,7 @@ public class ObjectInfo
 public class ParticleManager : MonoBehaviour
 {
 
-    
+
 
     public static ParticleManager instance;
 
@@ -104,8 +104,12 @@ public class ParticleManager : MonoBehaviour
         obj.transform.rotation = rot;
 
         if (objectName.StartsWith("Platform"))
+        {
             ReceiptSpawner(obj);
+            foreach (var e in obj.GetComponentsInChildren<Enemy>(true))
+                e.SpawnEnemy();
 
+        }
         StartCoroutine(ReturnObject(objectName, obj, returnTime));
 
     }
@@ -198,7 +202,7 @@ public class ParticleManager : MonoBehaviour
                 Vector3 worldSpawnPos = lines[i].transform.TransformPoint(spawnPos);
 
                 UseObject("Receipt", worldSpawnPos, Quaternion.identity);
- 
+
                 distanceFromSpawn += spawnInterval;
 
                 while (currentSegment < vertexCnt - 1 && (distanceFromSpawn - segmentStartDistance) > segmentLength)

@@ -4,10 +4,17 @@ public class Enemy : MonoBehaviour
 {
     BoxCollider2D col;
     Rigidbody2D rig;
+    Vector3 spawnPos;
     private void Start()
     {
         col = GetComponent<BoxCollider2D>();
         rig = GetComponent<Rigidbody2D>();
+        spawnPos = transform.localPosition;
+    }
+
+    public void SpawnEnemy()
+    {
+        transform.localPosition = spawnPos;
     }
     public void EnemyDead()
     {
@@ -25,8 +32,7 @@ public class Enemy : MonoBehaviour
         rig.angularVelocity = Random.Range(400f, 700f); // 빙글빙글
 
         // 일정 시간 후 제거
-        Destroy(gameObject, 2f);
-
+        gameObject.SetActive(false);
     }
 
 }
