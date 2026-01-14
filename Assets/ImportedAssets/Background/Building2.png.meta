@@ -1,17 +1,10 @@
 fileFormatVersion: 2
-guid: 65984ae2ea5b87a4a80db620537a7336
-AssetOrigin:
-  serializedVersion: 1
-  productId: 316348
-  packageName: CyberpunkSunset
-  packageVersion: 1.0
-  assetPath: Assets/Background/MIDDLEGROUND.PNG
-  uploadId: 746623
+guid: f9e3e55aeb8e9bd4794a8cc3e8aa274d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -24502145189794237
-    second: IMG_0183_0
+      213: 576110693411594474
+    second: "ChatGPT Image 2026\uB144 1\uC6D4 12\uC77C \uC624\uD6C4 09_55_58_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -44,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,43 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0183_0
+      name: "ChatGPT Image 2026\uB144 1\uC6D4 12\uC77C \uC624\uD6C4 09_55_58_0"
       rect:
         serializedVersion: 2
-        x: 0
+        x: 11
         y: 0
-        width: 2000
-        height: 1593
+        width: 1518
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34e2ab3cd63f8aff0800000000000000
-      internalID: -24502145189794237
+      spriteID: ae02a109f91cef700800000000000000
+      internalID: 576110693411594474
       vertices: []
       indices: 
       edges: []
@@ -177,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IMG_0183_0: -24502145189794237
+      "ChatGPT Image 2026\uB144 1\uC6D4 12\uC77C \uC624\uD6C4 09_55_58_0": 576110693411594474
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

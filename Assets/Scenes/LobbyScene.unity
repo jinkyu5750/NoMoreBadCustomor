@@ -1641,6 +1641,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5374808837016720901, guid: e9a44aee4debebc428ab73c64fd0733c, type: 3}
+      propertyPath: m_Name
+      value: Building_1
+      objectReference: {fileID: 0}
     - target: {fileID: 7196518453802958801, guid: e9a44aee4debebc428ab73c64fd0733c, type: 3}
       propertyPath: m_Name
       value: Background_Outer

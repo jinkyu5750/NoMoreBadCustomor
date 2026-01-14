@@ -1,26 +1,10 @@
 fileFormatVersion: 2
-guid: 278fb5bd79f3d2546bae1924e54be93f
-AssetOrigin:
-  serializedVersion: 1
-  productId: 316348
-  packageName: CyberpunkSunset
-  packageVersion: 1.0
-  assetPath: Assets/Background/BACKGROUND.PNG
-  uploadId: 746623
+guid: d62f7ffc60eacf54580916afc7872704
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 857167717598479647
-    second: IMG_0182_0
-  - first:
-      213: -2789051136583693536
-    second: IMG_0182_1
-  - first:
-      213: -4409801573422209116
-    second: IMG_0182_2
-  - first:
-      213: 8808328871445767111
-    second: IMG_0182_3
+      213: 2142509205395831769
+    second: "ChatGPT Image 2026\uB144 1\uC6D4 12\uC77C \uC624\uD6C4 09_42_20_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -53,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -125,43 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0182_0
+      name: "ChatGPT Image 2026\uB144 1\uC6D4 12\uC77C \uC624\uD6C4 09_42_20_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2000
-        height: 2043
+        width: 1527
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,71 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f15c3686f7545eb00800000000000000
-      internalID: 857167717598479647
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_0182_1
-      rect:
-        serializedVersion: 2
-        x: 123
-        y: 127
-        width: 43
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02b878fa4cc4b49d0800000000000000
-      internalID: -2789051136583693536
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_0182_2
-      rect:
-        serializedVersion: 2
-        x: 385
-        y: 208
-        width: 56
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4a7e53645dc3dc2c0800000000000000
-      internalID: -4409801573422209116
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_0182_3
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 191
-        width: 52
-        height: 37
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7c3a757a0787d3a70800000000000000
-      internalID: 8808328871445767111
+      spriteID: 9db7f9355c8bbbd10800000000000000
+      internalID: 2142509205395831769
       vertices: []
       indices: 
       edges: []
@@ -249,10 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      IMG_0182_0: 857167717598479647
-      IMG_0182_1: -2789051136583693536
-      IMG_0182_2: -4409801573422209116
-      IMG_0182_3: 8808328871445767111
+      "ChatGPT Image 2026\uB144 1\uC6D4 12\uC77C \uC624\uD6C4 09_42_20_0": 2142509205395831769
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
