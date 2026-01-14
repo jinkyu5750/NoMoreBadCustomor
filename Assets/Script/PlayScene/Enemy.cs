@@ -5,16 +5,23 @@ public class Enemy : MonoBehaviour
     BoxCollider2D col;
     Rigidbody2D rig;
     Vector3 spawnPos;
+    Quaternion spawnRot;
+
+    private void Awake()
+    {
+        spawnPos = transform.localPosition;
+        spawnRot = transform.localRotation;
+    }
     private void Start()
     {
         col = GetComponent<BoxCollider2D>();
         rig = GetComponent<Rigidbody2D>();
-        spawnPos = transform.localPosition;
     }
 
     public void SpawnEnemy()
     {
         transform.localPosition = spawnPos;
+        transform.localRotation = spawnRot;
     }
     public void EnemyDead()
     {

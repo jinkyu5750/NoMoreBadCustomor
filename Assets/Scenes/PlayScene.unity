@@ -2942,19 +2942,19 @@ MonoBehaviour:
   - objectName: Platform1
     prefab: {fileID: 4834544435668687298, guid: f21e34ce39a3d564f8d79658403fe5f1, type: 3}
     count: 2
-    returnTime: 20
+    returnTime: 30
   - objectName: Platform2
     prefab: {fileID: 7844552220521088459, guid: a12a698e2dfe0914ba8e52a9123bf852, type: 3}
     count: 2
-    returnTime: 20
+    returnTime: 30
   - objectName: Platform3
     prefab: {fileID: 5510139199481899644, guid: c86aaf95f52f44f46941af02c37f2cd7, type: 3}
     count: 2
-    returnTime: 20
+    returnTime: 30
   - objectName: Receipt
     prefab: {fileID: 6131277764259573781, guid: 96b4525b311f49c49b1d75ab91ebcf65, type: 3}
     count: 20
-    returnTime: 20
+    returnTime: 30
   refillCount: 7
   tfPoolParent: {fileID: 1154305820}
 --- !u!4 &1154305820
