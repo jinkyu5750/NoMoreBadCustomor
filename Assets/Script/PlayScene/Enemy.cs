@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
         transform.localPosition = spawnPos;
         transform.localRotation = spawnRot;
     }
-    public void EnemyDead()
+     public IEnumerator EnemyDead()
     {
 
         //지금 좀 높고 느려 -> addforce힘줄이고 중력높여
@@ -38,7 +39,9 @@ public class Enemy : MonoBehaviour
         // 회전 추가
         rig.angularVelocity = Random.Range(400f, 700f); // 빙글빙글
 
+
         // 일정 시간 후 제거
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
     }
 

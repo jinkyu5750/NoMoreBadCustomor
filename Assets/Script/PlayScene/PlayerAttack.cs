@@ -61,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (isSkill)
         {
-            player.components.rig.gravityScale = 0;    
+            player.components.rig.gravityScale = 0;
             return;
         }
 
@@ -193,7 +193,7 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(3f);
         player.components.ani.SetTrigger("SkillStart");
         GetComponent<GhostEffect>().IsGhostOn = true;
-     
+
         //공격시작
         for (int i = 0; i < 5; i++)
         {
@@ -217,8 +217,8 @@ public class PlayerAttack : MonoBehaviour
             if (enemy == null) break;
 
             Vector3 enemyPos = enemy.transform.position;
-            CalCamAngle (enemyPos); 
-          
+            CalCamAngle(enemyPos);
+
             enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             while (Vector3.Distance(transform.position, enemyPos) > 1f)
@@ -236,11 +236,11 @@ public class PlayerAttack : MonoBehaviour
 
             DoSlowMotion();
             yield return new WaitUntil(() => nextAttack_Skill == true);
-           
+
         }
 
 
-       // 가까운 플랫폼 스폰포인트로... 
+        // 가까운 플랫폼 스폰포인트로... 
         player.components.col.enabled = true;
         player.components.ani.SetBool("SkillOn", false);
         GetComponent<GhostEffect>().IsGhostOn = false;
@@ -315,7 +315,7 @@ public class PlayerAttack : MonoBehaviour
             if (hit != null)
             {
 
-                hit.gameObject.GetComponent<Enemy>().EnemyDead();
+                StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
 
                 CameraManager.instance.ShakeCameraFromProfile(attackProfile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
                 StartCoroutine(CameraManager.instance.ZoomInCam());
