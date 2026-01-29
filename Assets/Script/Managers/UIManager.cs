@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
@@ -20,21 +21,27 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Text skillGageText;
     [SerializeField] private Ease ease;
     [SerializeField] private Text scoreText;
-
+    [SerializeField] private Image skillPanel_Top;
+    [SerializeField] private Image skillPanel_Down;
 
     //로비 씬 내 UI
     [SerializeField] private Button playButton;
-
-    [SerializeField] private Image skillPanel_Top;
-    [SerializeField] private Image skillPanel_Down;
+    [SerializeField] private TextMeshProUGUI receiptPointText;
 
 
     Tweener shakeSkillGage;
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+        }
 
+    }
+
+    private void OnEnable()
+    {
+            SceneManager.sceneLoaded += OnSceneLoaded;
 
     }
     void Start()
@@ -48,6 +55,13 @@ public class UIManager : MonoBehaviour
         menuPanel.gameObject.SetActive(false);
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "LobbyScene")
+        {
+            receiptPointText.text = GameManager.Instance.dataManager.playerData.currencyData.receiptPoint.ToString();
+        }
+    }
 
 
     public void UpdateHPBar(float hp)
@@ -108,7 +122,7 @@ public class UIManager : MonoBehaviour
     public void ResultPanel(bool isActive, bool isRetry = false) // 채찍피티가혼낸점//  아래 중 하나라도 생기면 리팩토링 타이밍이야:
     {                                                                              //  버튼마다 ResultPanel(false, true/false)가 난무한다
         resultPanel.gameObject.SetActive(isActive);                               //  결과창에서 선택지가 3개 이상 된다
-                                                                                  //  네가 if (isActive) 안에 또 if를 넣기 시작한다
+                                                                                 //  네가 if (isActive) 안에 또 if를 넣기 시작한다
         if (isActive)                                                           //  버튼마다 ResultPanel(false, true/false)가 난무한다
         {
             resultPanel.transform.Find("ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
@@ -118,11 +132,11 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            ScoreManager.instance.ResultScore();
             if (isRetry)
                 LoadingManager.instance.LoadScene("PlayScene", true); // 다시하기 // 페이드아웃필요할듯
             else
                 LoadingManager.instance.LoadScene("LobbyScene", true); // 나가기
-
 
         }
 
@@ -143,6 +157,9 @@ public class UIManager : MonoBehaviour
         }
 
     }
+
+
+    
 
 }
 
