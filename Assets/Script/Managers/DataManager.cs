@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class DataManager 
 {
-    public PlayerData playerData { get; private set; } = new PlayerData();
+    public PlayerData playerData { get; private set; }
 
+    public void Init()
+    {
+        playerData = new PlayerData();
+    }
     public void IncreaseReceiptPoint(int point)
     {
         playerData.currencyData.receiptPoint += point;

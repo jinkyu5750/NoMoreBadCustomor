@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
 
     //·Îºñ ¾À ³» UI
     [SerializeField] private Button playButton;
-    [SerializeField] private TextMeshProUGUI receiptPointText;
 
 
     Tweener shakeSkillGage;
@@ -39,11 +38,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private void OnEnable()
-    {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-
-    }
     void Start()
     {
         skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
@@ -55,13 +49,6 @@ public class UIManager : MonoBehaviour
         menuPanel.gameObject.SetActive(false);
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "LobbyScene")
-        {
-            receiptPointText.text = GameManager.Instance.dataManager.playerData.currencyData.receiptPoint.ToString();
-        }
-    }
 
 
     public void UpdateHPBar(float hp)

@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         dataManager = new DataManager();
+        dataManager.Init();
 
     }
 
     private void Update()
     {
-        Debug.Log(dataManager);
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
