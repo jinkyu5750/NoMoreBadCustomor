@@ -1,7 +1,6 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
@@ -26,8 +25,8 @@ public class UIManager : MonoBehaviour
 
     //로비 씬 내 UI
     [SerializeField] private Button playButton;
-
-
+    [SerializeField] private Button shopButton;
+    [SerializeField] private Image shopPanel;
     Tweener shakeSkillGage;
     private void Awake()
     {
@@ -40,11 +39,14 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        shopButton.onClick.AddListener(() => ShopPanel(true));
+
         skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
 
         stopButton.onClick.AddListener(() => MenuPanel(true));
         resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
         resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
+
 
         menuPanel.gameObject.SetActive(false);
     }
@@ -109,7 +111,7 @@ public class UIManager : MonoBehaviour
     public void ResultPanel(bool isActive, bool isRetry = false) // 채찍피티가혼낸점//  아래 중 하나라도 생기면 리팩토링 타이밍이야:
     {                                                                              //  버튼마다 ResultPanel(false, true/false)가 난무한다
         resultPanel.gameObject.SetActive(isActive);                               //  결과창에서 선택지가 3개 이상 된다
-                                                                                 //  네가 if (isActive) 안에 또 if를 넣기 시작한다
+                                                                                  //  네가 if (isActive) 안에 또 if를 넣기 시작한다
         if (isActive)                                                           //  버튼마다 ResultPanel(false, true/false)가 난무한다
         {
             resultPanel.transform.Find("ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
@@ -146,7 +148,25 @@ public class UIManager : MonoBehaviour
     }
 
 
-    
+    public void ShopPanel(bool isActive)
+    {
+        if (isActive && shopPanel.gameObject.activeSelf) return;
+        shopPanel.gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
+            shopPanel.transform.GetChild(0).localScale = new Vector3(1f, 0f, 0f);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1.1f, 0.25f).SetEase(Ease.InExpo));
+            seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1f, 0.1f).SetEase(Ease.InExpo));
+
+            /*  seq.Append(shopPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.1f).SetEase(ease));
+              seq.Append(shopPanel.transform.DOScale(new Vector2(1f, 1f), 0.1f).SetEase(ease));*/
+            seq.Play();
+        }
+
+
+    }
 
 }
 

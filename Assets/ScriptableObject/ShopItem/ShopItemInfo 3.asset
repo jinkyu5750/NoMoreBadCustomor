@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0eb7f346e577db94c85f661493031d9e, type: 3}
-  m_Name: ShopItemInfo 1
+  m_Name: ShopItemInfo 3
   m_EditorClassIdentifier: 
-  image: {fileID: 541390730, guid: 6663a5bf76494514ab7c7937267e7ef1, type: 3}
-  itemName: name1
-  discription: discription1
+  image: {fileID: -1900501636, guid: 6663a5bf76494514ab7c7937267e7ef1, type: 3}
+  itemName: name3
+  discription: discription3
   maxLv: 5
-  price: 0500000000000000
+  price: 08000000220000002e000000

@@ -135,7 +135,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 110, y: -10}
-  m_SizeDelta: {x: 40, y: 60}
+  m_SizeDelta: {x: 60, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5439687754653843520
 CanvasRenderer:
@@ -548,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4586336112615799458, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_Name
-      value: Heart_Amount_Extra_Large
+      value: Price
       objectReference: {fileID: 0}
     - target: {fileID: 5527504314034639143, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_Sprite
