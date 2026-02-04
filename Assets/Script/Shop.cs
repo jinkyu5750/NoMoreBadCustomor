@@ -28,10 +28,10 @@ public class Shop : MonoBehaviour
             GameObject itemList = Instantiate(itemListPrefab);
             itemList.transform.SetParent(itemList_Parent, false);//UI는 false를 해줘야함
 
-            itemList.transform.GetChild(0).GetComponent<Image>().sprite = item.image;
-            itemList.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = item.itemName;
-            itemList.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = item.discription;
-            itemList.transform.GetChild(3).GetComponentInChildren<TextMeshProUGUI>().text = item.price[0].ToString();
+            itemList.transform.GetChild(1).GetComponent<Image>().sprite = item.image;
+            itemList.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = item.itemName;
+            itemList.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = item.discription;
+            itemList.transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text = item.price[0].ToString();
 
 
         }
