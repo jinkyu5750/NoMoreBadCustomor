@@ -1,9 +1,13 @@
 using Cinemachine;
 using System.Collections;
 using UnityEngine;
+using System;
 
+using Random = UnityEngine.Random;
 public class Player_Robby : MonoBehaviour
 {
+   
+    PlayerData p;
     public enum CurDir { Left = -1, Right, Idle }
     private Animator ani;
     private Rigidbody2D rig;
@@ -26,6 +30,8 @@ public class Player_Robby : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera vc;
     private void Start()
     {
+
+        p = GameManager.Instance.dataManager.playerData;
         ani = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
@@ -38,9 +44,9 @@ public class Player_Robby : MonoBehaviour
     private void Update()
     {
 
-   
 
 
+        Debug.Log(p.shopData.purchasedItem.Count);
         if (GameManager.Instance.isGameStarted)
         {
             if (!isRunningStart)

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb7f346e577db94c85f661493031d9e, type: 3}
   m_Name: ShopItemInfo
   m_EditorClassIdentifier: 
+  itemID: 0
   image: {fileID: 1088284764398661387, guid: e0e7ce069059ac948a9924f985a97ba7, type: 3}
-  itemName: Juice
-  discription: abc
+  itemName: "\uB048\uC9C8\uAE34 \uC0DD\uBA85\uB825"
+  discription: "\uC601\uAD6C\uC801\uC73C\uB85C MAXHP\uAC00 \uB9CC\uD07C \uC99D\uAC00\uD569\uB2C8\uB2E4."
   maxLv: 5
   price: 0a000000140000001e0000002800000032000000

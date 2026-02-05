@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0eb7f346e577db94c85f661493031d9e, type: 3}
-  m_Name: ShopItemInfo 3
+  m_Name: ShopItemInfo 4
   m_EditorClassIdentifier: 
-  itemID: 3
-  image: {fileID: -1900501636, guid: 6663a5bf76494514ab7c7937267e7ef1, type: 3}
-  itemName: "\uB354 \uBE68\uB9AC \uB354 \uB9CE\uC774"
-  discription: "\uBAAC\uC2A4\uD130 \uD0C0\uACA9 \uC2DC \uC5BB\uB294 \uC2A4\uD0AC\uAC8C\uC774\uC9C0\uAC00
-    % \uC99D\uAC00\uD569\uB2C8\uB2E4."
-  maxLv: 5
-  price: 08000000220000002e0000002e0000002e000000
+  itemID: 4
+  image: {fileID: 21300000, guid: 881ac2f355e11a84d9d72f90996e7bed, type: 3}
+  itemName: "\uB5A8\uC5B4\uC9C0\uBA74 \uC704\uD5D8\uD574"
+  discription: "\uB099\uD558 \uD53C\uD574\uB97C 1\uD68C \uBB34\uC2DC\uD569\uB2C8\uB2E4."
+  maxLv: 1
+  price: 03000000

@@ -891,5 +891,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 518856600c3145c47a2bc4320497ee9a, type: 2}
   - {fileID: 11400000, guid: a1a8c8a566d66d34b89e08c5d641c199, type: 2}
   - {fileID: 11400000, guid: 07f3fc7897565a9439ffce169f0a30e7, type: 2}
+  - {fileID: 11400000, guid: 055a6b7057a569b4a95f02525ecfa769, type: 2}
   itemListPrefab: {fileID: 187531636905665384, guid: b6b1e49d92d45624aa22b26e2662b12b, type: 3}
   itemList_Parent: {fileID: 0}

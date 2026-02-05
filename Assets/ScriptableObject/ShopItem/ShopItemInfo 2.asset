@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb7f346e577db94c85f661493031d9e, type: 3}
   m_Name: ShopItemInfo 2
   m_EditorClassIdentifier: 
+  itemID: 2
   image: {fileID: -1042129040, guid: 6663a5bf76494514ab7c7937267e7ef1, type: 3}
-  itemName: name2
-  discription: discription2
-  maxLv: 5
+  itemName: "\uC2DC\uACC4 \uAC15\uD654"
+  discription: "\uC2A4\uD0AC \uC0AC\uC6A9\uC2DC \uC5B4\uCA4C\uAD6C\uAC00 n\uD68C
+    \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  maxLv: 3
   price: 030000000700000008000000

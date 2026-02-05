@@ -23,18 +23,28 @@ public class Shop : MonoBehaviour
     public void InitShop()
     {
         foreach (var item in items)
-        {
-            Debug.Log(item.name);
+        { 
             GameObject itemList = Instantiate(itemListPrefab);
             itemList.transform.SetParent(itemList_Parent, false);//UI는 false를 해줘야함
-
-            itemList.transform.GetChild(1).GetComponent<Image>().sprite = item.image;
-            itemList.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = item.itemName;
-            itemList.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = item.discription;
-            itemList.transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text = item.price[0].ToString();
-
-
+            itemList.GetComponent<ShopItemPanel>().InitItemList(item);
         }
 
+    }
+    
+    public void PurchaseItem()
+    {
+        Debug.Log(transform.name);
+        int itemID = transform.parent.parent.GetComponent<ShopItemPanel>().item.itemID; // 해당 패널의 아이템ID찾기
+   
+        foreach(var item in items)
+        {
+            if(item.itemID == itemID)
+            {
+                GameManager.Instance.dataManager.playerData.shopData.AddItem(itemID);
+                break;
+            }
+        }
+
+        Debug.Log("아이템구매실패");
     }
 }
