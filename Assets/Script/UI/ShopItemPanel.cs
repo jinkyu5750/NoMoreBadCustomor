@@ -6,12 +6,16 @@ public class ShopItemPanel : MonoBehaviour
 {
     //패널에 붙을 스크립트
 
+    [SerializeField]
+    private Shop shop;
+
+
     public ShopItemInfo item { get; private set; }
 
-
-    public void InitItemList(ShopItemInfo item)
+    public void InitItemList(Shop shop,ShopItemInfo item)
     {
         this.item = item;
+        this.shop = shop;
         InitShopPanelUI();
 
     }
@@ -22,6 +26,11 @@ public class ShopItemPanel : MonoBehaviour
         transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = item.discription;
         transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text = item.price[0].ToString();
 
+    }
+
+    public void ClickPurchaseButton()
+    {
+        shop.PurchaseItem(item.itemID);
     }
 
 }

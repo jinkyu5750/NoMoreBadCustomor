@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b373e788d9aed7468992252e2963210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shop: {fileID: 0}
 --- !u!1 &263095224830396120
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,18 +654,18 @@ PrefabInstance:
     - target: {fileID: 5933595485056751763, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3925889912211914062, guid: 0733ff7929ff9f8418c1eb90b9b85d9a, type: 3}
+      objectReference: {fileID: 6619827473008611556}
     - target: {fileID: 5933595485056751763, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5933595485056751763, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseItem
+      value: ClickPurchaseButton
       objectReference: {fileID: 0}
     - target: {fileID: 5933595485056751763, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Shop, Assembly-CSharp
+      value: ShopItemPanel, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5933595485056751763, guid: 7bfbfdf01bf401f4289a3521a5660f8b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

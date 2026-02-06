@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -14,7 +12,7 @@ public class Shop : MonoBehaviour
     {
         itemList_Parent = transform.Find("Scroll View/Viewport/Content");
 
-        if (itemList_Parent == null) 
+        if (itemList_Parent == null)
             Debug.Log(" itemList_Parent is NULL ");
         else
             InitShop();
@@ -23,28 +21,38 @@ public class Shop : MonoBehaviour
     public void InitShop()
     {
         foreach (var item in items)
-        { 
+        {
             GameObject itemList = Instantiate(itemListPrefab);
             itemList.transform.SetParent(itemList_Parent, false);//UI는 false를 해줘야함
-            itemList.GetComponent<ShopItemPanel>().InitItemList(item);
+            itemList.GetComponent<ShopItemPanel>().InitItemList(this,item);
         }
 
     }
-    
-    public void PurchaseItem()
+
+    public bool TryPurchase(int itemID)
     {
-        Debug.Log(transform.name);
-        int itemID = transform.parent.parent.GetComponent<ShopItemPanel>().item.itemID; // 해당 패널의 아이템ID찾기
-   
-        foreach(var item in items)
+        int itemIdx = items.FindIndex(x => x.itemID == itemID);
+
+        int itemLv = GameManager.Instance.dataManager.playerData.shopData.purchasedItem[itemID].count;
+        int ownedReceiptPoint = GameManager.Instance.dataManager.playerData.currencyData.receiptPoint;
+
+        if (items[itemIdx].price[itemLv] >ownedReceiptPoint || items[itemIdx].maxLv <= itemLv )
         {
-            if(item.itemID == itemID)
-            {
-                GameManager.Instance.dataManager.playerData.shopData.AddItem(itemID);
-                break;
-            }
+            Debug.Log("돈이모자르거나 맥스레벨임");
+            return false;
+
         }
 
-        Debug.Log("아이템구매실패");
+        return true;
+
+    }
+
+    public void PurchaseItem(int itemID)
+    {
+        TryPurchase(itemID)
+      /*  }
+
+        GameManager.Instance.dataManager.playerData.currencyData.receiptPoint -= items[itemIdx].price[itemLv];
+        GameManager.Instance.dataManager.playerData.shopData.AddItem(itemID);*/
     }
 }
