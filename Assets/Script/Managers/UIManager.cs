@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image menuPanel;
     [SerializeField] private Image resultPanel;
     [SerializeField] private Image skillGage;
-    private Image skillGageBar;
+    [SerializeField] private Image skillGageBar;
     [SerializeField] private Text skillGageText;
     [SerializeField] private Ease ease;
     [SerializeField] private Text scoreText;
@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     //·Îºñ ¾À ³» UI
     [SerializeField] private Button playButton;
     [SerializeField] private Button shopButton;
+    [SerializeField] private TextMeshProUGUI receiptPointText;
     [SerializeField] private Image shopPanel;
     Tweener shakeSkillGage;
     private void Awake()
@@ -147,7 +148,10 @@ public class UIManager : MonoBehaviour
 
     }
 
-
+    public void SetReceiptPointText(string text)
+    {
+        receiptPointText.text = text;  
+    }
     public void ShopPanel(bool isActive)
     {
         if (isActive && shopPanel.gameObject.activeSelf) return;

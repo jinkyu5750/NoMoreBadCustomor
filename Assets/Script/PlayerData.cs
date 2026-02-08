@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.Collections;
 
 [System.Serializable]
 public class PlayerData
@@ -12,39 +11,59 @@ public class PlayerData
 [System.Serializable]
 public class CurrencyData
 {
-    public int receiptPoint;
+    public int receiptPoint { get; private set; } = 300;
+
+    public void AddReceiptPoint(int point)
+    {
+        receiptPoint += point;
+        UIManager.Instance.SetReceiptPointText(receiptPoint.ToString());
+    }
 }
-[System.Serializable]
 public class ShopData
 {
-    public List<ownedItem> purchasedItem = new(); // 리스트를 쓰는 이유?
+    public List<OwnedItem> purchasedItem = new(); // 리스트를 쓰는 이유?
 
 
-    public struct ownedItem
+    public struct OwnedItem
     {
         public int itemID;
-        public int count;
+        public int level;
     }
-
-
-    public void AddItem(int itemID) // 초과구매는 어떡하지? 여기서 처리하려면 itemID가아니라 info를받아야됨
+    private int FindItemIndex(int itemID) => purchasedItem.FindIndex(x => x.itemID == itemID);
+    public int GetItemLevel(int itemID)
     {
-        int idx = purchasedItem.FindIndex(x => x.itemID == itemID);
-        
-        if(idx<0)
+        int idx = FindItemIndex(itemID);
+
+        if (idx < 0)
+            return 0;
+        else
+            return purchasedItem[idx].level;
+    }
+    public int GetValueByLevel(int itemID)
+    {
+        int idx = FindItemIndex(itemID);
+
+        return itemID == 3 ? ((GetItemLevel(itemID) + 1) * 10) / 2 : GetItemLevel(itemID) + 1;
+    }
+    public void AddItem(int itemID)
+    {
+        int idx = FindItemIndex(itemID);
+
+
+        if (idx < 0)
         {
-            purchasedItem.Add(new ownedItem { itemID = itemID ,count =1});
+            purchasedItem.Add(new OwnedItem { itemID = itemID, level = 1 });
         }
         else
         {
-            ownedItem i = purchasedItem[idx];
-            i.count++;
+            OwnedItem i = purchasedItem[idx];
+            i.level++;
             purchasedItem[idx] = i;
         }
-  
+
     }
 }
-[System.Serializable]
+
 public class AchivementData
 {
     public List<string> achivement = new();

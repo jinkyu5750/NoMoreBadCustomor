@@ -7,9 +7,10 @@ public class ShopItemInfo : ScriptableObject
 {
     public int itemID;
 
-    public Sprite image;
+    public AnimationClip clip;
     public string itemName;
     public string discription;
     public int maxLv;
     public int[] price;
+ 
 }

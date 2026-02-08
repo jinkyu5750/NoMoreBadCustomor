@@ -18,4 +18,5 @@ MonoBehaviour:
   discription: "\uAE30\uBCF8\uACF5\uACA9 \uC801\uC911 \uC2DC \uB2E4\uC74C \uD0C0\uAC9F\uC744
     \uCD94\uACA9\uD574 \uACF5\uACA9\uD569\uB2C8\uB2E4."
   maxLv: 1
-  price: 00000000
+  price: 05000000
+  clip: {fileID: 7400000, guid: 6a1ce51c3d0b0b84abb7ee41e901a26e, type: 2}

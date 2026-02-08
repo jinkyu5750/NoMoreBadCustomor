@@ -24,35 +24,48 @@ public class Shop : MonoBehaviour
         {
             GameObject itemList = Instantiate(itemListPrefab);
             itemList.transform.SetParent(itemList_Parent, false);//UI는 false를 해줘야함
-            itemList.GetComponent<ShopItemPanel>().InitItemList(this,item);
+            itemList.GetComponent<ShopItemPanel>().InitItemList(this, item);
         }
 
     }
 
-    public bool TryPurchase(int itemID)
+    public bool TryPurchase(int itemIdx, int itemLv, int ownedReceiptPoint)
     {
-        int itemIdx = items.FindIndex(x => x.itemID == itemID);
 
-        int itemLv = GameManager.Instance.dataManager.playerData.shopData.purchasedItem[itemID].count;
-        int ownedReceiptPoint = GameManager.Instance.dataManager.playerData.currencyData.receiptPoint;
+        /*     if (itemLv >= items[itemIdx].maxLv || items[itemIdx].price[itemLv] > ownedReceiptPoint) //이거.. 맥스일떄 두번째 조건은 OutOfIndex이지만 걍 일케 쓰자 깔끔함
+             {
+                 Debug.Log("맥스레벨이거나 포인트가 부족함");
+                 return false;
+             }*/
 
-        if (items[itemIdx].price[itemLv] >ownedReceiptPoint || items[itemIdx].maxLv <= itemLv )
+        if (itemLv >= items[itemIdx].maxLv)
         {
-            Debug.Log("돈이모자르거나 맥스레벨임");
+            Debug.Log("맥스레벨임");
             return false;
+        }
 
+        if (items[itemIdx].price[itemLv] > ownedReceiptPoint) //그냥 분리함 ㅎㅎ;
+        {
+            Debug.Log("포인트가 부족함");
+            return false;
         }
 
         return true;
 
     }
 
-    public void PurchaseItem(int itemID)
+    public bool PurchaseItem(int itemID)
     {
-        TryPurchase(itemID)
-      /*  }
+        int itemIdx = items.FindIndex(x => x.itemID == itemID);
+        int itemLv = GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(itemID);
+        int ownedReceiptPoint = GameManager.Instance.dataManager.playerData.currencyData.receiptPoint;
 
-        GameManager.Instance.dataManager.playerData.currencyData.receiptPoint -= items[itemIdx].price[itemLv];
-        GameManager.Instance.dataManager.playerData.shopData.AddItem(itemID);*/
+        if (!TryPurchase(itemIdx, itemLv, ownedReceiptPoint))
+            return false;
+
+
+        GameManager.Instance.dataManager.DecreaseReceiptPoint(items[itemIdx].price[itemLv]);
+        GameManager.Instance.dataManager.playerData.shopData.AddItem(itemID);
+        return true;
     }
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   image: {fileID: -1900501636, guid: 6663a5bf76494514ab7c7937267e7ef1, type: 3}
   itemName: "\uB354 \uBE68\uB9AC \uB354 \uB9CE\uC774"
   discription: "\uBAAC\uC2A4\uD130 \uD0C0\uACA9 \uC2DC \uC5BB\uB294 \uC2A4\uD0AC\uAC8C\uC774\uC9C0\uAC00
-    % \uC99D\uAC00\uD569\uB2C8\uB2E4."
+    {0}% \uC99D\uAC00\uD569\uB2C8\uB2E4."
   maxLv: 5
   price: 08000000220000002e0000002e0000002e000000
+  clip: {fileID: 7400000, guid: 8a47c463748c49745bccf1d8a76e2856, type: 2}

@@ -10,9 +10,8 @@ public class DataManager
     {
         playerData = new PlayerData();
     }
-    public void IncreaseReceiptPoint(int point)
-    {
-        playerData.currencyData.receiptPoint += point;
+    public void IncreaseReceiptPoint(int point) => playerData.currencyData.AddReceiptPoint(point);
+   
+    public void DecreaseReceiptPoint(int point) => playerData.currencyData.AddReceiptPoint(-point); 
 
-    }
 }

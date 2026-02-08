@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,10 +10,20 @@ public class ShopItemPanel : MonoBehaviour
     [SerializeField]
     private Shop shop;
 
-
+    int itemLevel = 0;
+    int itemValue = 0;
     public ShopItemInfo item { get; private set; }
 
-    public void InitItemList(Shop shop,ShopItemInfo item)
+    private AnimatorOverrideController controller;
+    private Animator ani;
+    private void Awake()
+    {
+
+        ani = transform.GetChild(1).GetComponent<Animator>();
+        controller = new AnimatorOverrideController(ani.runtimeAnimatorController);
+        ani.runtimeAnimatorController = controller;
+    }
+    public void InitItemList(Shop shop, ShopItemInfo item)
     {
         this.item = item;
         this.shop = shop;
@@ -21,16 +32,26 @@ public class ShopItemPanel : MonoBehaviour
     }
     public void InitShopPanelUI()
     {
-        transform.GetChild(1).GetComponent<Image>().sprite = item.image;
+
+
+        itemLevel = GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(item.itemID);
+        if (itemLevel < item.maxLv)
+            itemValue = GameManager.Instance.dataManager.playerData.shopData.GetValueByLevel(item.itemID);
+
+
+        controller["ShopPanelAnimationClip"] = item.clip;
         transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = item.itemName;
-        transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = item.discription;
-        transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text = item.price[0].ToString();
+        transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = string.Format(item.discription, itemValue);
+        transform.GetChild(4).GetComponentInChildren<TextMeshProUGUI>().text = itemLevel == item.maxLv ? "-" : item.price[itemLevel].ToString();
+        transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = itemLevel == item.maxLv ? "Lv.MAX" : $"Lv.{itemLevel} > Lv.{itemLevel + 1}";
+
 
     }
 
     public void ClickPurchaseButton()
     {
-        shop.PurchaseItem(item.itemID);
+        if (shop.PurchaseItem(item.itemID))
+            InitShopPanelUI();
     }
 
 }
