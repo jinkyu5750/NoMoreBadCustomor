@@ -17,6 +17,7 @@ public class PlayerHitDead : MonoBehaviour
 
     private void Start()
     {
+        life_Max += GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(0);
         life = life_Max;
     }
     private void Update()

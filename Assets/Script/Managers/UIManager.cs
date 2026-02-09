@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     //ÇÃ·¹ÀÌ ¾À ³» UI
+    [Header("PlayScene UI")]
     [SerializeField] private Image hpBar;
     [SerializeField] private Button stopButton;
     [SerializeField] private Button resultExitButton;
@@ -16,19 +18,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image menuPanel;
     [SerializeField] private Image resultPanel;
     [SerializeField] private Image skillGage;
-    [SerializeField] private Image skillGageBar;
-    [SerializeField] private Text skillGageText;
+     private Image skillGageBar;
+     private TextMeshProUGUI skillGageText;
     [SerializeField] private Ease ease;
-    [SerializeField] private Text scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Image skillPanel_Top;
     [SerializeField] private Image skillPanel_Down;
 
     //·Îºñ ¾À ³» UI
+    [Header("LobbyScene UI")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button shopButton;
     [SerializeField] private TextMeshProUGUI receiptPointText;
     [SerializeField] private Image shopPanel;
-    Tweener shakeSkillGage;
     private void Awake()
     {
         if (Instance == null)
@@ -40,16 +42,20 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        shopButton.onClick.AddListener(() => ShopPanel(true));
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name.Equals("LobbyScene"))
+         shopButton.onClick.AddListener(() => ShopPanel(true));
+        else if (scene.name.Equals("PlayScene"))
+        {
+            skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
+            skillGageText = skillGage.transform.Find("SkillGageText").GetComponent<TextMeshProUGUI>();
+            stopButton.onClick.AddListener(() => MenuPanel(true));
+            resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
+            resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
 
-        skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
 
-        stopButton.onClick.AddListener(() => MenuPanel(true));
-        resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
-        resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
-
-
-        menuPanel.gameObject.SetActive(false);
+            menuPanel.gameObject.SetActive(false);
+        }
     }
 
 
@@ -150,7 +156,7 @@ public class UIManager : MonoBehaviour
 
     public void SetReceiptPointText(string text)
     {
-        receiptPointText.text = text;  
+        receiptPointText.text = text;
     }
     public void ShopPanel(bool isActive)
     {

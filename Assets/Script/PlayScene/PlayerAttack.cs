@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     private float skillGage = 0;
     private bool isSkill = false;
     private bool nextAttack_Skill = false;
-
+    private int skillattackCount = 3;
     public float slowFactor = 0.05f;
     public float slowLength = 1f;
     public void InitPlayer(Player player)
@@ -162,7 +162,10 @@ public class PlayerAttack : MonoBehaviour
     {
         if (isSkill) return;
 
-        skillGage += 925 + Random.Range(-3, 5); // 100까지 대략 6~7회
+        // 5에 몇퍼센트를 하나.. 미미한디
+     //   skillGage += 5 + (5 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); // 100까지 대략 6~7회
+        skillGage += 134 + Random.Range(-3, 5); // 100까지 대략 6~7회
+
         UIManager.Instance.UpdateSkillGage(skillGage);
 
     }
@@ -178,7 +181,7 @@ public class PlayerAttack : MonoBehaviour
         isSkill = true;
         canAttack = false;
         skillGage = 0;
-
+        skillattackCount += GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
         UIManager.Instance.MoveSkillPanel(true);
@@ -195,7 +198,7 @@ public class PlayerAttack : MonoBehaviour
         GetComponent<GhostEffect>().IsGhostOn = true;
 
         //공격시작
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < skillattackCount; i++)
         {
             nextAttack_Skill = false;
             GetComponent<GhostEffect>().SetDelay("SkillDash");
