@@ -4008,10 +4008,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6449399867920517294, guid: c63c309ffb9a6714a84b9d32a3ddbe5c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -5672211134023771152, guid: 3bdb4e0bf899fb14b884c556a7b06c25, type: 3}
     - target: {fileID: 9219486083021577452, guid: c63c309ffb9a6714a84b9d32a3ddbe5c, type: 3}
       propertyPath: m_Name
       value: Stop
@@ -4160,11 +4156,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621982760421065194, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 400
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4621982760421065194, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 4621982760421065194, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4196,11 +4192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621982760421065194, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4621982760421065194, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 4621982760421065194, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4214,6 +4210,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5115237558606720666, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
+      propertyPath: m_text
+      value: 234
+      objectReference: {fileID: 0}
+    - target: {fileID: 6366435302661237277, guid: 4ae0b8c14fab9ae4a82aaab51aaa8cbf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 720801503551729043, guid: bb618f1427ec10c41adb99a9b07a168e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
