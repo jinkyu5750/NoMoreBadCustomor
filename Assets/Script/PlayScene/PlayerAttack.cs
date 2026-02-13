@@ -8,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
 
     private Player player;
 
-    public enum attack { Dash = 1, Upper, Lower }
-    private attack curAttack;
+    public enum attack { Dash = 1, Upper, Lower, Skill, Additional }
+    [SerializeField] private attack curAttack;
     [SerializeField] private bool _canAttack = true;
     public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
@@ -38,6 +38,8 @@ public class PlayerAttack : MonoBehaviour
     private int skillattackCount = 3;
     public float slowFactor = 0.05f;
     public float slowLength = 1f;
+
+    private bool canAdditionalAttack = false;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -67,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (player.components.rig.velocity.y < 0f)
         {
-            if (curAttack == attack.Dash)
+            if (curAttack == attack.Dash || curAttack == attack.Additional)
                 player.components.rig.gravityScale = 0;
             else
                 player.components.rig.gravityScale = gravityScale;
@@ -163,11 +165,29 @@ public class PlayerAttack : MonoBehaviour
         if (isSkill) return;
 
         // 5에 몇퍼센트를 하나.. 미미한디
-     //   skillGage += 5 + (5 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); // 100까지 대략 6~7회
+        //   skillGage += 5 + (5 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); // 100까지 대략 6~7회
         skillGage += 134 + Random.Range(-3, 5); // 100까지 대략 6~7회
 
         UIManager.Instance.UpdateSkillGage(skillGage);
 
+    }
+
+    public Collider2D GetClosestEnemy()
+    {
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0), 0, LayerMask.GetMask("Enemy"));// 몹감지
+        Collider2D enemy = null;
+        float minDistance = float.MaxValue;
+        foreach (Collider2D c in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, c.transform.position);
+            if (distance < minDistance)
+            {
+                enemy = c;
+                minDistance = distance;
+            }
+        }
+
+        return enemy;
     }
 
     public void UseSkill_Button()
@@ -178,8 +198,9 @@ public class PlayerAttack : MonoBehaviour
     {
         if (skillGage < 100 || !player.components.ani.GetBool("IsGround") || !canAttack) yield break;
 
+        curAttack = attack.Skill;
         isSkill = true;
-        canAttack = false;
+        SetCanAttack(0);
         skillGage = 0;
         skillattackCount += GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
         UIManager.Instance.UpdateSkillGage(0);
@@ -204,25 +225,14 @@ public class PlayerAttack : MonoBehaviour
             GetComponent<GhostEffect>().SetDelay("SkillDash");
             int skillNum = Random.Range(1, 6);
 
-            Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0), 0, LayerMask.GetMask("Enemy"));// 몹감지
-            Collider2D enemy = null;
-            float minDistance = float.MaxValue;
-            foreach (Collider2D c in enemies)
-            {
-                float distance = Vector3.Distance(transform.position, c.transform.position);
-                if (distance < minDistance)
-                {
-                    enemy = c;
-                    minDistance = distance;
-                }
-            }
 
+            Collider2D enemy = GetClosestEnemy();
             if (enemy == null) break;
 
             Vector3 enemyPos = enemy.transform.position;
+            enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             CalCamAngle(enemyPos);
 
-            enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             while (Vector3.Distance(transform.position, enemyPos) > 1f)
             {
@@ -270,6 +280,32 @@ public class PlayerAttack : MonoBehaviour
     #endregion 스킬종료 후 착지 어케해야할까.. 끝에 바닥에 떨어지는걸.. 어카지
 
 
+    public IEnumerator AdditionalAttack()
+    {
+
+        if (!canAttack || !canAdditionalAttack) yield break;
+        SetCanAttack(0);
+
+        curAttack = attack.Additional;
+
+        Collider2D enemy = GetClosestEnemy();
+        Vector3 enemyPos = enemy.transform.position;
+
+        player.components.ani.SetInteger("AdditionalAttack", 1); // 추격
+        player.components.col.enabled = false;
+
+        while (Vector3.Distance(transform.position, enemyPos) > 1f)
+        {
+            player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
+            yield return null;
+        }
+        player.components.rig.velocity = Vector3.zero;
+
+        player.components.ani.SetInteger("AdditionalAttack", 2); // 공격
+        canAdditionalAttack = false;
+        curAttack = 0;
+
+    }
     #region 타격을 위한 메소드(히트박스) // 애니메이션 이벤트 
     public void AttackAniEvent(string attackDir)
     {
@@ -294,6 +330,12 @@ public class PlayerAttack : MonoBehaviour
                 break;
             case "Skill":
                 StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize + new Vector2(5, 5), 0.3f));
+                break;
+            case "AdditionalAttack":
+                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
+                player.components.ani.SetInteger("AdditionalAttack", 0);
+                player.components.rig.gravityScale = g;
+                player.components.col.enabled = true;
                 break;
 
         }
@@ -328,6 +370,9 @@ public class PlayerAttack : MonoBehaviour
 
                 GaneSkillGage();
                 ScoreManager.instance.MonsterScore(isSkill);
+
+                if (curAttack != attack.Skill || curAttack != attack.Additional)
+                    canAdditionalAttack = true;
             }
 
             elapsed += Time.deltaTime;
@@ -350,7 +395,7 @@ public class PlayerAttack : MonoBehaviour
         this.canAttack = canAttack == 1;
     }
 
-    public void SetCurAttack() // DashAttack 애니메이션이벤트용
+    public void SetCurAttack() // DashAttack은 0으로 안해주면 공중에서 쭉 중력0됨
     {
         curAttack = 0;
     }
