@@ -804,6 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246f709ce5cd5ca45b61b611df216c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemTestMode: 1
 --- !u!4 &209682105
 Transform:
   m_ObjectHideFlags: 0
@@ -3840,6 +3841,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 678385329}
     - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: a
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
       propertyPath: g
       value: 1.3
       objectReference: {fileID: 0}
@@ -3879,6 +3884,10 @@ PrefabInstance:
       propertyPath: groundSlamProfile
       value: 
       objectReference: {fileID: 11400000, guid: d1a8429e0b5015e4096e36ca864736f7, type: 2}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: additionalAttackProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 863272965d7acd64b9d447e0f34ace14, type: 2}
     - target: {fileID: 7581354871797196105, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
       propertyPath: m_Name
       value: PlayerPrefeb

@@ -62,6 +62,19 @@ public class ShopData
         }
 
     }
+
+    public void AddItem_TestMode()
+    {
+
+        purchasedItem.Add(new OwnedItem { itemID = 0, level = 3 });
+        purchasedItem.Add(new OwnedItem { itemID = 1, level = 1 });
+        purchasedItem.Add(new OwnedItem { itemID = 2, level = 3 });
+        purchasedItem.Add(new OwnedItem { itemID = 3, level = 5 });
+        purchasedItem.Add(new OwnedItem { itemID = 4, level = 1 });
+
+
+
+    }
 }
 
 public class AchivementData

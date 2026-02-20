@@ -13,6 +13,7 @@ public class PlayerHitDead : MonoBehaviour
     public int life { get { return _life; } private set { _life = value; } }
     public bool isDead { get; private set; } = false;
 
+    bool oneMoreLife = true;
 
 
     private void Start()
@@ -65,6 +66,26 @@ public class PlayerHitDead : MonoBehaviour
     {
         //  if (hitCurTime > 0) yield break; // ¸Â¾Æ¼­ Æ¨°ÜÁ®³ª°¬À»¶§ Ã³¸®ÇØ¾ßµÅ
 
+        if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(4) == 1 && oneMoreLife )
+        {
+
+            oneMoreLife = false;
+
+            player.components.rig.velocity = Vector3.zero;
+
+            player.components.col.enabled = false;
+            player.components.ani.SetBool("Spin", true);
+            player.components.rig.velocity = Vector3.up*17;
+
+            yield return new WaitForSeconds(1.5f);
+            player.components.col.enabled = true;
+            player.components.ani.SetBool("Spin", false);
+            player.components.rig.velocity = new Vector2(1, 0) * player.runSpeed;
+
+            yield break;
+        }
+
+
         hitCurTime = hitCoolTime;
 
         GetComponent<PlayerAttack>().HitDuringDash();
@@ -87,7 +108,7 @@ public class PlayerHitDead : MonoBehaviour
     public IEnumerator Dead()
     {
         isDead = true;
-        player.components.ani.SetBool("Dead",true);
+        player.components.ani.SetBool("Dead", true);
         yield return new WaitForSeconds(1f);
         UIManager.Instance.ResultPanel(true);
     }

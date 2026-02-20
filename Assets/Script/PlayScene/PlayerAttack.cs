@@ -28,8 +28,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] CameraShakeProfile attackProfile;
     [SerializeField] CameraShakeProfile groundSlamProfile;
-    private CinemachineImpulseSource impulseSource;
+    [SerializeField] CameraShakeProfile additionalAttackProfile;
 
+    private CinemachineImpulseSource impulseSource;
 
     [SerializeField] CinemachineVirtualCamera skillCam;
     private float skillGage = 0;
@@ -52,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-
 
         if (Time.timeScale >= slowFactor) // Time.timeScale이 slowFactor 이상인 경우 즉, 슬로우모션적용 시 // 때문에 timeScale을 0으로 맞추는건 영향 안갈듯
         {
@@ -190,6 +190,16 @@ public class PlayerAttack : MonoBehaviour
         return enemy;
     }
 
+    public Vector3 GetEnemyPos(Collider2D enemy)
+    {
+        if (enemy == null) return Vector3.zero;
+
+        SpriteRenderer enemySp = enemy.GetComponent<SpriteRenderer>();
+        float x = enemySp.bounds.min.x;
+        float y = enemySp.bounds.center.y - 0.5f;
+
+        return new Vector3(x, y, 0);
+    }
     public void UseSkill_Button()
     {
         StartCoroutine(UseSkill());
@@ -229,7 +239,7 @@ public class PlayerAttack : MonoBehaviour
             Collider2D enemy = GetClosestEnemy();
             if (enemy == null) break;
 
-            Vector3 enemyPos = enemy.transform.position;
+            Vector3 enemyPos = GetEnemyPos(enemy);
             enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             CalCamAngle(enemyPos);
 
@@ -282,14 +292,17 @@ public class PlayerAttack : MonoBehaviour
 
     public IEnumerator AdditionalAttack()
     {
-
-        if (!canAttack || !canAdditionalAttack) yield break;
-        SetCanAttack(0);
-
-        curAttack = attack.Additional;
-
         Collider2D enemy = GetClosestEnemy();
-        Vector3 enemyPos = enemy.transform.position;
+        Vector3 enemyPos = GetEnemyPos(enemy);
+
+        if (!canAttack || !canAdditionalAttack || enemy == null)
+        {
+            canAdditionalAttack = false;
+            yield break;
+        }
+
+        SetCanAttack(0);
+        curAttack = attack.Additional;
 
         player.components.ani.SetInteger("AdditionalAttack", 1); // 추격
         player.components.col.enabled = false;
@@ -302,8 +315,6 @@ public class PlayerAttack : MonoBehaviour
         player.components.rig.velocity = Vector3.zero;
 
         player.components.ani.SetInteger("AdditionalAttack", 2); // 공격
-        canAdditionalAttack = false;
-        curAttack = 0;
 
     }
     #region 타격을 위한 메소드(히트박스) // 애니메이션 이벤트 
@@ -362,8 +373,15 @@ public class PlayerAttack : MonoBehaviour
 
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
 
-                CameraManager.instance.ShakeCameraFromProfile(attackProfile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
-                StartCoroutine(CameraManager.instance.ZoomInCam());
+                CameraShakeProfile profile;
+
+                if (curAttack < attack.Skill)
+                    profile = attackProfile;
+                else
+                    profile = additionalAttackProfile;
+               
+                CameraManager.instance.ShakeCameraFromProfile(profile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
+         //       StartCoroutine(CameraManager.instance.ZoomInCam());
 
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
@@ -371,8 +389,22 @@ public class PlayerAttack : MonoBehaviour
                 GaneSkillGage();
                 ScoreManager.instance.MonsterScore(isSkill);
 
-                if (curAttack != attack.Skill || curAttack != attack.Additional)
-                    canAdditionalAttack = true;
+
+                if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(1) == 1)
+                {
+                    if (curAttack < attack.Skill)
+                    {
+                        //트랜지션문제는 트랜지션설정에서 해결하자~
+
+                        canAdditionalAttack = true;
+
+                    }
+                    else if (curAttack == attack.Additional)
+                    {
+                        canAdditionalAttack = false;
+                        curAttack = 0;
+                    }
+                }
             }
 
             elapsed += Time.deltaTime;

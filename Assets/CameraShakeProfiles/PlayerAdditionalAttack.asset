@@ -10,37 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5036c944d2aa33b44af3df7354e232b1, type: 3}
-  m_Name: PlayerAttack
+  m_Name: PlayerAdditionalAttack
   m_EditorClassIdentifier: 
-  impulseForce: 0.8
-  impulseTime: 0.12
-  defaultVelocity: {x: -0.3, y: 0.3, z: 0}
+  impulseForce: 1
+  impulseTime: 0.15
+  defaultVelocity: {x: -0.5, y: 0.3, z: 0}
   impulseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.042625427
-      value: 0.9976883
-      inSlope: -0.5331241
-      outSlope: -0.5331241
+      time: -0.004406359
+      value: 1.0100374
+      inSlope: -0.48661625
+      outSlope: -0.48661625
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.2839819
-      value: 0.33589125
-      inSlope: -0.52138066
-      outSlope: -0.52138066
+      time: 1.4420357
+      value: 0.30617523
+      inSlope: -0.46379817
+      outSlope: -0.46379817
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1.9874561
-      value: -0.022625312
-      inSlope: -0.5096372
-      outSlope: -0.5096372
+      time: 2.1158144
+      value: 0.009052247
+      inSlope: -0.44098005
+      outSlope: -0.44098005
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -48,6 +48,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  listenerAmplitude: 1
-  listenerFrequncy: 1.8
+  listenerAmplitude: 3
+  listenerFrequncy: 1.2
   listenerDuration: 0.5

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public bool isGameStarted { get; private set; } = false;
     public bool canLoadPlayScene { get; private set; } = false;
 
-
+    public bool itemTestMode;
     private void Awake()
     {
         if (Instance == null)
@@ -29,8 +29,12 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Update()
+    private void Start()
     {
+        if(itemTestMode)
+        {
+            dataManager.playerData.shopData.AddItem_TestMode();
+        }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
