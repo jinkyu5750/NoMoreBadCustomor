@@ -32,4 +32,9 @@ public class ScoreManager : MonoBehaviour
         UIManager.Instance.UpdateScore(score);
     }
     //잡템스코어
+
+    public void ResultScore()
+    {
+        GameManager.Instance.dataManager.IncreaseReceiptPoint(score);
+    }
 }

@@ -34,8 +34,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: c727b806c7498f349a0716a021128159, type: 3}
     - time: 0.5
       value: {fileID: 21300000, guid: a7e395a92c2e7a34a9287aed5e24052c, type: 3}
-    - time: 0.5833333
-      value: {fileID: 21300000, guid: 8efc63bcced63b04281bcb2b8d8c1ea7, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -65,13 +63,12 @@ AnimationClip:
     - {fileID: 21300000, guid: 248f2223306c93347b856c1b28c7fe9e, type: 3}
     - {fileID: 21300000, guid: c727b806c7498f349a0716a021128159, type: 3}
     - {fileID: 21300000, guid: a7e395a92c2e7a34a9287aed5e24052c, type: 3}
-    - {fileID: 21300000, guid: 8efc63bcced63b04281bcb2b8d8c1ea7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666666
+    m_StopTime: 0.5833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -93,14 +90,7 @@ AnimationClip:
   m_Events:
   - time: 0.25
     functionName: AttackAniEvent
-    data: Skill
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.5833333
-    functionName: SetnextAttack_Skill
-    data: 
+    data: AdditionalAttack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

@@ -8,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
 
     private Player player;
 
-    public enum attack { Dash = 1, Upper, Lower }
-    private attack curAttack;
+    public enum attack { Dash = 1, Upper, Lower, Skill, Additional }
+    [SerializeField] private attack curAttack;
     [SerializeField] private bool _canAttack = true;
     public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
@@ -28,16 +28,19 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] CameraShakeProfile attackProfile;
     [SerializeField] CameraShakeProfile groundSlamProfile;
-    private CinemachineImpulseSource impulseSource;
+    [SerializeField] CameraShakeProfile additionalAttackProfile;
 
+    private CinemachineImpulseSource impulseSource;
 
     [SerializeField] CinemachineVirtualCamera skillCam;
     private float skillGage = 0;
     private bool isSkill = false;
     private bool nextAttack_Skill = false;
-
+    private int skillattackCount = 3;
     public float slowFactor = 0.05f;
     public float slowLength = 1f;
+
+    private bool canAdditionalAttack = false;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -50,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-
 
         if (Time.timeScale >= slowFactor) // Time.timeScale이 slowFactor 이상인 경우 즉, 슬로우모션적용 시 // 때문에 timeScale을 0으로 맞추는건 영향 안갈듯
         {
@@ -67,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (player.components.rig.velocity.y < 0f)
         {
-            if (curAttack == attack.Dash)
+            if (curAttack == attack.Dash || curAttack == attack.Additional)
                 player.components.rig.gravityScale = 0;
             else
                 player.components.rig.gravityScale = gravityScale;
@@ -162,11 +164,42 @@ public class PlayerAttack : MonoBehaviour
     {
         if (isSkill) return;
 
-        skillGage += 925 + Random.Range(-3, 5); // 100까지 대략 6~7회
+        // 5에 몇퍼센트를 하나.. 미미한디
+        //   skillGage += 5 + (5 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); // 100까지 대략 6~7회
+        skillGage += 134 + Random.Range(-3, 5); // 100까지 대략 6~7회
+
         UIManager.Instance.UpdateSkillGage(skillGage);
 
     }
 
+    public Collider2D GetClosestEnemy()
+    {
+        Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0), 0, LayerMask.GetMask("Enemy"));// 몹감지
+        Collider2D enemy = null;
+        float minDistance = float.MaxValue;
+        foreach (Collider2D c in enemies)
+        {
+            float distance = Vector3.Distance(transform.position, c.transform.position);
+            if (distance < minDistance)
+            {
+                enemy = c;
+                minDistance = distance;
+            }
+        }
+
+        return enemy;
+    }
+
+    public Vector3 GetEnemyPos(Collider2D enemy)
+    {
+        if (enemy == null) return Vector3.zero;
+
+        SpriteRenderer enemySp = enemy.GetComponent<SpriteRenderer>();
+        float x = enemySp.bounds.min.x;
+        float y = enemySp.bounds.center.y - 0.5f;
+
+        return new Vector3(x, y, 0);
+    }
     public void UseSkill_Button()
     {
         StartCoroutine(UseSkill());
@@ -175,10 +208,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if (skillGage < 100 || !player.components.ani.GetBool("IsGround") || !canAttack) yield break;
 
+        curAttack = attack.Skill;
         isSkill = true;
-        canAttack = false;
+        SetCanAttack(0);
         skillGage = 0;
-
+        skillattackCount += GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
         UIManager.Instance.MoveSkillPanel(true);
@@ -195,31 +229,20 @@ public class PlayerAttack : MonoBehaviour
         GetComponent<GhostEffect>().IsGhostOn = true;
 
         //공격시작
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < skillattackCount; i++)
         {
             nextAttack_Skill = false;
             GetComponent<GhostEffect>().SetDelay("SkillDash");
             int skillNum = Random.Range(1, 6);
 
-            Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0), 0, LayerMask.GetMask("Enemy"));// 몹감지
-            Collider2D enemy = null;
-            float minDistance = float.MaxValue;
-            foreach (Collider2D c in enemies)
-            {
-                float distance = Vector3.Distance(transform.position, c.transform.position);
-                if (distance < minDistance)
-                {
-                    enemy = c;
-                    minDistance = distance;
-                }
-            }
 
+            Collider2D enemy = GetClosestEnemy();
             if (enemy == null) break;
 
-            Vector3 enemyPos = enemy.transform.position;
+            Vector3 enemyPos = GetEnemyPos(enemy);
+            enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             CalCamAngle(enemyPos);
 
-            enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             while (Vector3.Distance(transform.position, enemyPos) > 1f)
             {
@@ -267,6 +290,33 @@ public class PlayerAttack : MonoBehaviour
     #endregion 스킬종료 후 착지 어케해야할까.. 끝에 바닥에 떨어지는걸.. 어카지
 
 
+    public IEnumerator AdditionalAttack()
+    {
+        Collider2D enemy = GetClosestEnemy();
+        Vector3 enemyPos = GetEnemyPos(enemy);
+
+        if (!canAttack || !canAdditionalAttack || enemy == null)
+        {
+            canAdditionalAttack = false;
+            yield break;
+        }
+
+        SetCanAttack(0);
+        curAttack = attack.Additional;
+
+        player.components.ani.SetInteger("AdditionalAttack", 1); // 추격
+        player.components.col.enabled = false;
+
+        while (Vector3.Distance(transform.position, enemyPos) > 1f)
+        {
+            player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
+            yield return null;
+        }
+        player.components.rig.velocity = Vector3.zero;
+
+        player.components.ani.SetInteger("AdditionalAttack", 2); // 공격
+
+    }
     #region 타격을 위한 메소드(히트박스) // 애니메이션 이벤트 
     public void AttackAniEvent(string attackDir)
     {
@@ -291,6 +341,12 @@ public class PlayerAttack : MonoBehaviour
                 break;
             case "Skill":
                 StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize + new Vector2(5, 5), 0.3f));
+                break;
+            case "AdditionalAttack":
+                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
+                player.components.ani.SetInteger("AdditionalAttack", 0);
+                player.components.rig.gravityScale = g;
+                player.components.col.enabled = true;
                 break;
 
         }
@@ -317,14 +373,38 @@ public class PlayerAttack : MonoBehaviour
 
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
 
-                CameraManager.instance.ShakeCameraFromProfile(attackProfile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
-                StartCoroutine(CameraManager.instance.ZoomInCam());
+                CameraShakeProfile profile;
+
+                if (curAttack < attack.Skill)
+                    profile = attackProfile;
+                else
+                    profile = additionalAttackProfile;
+               
+                CameraManager.instance.ShakeCameraFromProfile(profile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
+         //       StartCoroutine(CameraManager.instance.ZoomInCam());
 
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
 
                 GaneSkillGage();
                 ScoreManager.instance.MonsterScore(isSkill);
+
+
+                if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(1) == 1)
+                {
+                    if (curAttack < attack.Skill)
+                    {
+                        //트랜지션문제는 트랜지션설정에서 해결하자~
+
+                        canAdditionalAttack = true;
+
+                    }
+                    else if (curAttack == attack.Additional)
+                    {
+                        canAdditionalAttack = false;
+                        curAttack = 0;
+                    }
+                }
             }
 
             elapsed += Time.deltaTime;
@@ -347,7 +427,7 @@ public class PlayerAttack : MonoBehaviour
         this.canAttack = canAttack == 1;
     }
 
-    public void SetCurAttack() // DashAttack 애니메이션이벤트용
+    public void SetCurAttack() // DashAttack은 0으로 안해주면 공중에서 쭉 중력0됨
     {
         curAttack = 0;
     }

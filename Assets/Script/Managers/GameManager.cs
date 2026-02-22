@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using NUnit.Framework.Constraints;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
- 
+
     public static GameManager Instance;
 
+    public DataManager dataManager;
     public bool isGameStarted { get; private set; } = false;
     public bool canLoadPlayScene { get; private set; } = false;
 
+    public bool itemTestMode;
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
@@ -21,11 +23,18 @@ public class GameManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+        dataManager = new DataManager();
+        dataManager.Init();
+
     }
 
-    private void Update()
+    private void Start()
     {
-        
+        if(itemTestMode)
+        {
+            dataManager.playerData.shopData.AddItem_TestMode();
+        }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
@@ -45,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadGame()
     {
-        if(canLoadPlayScene) return;
+        if (canLoadPlayScene) return;
 
         canLoadPlayScene = true;
         LoadingManager.instance.LoadScene("PlayScene", false);

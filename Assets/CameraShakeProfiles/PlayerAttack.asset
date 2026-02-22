@@ -12,33 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5036c944d2aa33b44af3df7354e232b1, type: 3}
   m_Name: PlayerAttack
   m_EditorClassIdentifier: 
-  impulseForce: 1
-  impulseTime: 0.2
-  defaultVelocity: {x: -0.5, y: 0.5, z: 0}
+  impulseForce: 0.8
+  impulseTime: 0.12
+  defaultVelocity: {x: -0.3, y: 0.3, z: 0}
   impulseCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      time: 0.042625427
+      value: 0.9976883
+      inSlope: -0.5331241
+      outSlope: -0.5331241
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
+      time: 1.2839819
+      value: 0.33589125
+      inSlope: -0.52138066
+      outSlope: -0.52138066
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.9874561
+      value: -0.022625312
+      inSlope: -0.5096372
+      outSlope: -0.5096372
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
-    m_PostInfinity: 2
+    m_PostInfinity: 0
     m_RotationOrder: 4
-  listenerAmplitude: 3
-  listenerFrequncy: 4
+  listenerAmplitude: 1
+  listenerFrequncy: 1.8
   listenerDuration: 0.5

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb7f346e577db94c85f661493031d9e, type: 3}
+  m_Name: ShopItemInfo 4
+  m_EditorClassIdentifier: 
+  itemID: 4
+  clip: {fileID: 7400000, guid: 8049e0c6446a66a498daf1dfe1c7413f, type: 2}
+  itemName: "\uB5A8\uC5B4\uC9C0\uBA74 \uC704\uD5D8\uD574"
+  discription: "\uB099\uD558 \uD53C\uD574\uB97C 1\uD68C \uBB34\uC2DC\uD569\uB2C8\uB2E4."
+  maxLv: 1
+  price: 03000000

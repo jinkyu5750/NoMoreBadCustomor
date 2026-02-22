@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     //플레이 씬 내 UI
+    [Header("PlayScene UI")]
     [SerializeField] private Image hpBar;
     [SerializeField] private Button stopButton;
     [SerializeField] private Button resultExitButton;
@@ -16,36 +18,44 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image menuPanel;
     [SerializeField] private Image resultPanel;
     [SerializeField] private Image skillGage;
-    private Image skillGageBar;
-    [SerializeField] private Text skillGageText;
+     private Image skillGageBar;
+     private TextMeshProUGUI skillGageText;
     [SerializeField] private Ease ease;
-    [SerializeField] private Text scoreText;
-
-
-    //로비 씬 내 UI
-    [SerializeField] private Button playButton;
-
+    [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Image skillPanel_Top;
     [SerializeField] private Image skillPanel_Down;
 
-
-    Tweener shakeSkillGage;
+    //로비 씬 내 UI
+    [Header("LobbyScene UI")]
+    [SerializeField] private Button playButton;
+    [SerializeField] private Button shopButton;
+    [SerializeField] private TextMeshProUGUI receiptPointText;
+    [SerializeField] private Image shopPanel;
     private void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
-
+        }
 
     }
+
     void Start()
     {
-        skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name.Equals("LobbyScene"))
+         shopButton.onClick.AddListener(() => ShopPanel(true));
+        else if (scene.name.Equals("PlayScene"))
+        {
+            skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
+            skillGageText = skillGage.transform.Find("SkillGageText").GetComponent<TextMeshProUGUI>();
+            stopButton.onClick.AddListener(() => MenuPanel(true));
+            resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
+            resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
 
-        stopButton.onClick.AddListener(() => MenuPanel(true));
-        resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
-        resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
 
-        menuPanel.gameObject.SetActive(false);
+            menuPanel.gameObject.SetActive(false);
+        }
     }
 
 
@@ -118,11 +128,11 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            ScoreManager.instance.ResultScore();
             if (isRetry)
                 LoadingManager.instance.LoadScene("PlayScene", true); // 다시하기 // 페이드아웃필요할듯
             else
                 LoadingManager.instance.LoadScene("LobbyScene", true); // 나가기
-
 
         }
 
@@ -141,6 +151,30 @@ public class UIManager : MonoBehaviour
             skillPanel_Top.rectTransform.DOAnchorPosY(300f, 0.5f).SetEase(ease);
             skillPanel_Down.rectTransform.DOAnchorPosY(-300f, 0.5f).SetEase(ease);
         }
+
+    }
+
+    public void SetReceiptPointText(string text)
+    {
+        receiptPointText.text = text;
+    }
+    public void ShopPanel(bool isActive)
+    {
+        if (isActive && shopPanel.gameObject.activeSelf) return;
+        shopPanel.gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
+            shopPanel.transform.GetChild(0).localScale = new Vector3(1f, 0f, 0f);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1.1f, 0.25f).SetEase(Ease.InExpo));
+            seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1f, 0.1f).SetEase(Ease.InExpo));
+
+            /*  seq.Append(shopPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.1f).SetEase(ease));
+              seq.Append(shopPanel.transform.DOScale(new Vector2(1f, 1f), 0.1f).SetEase(ease));*/
+            seq.Play();
+        }
+
 
     }
 
