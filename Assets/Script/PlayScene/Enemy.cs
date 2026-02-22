@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     {
         transform.localPosition = spawnPos;
         transform.localRotation = spawnRot;
+        gameObject.SetActive(true);
     }
      public IEnumerator EnemyDead()
     {
