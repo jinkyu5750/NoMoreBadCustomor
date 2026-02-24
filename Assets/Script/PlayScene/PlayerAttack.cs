@@ -367,11 +367,14 @@ public class PlayerAttack : MonoBehaviour
                 hit = Physics2D.OverlapBox(transform.position + posOffset, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
             else
                 hit = Physics2D.OverlapBox(pos, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+            //여기까지 몹감지
+
 
             if (hit != null)
             {
 
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
+                // -> 적 Dead
 
                 CameraShakeProfile profile;
 
@@ -379,32 +382,33 @@ public class PlayerAttack : MonoBehaviour
                     profile = attackProfile;
                 else
                     profile = additionalAttackProfile;
-               
+
                 CameraManager.instance.ShakeCameraFromProfile(profile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
-         //       StartCoroutine(CameraManager.instance.ZoomInCam());
+                // StartCoroutine(CameraManager.instance.ZoomInCam());
+                // -> 카메라 핸들
 
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
                 ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
+                // -> 히트 파티클
 
                 GaneSkillGage();
                 ScoreManager.instance.MonsterScore(isSkill);
-
+                // -> 스코어,스킬게이지 증가
 
                 if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(1) == 1)
                 {
                     if (curAttack < attack.Skill)
-                    {
-                        //트랜지션문제는 트랜지션설정에서 해결하자~
-
-                        canAdditionalAttack = true;
-
-                    }
+                        canAdditionalAttack = true;      //트랜지션문제는 트랜지션설정에서 해결하자~    
                     else if (curAttack == attack.Additional)
                     {
                         canAdditionalAttack = false;
                         curAttack = 0;
                     }
                 }
+                // -> 추가타 관련
+
+
+                // 한 메소드에서 너무 여러기능을 한다지만.. 따로 뺴는것도 애매함 한두줄짜린데 메소드만 몇억개될거같음 
             }
 
             elapsed += Time.deltaTime;
