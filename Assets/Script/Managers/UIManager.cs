@@ -26,11 +26,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image skillPanel_Down;
 
     //·Îºñ ¾À ³» UI
-    [Header("LobbyScene UI")]
-    [SerializeField] private Button playButton;
+    [Header("LobbyScene UI")]   
     [SerializeField] private Button shopButton;
+    [SerializeField] private Button settingButton;
     [SerializeField] private TextMeshProUGUI receiptPointText;
-    [SerializeField] private Image shopPanel;
+     private GameObject shopPanel;
+     private GameObject settingPanel;
     private void Awake()
     {
         if (Instance == null)
@@ -44,7 +45,13 @@ public class UIManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name.Equals("LobbyScene"))
-         shopButton.onClick.AddListener(() => ShopPanel(true));
+        {
+            shopPanel = shopButton.transform.Find("Shop").gameObject;
+            shopButton.onClick.AddListener(() => ShopPanel(true));
+
+            settingPanel = settingButton.transform.Find("Setting").gameObject;
+            settingButton.onClick.AddListener(() => SettingPanel(true));
+        }
         else if (scene.name.Equals("PlayScene"))
         {
             skillGageBar = skillGage.transform.Find("Gage/GageBar").GetComponent<Image>();
@@ -166,6 +173,24 @@ public class UIManager : MonoBehaviour
         if (isActive)
         {
             shopPanel.transform.GetChild(0).localScale = new Vector3(1f, 0f, 0f);
+            Sequence seq = DOTween.Sequence();
+            seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1.1f, 0.25f).SetEase(Ease.InExpo));
+            seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1f, 0.1f).SetEase(Ease.InExpo));
+
+            /*  seq.Append(shopPanel.transform.DOScale(new Vector2(1.1f, 1.1f), 0.1f).SetEase(ease));
+              seq.Append(shopPanel.transform.DOScale(new Vector2(1f, 1f), 0.1f).SetEase(ease));*/
+            seq.Play();
+        }
+
+
+    }
+    public void SettingPanel(bool isActive)
+    {
+        if (isActive && settingPanel.gameObject.activeSelf) return;
+        settingPanel.gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
             Sequence seq = DOTween.Sequence();
             seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1.1f, 0.25f).SetEase(Ease.InExpo));
             seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1f, 0.1f).SetEase(Ease.InExpo));
