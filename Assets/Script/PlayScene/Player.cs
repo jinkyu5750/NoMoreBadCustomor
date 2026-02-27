@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Components
@@ -28,6 +27,9 @@ public class Player : MonoBehaviour
 
     private GameObject runDust;
 
+    private bool isDragging = false;
+    private Vector3 startMousePos, curMousePos;
+    private float minDragDistance = 150f;
     private float max_runSpeed;
     private void Start()
     {
@@ -53,21 +55,49 @@ public class Player : MonoBehaviour
 
         if (playerHitDead.isDead) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
 
-        }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
-
+            startMousePos = Input.mousePosition;
+            isDragging = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetMouseButtonUp(0) && isDragging)
+            isDragging = false;
+
+
+        if(isDragging)// 드래그 중이라면 
         {
-            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
+            curMousePos = Input.mousePosition;
+            Vector3 dir = curMousePos - startMousePos;
+
+
+            if (dir.magnitude > minDragDistance) // 충분히 드래그했다면 
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y)) // (4,3) -> Dash공격 
+                    {
+                        if (dir.x > 0)
+                            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
+
+                    }
+                    else
+                    {
+                        if (dir.y > 0)
+                            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
+                        else
+                            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
+
+                    }
+                }
+            }
+
+            isDragging = false;
+
         }
+
+    
 
         if (playerHitDead.life == 0)
             StartCoroutine(playerHitDead.Dead());
@@ -103,7 +133,7 @@ public class Player : MonoBehaviour
             ScoreManager.instance.ReceiptScore();
         }
 
-    
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
