@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Components
@@ -28,7 +27,12 @@ public class Player : MonoBehaviour
 
     private GameObject runDust;
 
+    private bool isDragging = false;
+    private Vector3 startMousePos, curMousePos;
+    private float minDragDistance = 150f;
     private float max_runSpeed;
+
+    [SerializeField] private Joystick joystick;
     private void Start()
     {
         components = new Components()
@@ -53,23 +57,27 @@ public class Player : MonoBehaviour
 
         if (playerHitDead.isDead) return;
 
+
+    
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
+            switch(joystick.dir)
+            {
+                case Joystick.attackDir.Dash:
+                    StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
+                    break;
+                case Joystick.attackDir.Upper:
+                    StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
+                    break;
+                case Joystick.attackDir.Lower:
+                    StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
+                    break;
 
+            }
         }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
 
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
-        }
-
-        if (playerHitDead.life == 0)
+            if (playerHitDead.life == 0)
             StartCoroutine(playerHitDead.Dead());
 
         Move();
@@ -103,7 +111,7 @@ public class Player : MonoBehaviour
             ScoreManager.instance.ReceiptScore();
         }
 
-    
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
