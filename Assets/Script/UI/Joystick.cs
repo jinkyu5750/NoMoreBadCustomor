@@ -1,19 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
+    public enum attackDir { Dash=1,Upper,Lower}
+    public attackDir dir { get; private set; }
+
+    [SerializeField] float minDragDistance = 150f;
+
     RectTransform touchArea;
     private Image joystick_Parent;
     private Image joystick_Child;
 
     Vector2 startPos;
+
+  
     private void Start()
     {
-        touchArea = transform.parent.GetComponent<RectTransform>();
-        joystick_Parent = GetComponent<Image>();
-        joystick_Child = GetComponentInChildren<Image>();
+        touchArea = GetComponent<RectTransform>();
+        joystick_Parent = transform.Find("Joystick").GetComponent<Image>();
+        joystick_Child = transform.Find("Joystick/Joystick_Child").GetComponent<Image>();
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -21,18 +29,39 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             eventData.position, eventData.pressEventCamera, out Vector2 localPoint))
         {
 
-            float range = joystick_Parent.GetComponent<RectTransform>().sizeDelta.x;
-            Vector2 pos = (eventData.position - startPos).magnitude > range ?
-                (eventData.position - startPos).normalized * range : eventData.position;
+            float range = joystick_Parent.rectTransform.sizeDelta.x / 2;
+            Vector2 dragDir = localPoint - startPos;
+            Vector2 pos = dragDir.magnitude > range ? dragDir.normalized * range : dragDir; //clampmagnitude도 있음
 
-            joystick_Child.GetComponent<RectTransform>().anchoredPosition = pos;
+            joystick_Child.rectTransform.anchoredPosition = pos;
+
+
+            if (dragDir.magnitude > minDragDistance)
+            {
+                if (Mathf.Abs(dragDir.x) > Mathf.Abs(dragDir.y)) // (4,3) -> Dash공격 
+                {
+                    if (dragDir.x > 0)
+                        dir = attackDir.Dash;
+                }
+                else
+                {
+                    if (dragDir.y > 0)
+                        dir = attackDir.Upper;
+                    else
+                        dir = attackDir.Lower;
+
+                }
+            }
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         joystick_Parent.enabled = true;
-        startPos = eventData.position;
+        joystick_Child.enabled = true;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(touchArea, eventData.position, eventData.pressEventCamera, out startPos);
+        joystick_Parent.rectTransform.anchoredPosition = startPos;
+
         OnDrag(eventData);
     }
 
@@ -40,5 +69,10 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void OnPointerUp(PointerEventData eventData)
     {
         joystick_Parent.enabled = false;
+        joystick_Child.enabled = false;
+        dir = 0;
+
     }
+
+    
 }

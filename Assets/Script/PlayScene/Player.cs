@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     private Vector3 startMousePos, curMousePos;
     private float minDragDistance = 150f;
     private float max_runSpeed;
+
+    [SerializeField] private Joystick joystick;
     private void Start()
     {
         components = new Components()
@@ -56,50 +58,26 @@ public class Player : MonoBehaviour
         if (playerHitDead.isDead) return;
 
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            startMousePos = Input.mousePosition;
-            isDragging = true;
-        }
-
-        if (Input.GetMouseButtonUp(0) && isDragging)
-            isDragging = false;
-
-
-        if(isDragging)// 드래그 중이라면 
-        {
-            curMousePos = Input.mousePosition;
-            Vector3 dir = curMousePos - startMousePos;
-
-
-            if (dir.magnitude > minDragDistance) // 충분히 드래그했다면 
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y)) // (4,3) -> Dash공격 
-                    {
-                        if (dir.x > 0)
-                            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
-
-                    }
-                    else
-                    {
-                        if (dir.y > 0)
-                            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
-                        else
-                            StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
-
-                    }
-                }
-            }
-
-            isDragging = false;
-
-        }
-
     
 
-        if (playerHitDead.life == 0)
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            switch(joystick.dir)
+            {
+                case Joystick.attackDir.Dash:
+                    StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
+                    break;
+                case Joystick.attackDir.Upper:
+                    StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Upper));
+                    break;
+                case Joystick.attackDir.Lower:
+                    StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Lower));
+                    break;
+
+            }
+        }
+
+            if (playerHitDead.life == 0)
             StartCoroutine(playerHitDead.Dead());
 
         Move();
