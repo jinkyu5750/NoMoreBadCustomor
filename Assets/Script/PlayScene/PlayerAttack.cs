@@ -106,6 +106,7 @@ public class PlayerAttack : MonoBehaviour
                 {
 
                     ParticleManager.instance.UseObject("DashDust", transform.position, Quaternion.identity);
+                    SoundManager.instance.PlaySFX("DashWhoosh");
 
                     GetComponent<GhostEffect>().SetDelay("Dash");
                     GetComponent<GhostEffect>().IsGhostOn = true;
@@ -126,7 +127,7 @@ public class PlayerAttack : MonoBehaviour
 
             case attack.Upper:
                 {
-
+                    SoundManager.instance.PlaySFX("UpperJump");
                     ParticleManager.instance.UseObject("DoubleJump", transform.position + new Vector3(0, -0.5f, 0), Quaternion.identity);
                     player.components.rig.velocity = new Vector2(player.components.rig.velocity.x, 0);
                     player.components.rig.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
@@ -244,6 +245,7 @@ public class PlayerAttack : MonoBehaviour
             CalCamAngle(enemyPos);
 
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
+            SoundManager.instance.PlaySFX("SkillDashWhoosh");
             while (Vector3.Distance(transform.position, enemyPos) > 1f)
             {
                 player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
@@ -331,10 +333,12 @@ public class PlayerAttack : MonoBehaviour
         {
             case "Dash":
                 StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
+                SoundManager.instance.PlaySFX("DashSlash");
                 player.components.rig.gravityScale = g;
                 break;
             case "Upper":
                 StartCoroutine(AttackHitbox(new Vector3(0, 2, 0), attackBoxSize, 0.3f));
+                SoundManager.instance.PlaySFX("UpperSlash");
                 break;
             case "Lower":
                 StartCoroutine(AttackHitbox(new Vector3(0, 0.3f, 0), attackBoxSize, 1f));
@@ -372,7 +376,7 @@ public class PlayerAttack : MonoBehaviour
 
             if (hit != null)
             {
-
+                SoundManager.instance.PlaySFX("Hit");
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
                 // -> 적 Dead
 
@@ -423,6 +427,7 @@ public class PlayerAttack : MonoBehaviour
     public void GroundSlamEffect()
     {
         CameraManager.instance.ShakeCameraFromProfile(groundSlamProfile, impulseSource);
+        SoundManager.instance.PlaySFX("GroundSlam");
         ParticleManager.instance.UseObject("GroundSlam", transform.position, Quaternion.identity);
     }
 

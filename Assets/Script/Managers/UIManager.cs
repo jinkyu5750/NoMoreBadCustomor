@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance;
 
+    public Canvas canvas;
+
     //플레이 씬 내 UI
     [Header("PlayScene UI")]
     [SerializeField] private Image hpBar;
@@ -43,6 +45,9 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+
+        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name.Equals("LobbyScene"))
         {
@@ -65,7 +70,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
 
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), Input.mousePosition, null, out Vector2 Point))
+            {
+                ParticleManager.instance.UseClickEffect(Point);
+
+            }  
+  
+        }
+    }
 
     public void UpdateHPBar(float hp)
     {
@@ -103,6 +120,7 @@ public class UIManager : MonoBehaviour
 
     public void MenuPanel(bool isActive)
     {
+        SoundManager.instance.PauseBGM();
         menuPanel.gameObject.SetActive(isActive);
 
         if (isActive)
@@ -118,8 +136,9 @@ public class UIManager : MonoBehaviour
             });
         }
         else
+        {
             Time.timeScale = 1f;
-
+        }
     }
 
     public void ResultPanel(bool isActive, bool isRetry = false) // 채찍피티가혼낸점//  아래 중 하나라도 생기면 리팩토링 타이밍이야:
@@ -167,11 +186,13 @@ public class UIManager : MonoBehaviour
     }
     public void ShopPanel(bool isActive)
     {
+        
         if (isActive && shopPanel.gameObject.activeSelf) return;
         shopPanel.gameObject.SetActive(isActive);
 
         if (isActive)
         {
+            SoundManager.instance.PlaySFX("OpenShop");
             shopPanel.transform.GetChild(0).localScale = new Vector3(1f, 0f, 0f);
             Sequence seq = DOTween.Sequence();
             seq.Append(shopPanel.transform.GetChild(0).DOScaleY(1.1f, 0.25f).SetEase(Ease.InExpo));

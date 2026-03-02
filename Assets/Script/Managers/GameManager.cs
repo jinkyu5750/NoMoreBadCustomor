@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
             dataManager.playerData.shopData.AddItem_TestMode();
         }
     }
+
+   
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "LobbyScene")

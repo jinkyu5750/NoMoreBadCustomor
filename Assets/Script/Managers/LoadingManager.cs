@@ -83,6 +83,7 @@ public class LoadingManager : MonoBehaviour
     }
     private IEnumerator LoadScene_LoadingBar()
     {
+        SoundManager.instance.StopBGM();
         SwitchLoadingImage(true);
         progressBar.value = 0;
 
@@ -108,6 +109,7 @@ public class LoadingManager : MonoBehaviour
 
                 if (progressBar.value >= 1.0f)
                 {
+                    SoundManager.instance.PlayBGM("LobbyBGM");
                     async.allowSceneActivation = true;
                     yield break;
                 }
@@ -155,6 +157,7 @@ public class LoadingManager : MonoBehaviour
             {
                 if (GameManager.Instance.canLoadPlayScene)
                 {
+                    SoundManager.instance.PlayBGM("PlayBGM" + Random.Range(1, 3));
                     Fade(false);
                     async.allowSceneActivation = true;
                     yield break;

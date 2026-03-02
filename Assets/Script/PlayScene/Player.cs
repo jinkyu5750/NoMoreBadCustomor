@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag.Equals("Receipt"))
         {
             collision.gameObject.SetActive(false);
+            SoundManager.instance.PlaySFX("ReceiptDrop");
             ScoreManager.instance.ReceiptScore();
         }
 

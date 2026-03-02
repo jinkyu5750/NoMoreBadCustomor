@@ -116,10 +116,10 @@ TextureImporter:
       name: "ChatGPT Image 2026\uB144 2\uC6D4 9\uC77C \uC624\uC804 01_52_04_0"
       rect:
         serializedVersion: 2
-        x: 167
+        x: 51
         y: 274
-        width: 1284
-        height: 471
+        width: 1400
+        height: 548
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

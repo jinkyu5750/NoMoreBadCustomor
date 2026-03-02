@@ -51,7 +51,7 @@ MonoBehaviour:
     count: 3
     returnTime: 0
   - objectName: AttackHit
-    prefab: {fileID: 2393111809793729749, guid: 05609566f0df27848962c113cb77d33c, type: 3}
+    prefab: {fileID: 3042519775331041172, guid: 841004c4c6a39e244abe2257394de913, type: 3}
     count: 3
     returnTime: 0
   - objectName: GhostEffect
@@ -90,6 +90,10 @@ MonoBehaviour:
     prefab: {fileID: 6131277764259573781, guid: 96b4525b311f49c49b1d75ab91ebcf65, type: 3}
     count: 20
     returnTime: 20
+  - objectName: Click
+    prefab: {fileID: 7510427348883613167, guid: c94d951b727c4c44c8aa04a11e3af78a, type: 3}
+    count: 5
+    returnTime: 1
   refillCount: 7
   tfPoolParent: {fileID: 2019444123923443831}
 --- !u!1001 &7726729132145301645
