@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public Canvas canvas;
-
+    [SerializeField] private GameObject clickPrefab;
     //«√∑π¿Ã æ¿ ≥ª UI
     [Header("PlayScene UI")]
     [SerializeField] private Image hpBar;
@@ -77,7 +77,9 @@ public class UIManager : MonoBehaviour
 
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), Input.mousePosition, null, out Vector2 Point))
             {
-                ParticleManager.instance.UseClickEffect(Point);
+                GameObject go = Instantiate(clickPrefab);
+                go.transform.SetParent(canvas.transform, false);
+                go.transform.localPosition = Point;
 
             }  
   

@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
+
 public class PlayerAttack : MonoBehaviour
 {
 
@@ -196,8 +197,8 @@ public class PlayerAttack : MonoBehaviour
         if (enemy == null) return Vector3.zero;
 
         SpriteRenderer enemySp = enemy.GetComponent<SpriteRenderer>();
-        float x = enemySp.bounds.min.x;
-        float y = enemySp.bounds.center.y - 0.5f;
+        float x = enemySp.bounds.min.x+0.15f;
+        float y = enemySp.bounds.center.y -0.45f;
 
         return new Vector3(x, y, 0);
     }
@@ -246,10 +247,17 @@ public class PlayerAttack : MonoBehaviour
 
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             SoundManager.instance.PlaySFX("SkillDashWhoosh");
-            while (Vector3.Distance(transform.position, enemyPos) > 1f)
+            while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
             {
-                player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
-                yield return null;
+             
+                    transform.position = Vector3.MoveTowards(
+                        transform.position,
+                        enemyPos,
+                        60f * Time.deltaTime
+                    );
+
+                    yield return null;
+                
             }
 
             player.components.rig.velocity = Vector3.zero;
@@ -309,10 +317,17 @@ public class PlayerAttack : MonoBehaviour
         player.components.ani.SetInteger("AdditionalAttack", 1); // 추격
         player.components.col.enabled = false;
 
-        while (Vector3.Distance(transform.position, enemyPos) > 1f)
+        while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
         {
-            player.components.rig.velocity = (enemyPos - transform.position).normalized * 45f;
+
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                enemyPos,
+                60f * Time.deltaTime
+            );
+
             yield return null;
+
         }
         player.components.rig.velocity = Vector3.zero;
 
@@ -349,8 +364,12 @@ public class PlayerAttack : MonoBehaviour
             case "AdditionalAttack":
                 StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
                 player.components.ani.SetInteger("AdditionalAttack", 0);
+                player.components.rig.velocity = Vector2.right * player.runSpeed;
                 player.components.rig.gravityScale = g;
                 player.components.col.enabled = true;
+                Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0, -0.5f, 0), attackBoxSize, 0, LayerMask.GetMask("Ground"));
+                if (col != null) player.components.ani.SetBool("AddiToJump", false);
+                else player.components.ani.SetBool("AddiToJump", true);
                 break;
 
         }
@@ -376,7 +395,13 @@ public class PlayerAttack : MonoBehaviour
 
             if (hit != null)
             {
-                SoundManager.instance.PlaySFX("Hit");
+
+
+                if (curAttack == attack.Skill)
+                    SoundManager.instance.PlaySFX("SkillHit");
+                else
+                    SoundManager.instance.PlaySFX("Hit");
+
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
                 // -> 적 Dead
 
@@ -392,7 +417,12 @@ public class PlayerAttack : MonoBehaviour
                 // -> 카메라 핸들
 
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
-                ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
+                if (curAttack == attack.Skill)
+                    ParticleManager.instance.UseObject("SkillHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
+
+                else
+                    ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
+
                 // -> 히트 파티클
 
                 GaneSkillGage();
@@ -459,9 +489,9 @@ public class PlayerAttack : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        /*  Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
-          Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
-          Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));*/
+        /*     Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
+             Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);*/
+        Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));
 
         Gizmos.DrawWireCube(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0));
     }
