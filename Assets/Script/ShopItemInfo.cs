@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "ItemInfo",fileName ="ShopItemInfo")]
+[CreateAssetMenu(menuName = "ShopItemInfo", fileName ="ShopItemInfo")]
 public class ShopItemInfo : ScriptableObject
 {
     public int itemID;

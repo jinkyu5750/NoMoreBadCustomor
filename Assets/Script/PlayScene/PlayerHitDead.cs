@@ -40,7 +40,7 @@ public class PlayerHitDead : MonoBehaviour
 
         hitCurTime = hitCoolTime;
 
-        GetComponent<PlayerAttack>().HitDuringDash();
+        GetComponent<PlayerAttack>().HitDuringAttack();
 
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
@@ -59,6 +59,8 @@ public class PlayerHitDead : MonoBehaviour
         player.components.sp.material.color = Color.white;
         yield return new WaitForSeconds(1f);
         player.components.ani.SetTrigger("WakeUp");
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<PlayerAttack>().SetCanAttack(1);
 
     }
 
@@ -88,7 +90,7 @@ public class PlayerHitDead : MonoBehaviour
 
         hitCurTime = hitCoolTime;
 
-        GetComponent<PlayerAttack>().HitDuringDash();
+        GetComponent<PlayerAttack>().HitDuringAttack();
 
 
         player.components.ani.SetTrigger("Hit");

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 [Serializable]
@@ -161,7 +160,7 @@ public class ParticleManager : MonoBehaviour
         obj.transform.SetParent(UIManager.Instance.canvas.transform, false);
         obj.SetActive(true);
         obj.GetComponent<RectTransform>().localPosition = pos;
-       
+
         StartCoroutine(ReturnObject("Click", obj, returnTime));
 
     }

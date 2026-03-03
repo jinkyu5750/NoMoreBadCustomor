@@ -2335,8 +2335,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3042519775331041172, guid: c65ce51248c594a4eb8a474025fd359b, type: 3}
     - target: {fileID: 8485015032013403558, guid: 56cfbd6e76e1cfc43bcfa8bc0e6797fd, type: 3}
+      propertyPath: objectInfos.Array.data[1].objectName
+      value: NormalAttackHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485015032013403558, guid: 56cfbd6e76e1cfc43bcfa8bc0e6797fd, type: 3}
       propertyPath: objectInfos.Array.data[12].objectName
-      value: SkillHit
+      value: SkillAttackHit
       objectReference: {fileID: 0}
     - target: {fileID: 8485015032013403558, guid: 56cfbd6e76e1cfc43bcfa8bc0e6797fd, type: 3}
       propertyPath: objectInfos.Array.data[12].returnTime
@@ -3907,9 +3911,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 70803d54546376b43996da94ab734f02, type: 2}
     - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: dashAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5e3aab994953d8742938fc4d15228b65, type: 2}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: lowerAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: a5cdda7a9b7d0204daeeb15b50ada63a, type: 2}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: skillAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 550383f1344f02f47a4cff357fa7b9f5, type: 2}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: upperAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: c499911dff9d5fd419be1c9bc2df35c4, type: 2}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
       propertyPath: groundSlamProfile
       value: 
       objectReference: {fileID: 11400000, guid: d1a8429e0b5015e4096e36ca864736f7, type: 2}
+    - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
+      propertyPath: additionalAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ab3caa171774db49b508f7828877048, type: 2}
     - target: {fileID: 6913351787040637362, guid: 1dc89ed0c5a63594c965be907ac95ced, type: 3}
       propertyPath: additionalAttackProfile
       value: 

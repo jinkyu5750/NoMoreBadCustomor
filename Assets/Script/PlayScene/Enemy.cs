@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+
         spawnPos = transform.localPosition;
         spawnRot = transform.localRotation;
     }
@@ -21,11 +22,15 @@ public class Enemy : MonoBehaviour
 
     public void SpawnEnemy()
     {
+        if (gameObject.activeSelf) return;
+
         transform.localPosition = spawnPos;
         transform.localRotation = spawnRot;
         gameObject.SetActive(true);
+        rig.bodyType = RigidbodyType2D.Kinematic; // 한번도 활성화되지않은놈을 스폰하려해서생겼떤문제
+
     }
-     public IEnumerator EnemyDead()
+    public IEnumerator EnemyDead()
     {
 
         //지금 좀 높고 느려 -> addforce힘줄이고 중력높여

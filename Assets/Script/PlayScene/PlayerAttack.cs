@@ -3,14 +3,12 @@ using System.Collections;
 using UnityEngine;
 
 
-
 public class PlayerAttack : MonoBehaviour
 {
 
     private Player player;
 
     public enum attack { Dash = 1, Upper, Lower, Skill, Additional }
-    [SerializeField] private attack curAttack;
     [SerializeField] private bool _canAttack = true;
     public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
@@ -19,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
     private float jumpPower = 8;
     private float dropPower = 10;
 
-    private Vector2 attackBoxSize = new Vector2(1.7f, 2);
 
     private float g = 1.3f;
     private float gravityScale = 3.3f;
@@ -40,6 +37,13 @@ public class PlayerAttack : MonoBehaviour
     private int skillattackCount = 3;
     public float slowFactor = 0.05f;
     public float slowLength = 1f;
+
+    [SerializeField] private AttackData dashAttackData;
+    [SerializeField] private AttackData upperAttackData;
+    [SerializeField] private AttackData lowerAttackData;
+    [SerializeField] private AttackData skillAttackData;
+    [SerializeField] private AttackData additionalAttackData;
+    [SerializeField] private AttackData curAttackData;
 
     private bool canAdditionalAttack = false;
     public void InitPlayer(Player player)
@@ -70,7 +74,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (player.components.rig.velocity.y < 0f)
         {
-            if (curAttack == attack.Dash || curAttack == attack.Additional)
+            if (curAttackData == dashAttackData || curAttackData == additionalAttackData)
                 player.components.rig.gravityScale = 0;
             else
                 player.components.rig.gravityScale = gravityScale;
@@ -92,7 +96,19 @@ public class PlayerAttack : MonoBehaviour
 
         if (!canAttack || curCombo >= max_Combo) yield break;
 
-        curAttack = dir; // 직전했던 공격은 못한다는 컨셉 폐기...
+        switch (dir)
+        {
+            case attack.Dash:
+                curAttackData = dashAttackData;
+                break;
+            case attack.Upper:
+                curAttackData = upperAttackData;
+                break;
+            case attack.Lower:
+                curAttackData = lowerAttackData;
+                break;
+
+        }
 
         SetCanAttack(0);
         player.components.ani.SetInteger("Attack", (int)dir);
@@ -115,7 +131,7 @@ public class PlayerAttack : MonoBehaviour
 
                     yield return new WaitForSeconds(dashTime);
 
-                    if (curAttack != attack.Dash) // 중간에 피격당한경우
+                    if (curAttackData != dashAttackData) // 중간에 피격당한경우
                     {
                         GetComponent<GhostEffect>().IsGhostOn = false;
                         yield break;
@@ -141,7 +157,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (player.components.ani.GetBool("IsGround") == true)
                     {
-                        curAttack = 0;
+                        curAttackData = null;
                         SetCanAttack(1);
                         player.components.ani.SetInteger("Attack", 0);
                         yield break;
@@ -197,8 +213,8 @@ public class PlayerAttack : MonoBehaviour
         if (enemy == null) return Vector3.zero;
 
         SpriteRenderer enemySp = enemy.GetComponent<SpriteRenderer>();
-        float x = enemySp.bounds.min.x+0.15f;
-        float y = enemySp.bounds.center.y -0.45f;
+        float x = enemySp.bounds.min.x + 0.15f;
+        float y = enemySp.bounds.center.y - 0.45f;
 
         return new Vector3(x, y, 0);
     }
@@ -210,7 +226,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (skillGage < 100 || !player.components.ani.GetBool("IsGround") || !canAttack) yield break;
 
-        curAttack = attack.Skill;
+
+        curAttackData = skillAttackData;
         isSkill = true;
         SetCanAttack(0);
         skillGage = 0;
@@ -242,22 +259,14 @@ public class PlayerAttack : MonoBehaviour
             if (enemy == null) break;
 
             Vector3 enemyPos = GetEnemyPos(enemy);
-            enemyPos -= new Vector3(0, 0.5f, 0); //타격 위치보정
             CalCamAngle(enemyPos);
 
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             SoundManager.instance.PlaySFX("SkillDashWhoosh");
             while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
             {
-             
-                    transform.position = Vector3.MoveTowards(
-                        transform.position,
-                        enemyPos,
-                        60f * Time.deltaTime
-                    );
-
-                    yield return null;
-                
+                transform.position = Vector3.MoveTowards(transform.position, enemyPos, 60f * Time.deltaTime);
+                yield return null;
             }
 
             player.components.rig.velocity = Vector3.zero;
@@ -306,28 +315,19 @@ public class PlayerAttack : MonoBehaviour
         Vector3 enemyPos = GetEnemyPos(enemy);
 
         if (!canAttack || !canAdditionalAttack || enemy == null)
-        {
-            canAdditionalAttack = false;
             yield break;
-        }
+
 
         SetCanAttack(0);
-        curAttack = attack.Additional;
+        curAttackData = additionalAttackData;
 
         player.components.ani.SetInteger("AdditionalAttack", 1); // 추격
         player.components.col.enabled = false;
 
         while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
         {
-
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                enemyPos,
-                60f * Time.deltaTime
-            );
-
+            transform.position = Vector3.MoveTowards(transform.position, enemyPos, 60f * Time.deltaTime);
             yield return null;
-
         }
         player.components.rig.velocity = Vector3.zero;
 
@@ -347,27 +347,27 @@ public class PlayerAttack : MonoBehaviour
         switch (attackDir)
         {
             case "Dash":
-                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
+                StartCoroutine(AttackHitbox(dashAttackData.hitBoxPos, dashAttackData.hitBoxSize, 0.3f));
                 SoundManager.instance.PlaySFX("DashSlash");
                 player.components.rig.gravityScale = g;
                 break;
             case "Upper":
-                StartCoroutine(AttackHitbox(new Vector3(0, 2, 0), attackBoxSize, 0.3f));
+                StartCoroutine(AttackHitbox(upperAttackData.hitBoxPos, upperAttackData.hitBoxSize, 0.3f));
                 SoundManager.instance.PlaySFX("UpperSlash");
                 break;
             case "Lower":
-                StartCoroutine(AttackHitbox(new Vector3(0, 0.3f, 0), attackBoxSize, 1f));
+                StartCoroutine(AttackHitbox(lowerAttackData.hitBoxPos, lowerAttackData.hitBoxSize, 1f));
                 break;
             case "Skill":
-                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize + new Vector2(5, 5), 0.3f));
+                StartCoroutine(AttackHitbox(skillAttackData.hitBoxPos, skillAttackData.hitBoxSize, 0.3f));
                 break;
             case "AdditionalAttack":
-                StartCoroutine(AttackHitbox(new Vector3(1, 1, 0), attackBoxSize, 0.3f));
+                StartCoroutine(AttackHitbox(additionalAttackData.hitBoxPos, additionalAttackData.hitBoxSize, 0.3f));
                 player.components.ani.SetInteger("AdditionalAttack", 0);
                 player.components.rig.velocity = Vector2.right * player.runSpeed;
                 player.components.rig.gravityScale = g;
                 player.components.col.enabled = true;
-                Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0, -0.5f, 0), attackBoxSize, 0, LayerMask.GetMask("Ground"));
+                Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0, -0.5f, 0), additionalAttackData.hitBoxSize, 0, LayerMask.GetMask("Ground"));
                 if (col != null) player.components.ani.SetBool("AddiToJump", false);
                 else player.components.ani.SetBool("AddiToJump", true);
                 break;
@@ -384,45 +384,29 @@ public class PlayerAttack : MonoBehaviour
         while (elapsed < duration)
         {
 
-            Collider2D hit = new Collider2D();
+            Collider2D hit = null;
 
-            if (curAttack == attack.Lower) // 하단공격은 캐릭터를따라 쭉 포지션 업데이트
-                hit = Physics2D.OverlapBox(transform.position + posOffset, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+            if (curAttackData == lowerAttackData) // 하단공격은 캐릭터를따라 쭉 포지션 업데이트
+                hit = Physics2D.OverlapBox(transform.position + posOffset, boxSize, 0, LayerMask.GetMask("Enemy"));
             else
-                hit = Physics2D.OverlapBox(pos, attackBoxSize, 0, LayerMask.GetMask("Enemy"));
+                hit = Physics2D.OverlapBox(pos, boxSize, 0, LayerMask.GetMask("Enemy"));
             //여기까지 몹감지
 
 
             if (hit != null)
             {
-
-
-                if (curAttack == attack.Skill)
-                    SoundManager.instance.PlaySFX("SkillHit");
-                else
-                    SoundManager.instance.PlaySFX("Hit");
+                SoundManager.instance.PlaySFX(curAttackData.sfxName);
 
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
                 // -> 적 Dead
 
-                CameraShakeProfile profile;
-
-                if (curAttack < attack.Skill)
-                    profile = attackProfile;
-                else
-                    profile = additionalAttackProfile;
-
+                CameraShakeProfile profile = curAttackData.shakeProfile;
                 CameraManager.instance.ShakeCameraFromProfile(profile, hit.gameObject.GetComponent<CinemachineImpulseSource>());
                 // StartCoroutine(CameraManager.instance.ZoomInCam());
                 // -> 카메라 핸들
 
                 Vector2 randomCircle = Random.insideUnitCircle * 1f;
-                if (curAttack == attack.Skill)
-                    ParticleManager.instance.UseObject("SkillHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
-
-                else
-                    ParticleManager.instance.UseObject("AttackHit", hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
-
+                ParticleManager.instance.UseObject(curAttackData.particleName, hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
                 // -> 히트 파티클
 
                 GaneSkillGage();
@@ -431,13 +415,11 @@ public class PlayerAttack : MonoBehaviour
 
                 if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(1) == 1)
                 {
-                    if (curAttack < attack.Skill)
+                    if (curAttackData.canTriggerAdditionalAttack)
                         canAdditionalAttack = true;      //트랜지션문제는 트랜지션설정에서 해결하자~    
-                    else if (curAttack == attack.Additional)
-                    {
+                    else
                         canAdditionalAttack = false;
-                        curAttack = 0;
-                    }
+
                 }
                 // -> 추가타 관련
 
@@ -466,33 +448,33 @@ public class PlayerAttack : MonoBehaviour
         this.canAttack = canAttack == 1;
     }
 
-    public void SetCurAttack() // DashAttack은 0으로 안해주면 공중에서 쭉 중력0됨
+    public void SetCurAttackData() // DashAttack은 0으로 안해주면 공중에서 쭉 중력0됨
     {
-        curAttack = 0;
+        curAttackData = null;
     }
 
     public void SetnextAttack_Skill()
     {
         nextAttack_Skill = true;
     }
-    public void HitDuringDash()
+    public void HitDuringAttack()
     {
-        if (curAttack != attack.Dash) return;
+     //   if (curAttackData != dashAttackData) return;
 
         player.components.ani.SetInteger("Attack", 0);
         canAttack = false;
-        curAttack = 0;
+        curAttackData = null;
 
     }
 
     #endregion
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        /*     Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
-             Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);*/
-        Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));
+        /*    Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(transform.position + new Vector3(1, 1, 0), attackBoxSize);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, 2f, 0), attackBoxSize);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, 0.3f, 0), attackBoxSize + new Vector2(2, 3));
 
-        Gizmos.DrawWireCube(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0));
+            Gizmos.DrawWireCube(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0));*/
     }
 }
