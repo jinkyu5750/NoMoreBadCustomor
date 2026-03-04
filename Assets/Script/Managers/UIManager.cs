@@ -20,20 +20,22 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image menuPanel;
     [SerializeField] private Image resultPanel;
     [SerializeField] private Image skillGage;
-     private Image skillGageBar;
-     private TextMeshProUGUI skillGageText;
+    private Image skillGageBar;
+    private TextMeshProUGUI skillGageText;
     [SerializeField] private Ease ease;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private Image skillPanel_Top;
     [SerializeField] private Image skillPanel_Down;
+    [SerializeField] private Image skillPanel_Portrait;
+
 
     //·Îºñ ¾À ³» UI
-    [Header("LobbyScene UI")]   
+    [Header("LobbyScene UI")]
     [SerializeField] private Button shopButton;
     [SerializeField] private Button settingButton;
     [SerializeField] private TextMeshProUGUI receiptPointText;
-     private GameObject shopPanel;
-     private GameObject settingPanel;
+    private GameObject shopPanel;
+    private GameObject settingPanel;
     private void Awake()
     {
         if (Instance == null)
@@ -81,8 +83,8 @@ public class UIManager : MonoBehaviour
                 go.transform.SetParent(canvas.transform, false);
                 go.transform.localPosition = Point;
 
-            }  
-  
+            }
+
         }
     }
 
@@ -173,11 +175,23 @@ public class UIManager : MonoBehaviour
         {
             skillPanel_Top.rectTransform.DOAnchorPosY(0f, 0.5f).SetEase(ease);
             skillPanel_Down.rectTransform.DOAnchorPosY(0f, 0.5f).SetEase(ease);
+
+            Sequence seq = DOTween.Sequence();
+            seq.Append(skillPanel_Portrait.rectTransform.DOAnchorPosX(0, 0.5f).SetEase(ease))
+                .Insert(3f, skillPanel_Portrait.rectTransform.DOAnchorPosX(1920f, 0.5f).SetEase(ease))
+                .OnComplete(()=>skillPanel_Portrait.GetComponentInChildren<ParticleSystem>().Stop());
+
+            skillPanel_Portrait.GetComponentInChildren<ParticleSystem>().Play();
+
         }
         else
         {
             skillPanel_Top.rectTransform.DOAnchorPosY(300f, 0.5f).SetEase(ease);
             skillPanel_Down.rectTransform.DOAnchorPosY(-300f, 0.5f).SetEase(ease);
+            skillPanel_Portrait.rectTransform.anchoredPosition = new Vector2(-1920f, 0);
+            
+
+
         }
 
     }
@@ -188,7 +202,7 @@ public class UIManager : MonoBehaviour
     }
     public void ShopPanel(bool isActive)
     {
-        
+
         if (isActive && shopPanel.gameObject.activeSelf) return;
         shopPanel.gameObject.SetActive(isActive);
 

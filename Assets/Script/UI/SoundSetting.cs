@@ -7,7 +7,6 @@ public class Sound
     public SoundManager.SoundType type;
     public Slider slider;
     public Button muteButton;
-
     public bool isMute;
     public float savedValue;
 }
