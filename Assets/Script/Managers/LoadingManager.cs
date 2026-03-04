@@ -37,7 +37,7 @@ public class LoadingManager : MonoBehaviour
 
     public string loadSceneName;
 
-    private float minLoadingTime = 3f;
+    private float minLoadingTime = 2f;
     private void Awake()
     {
         if (Instance != this)
