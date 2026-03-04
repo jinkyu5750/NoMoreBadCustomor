@@ -315,8 +315,12 @@ public class PlayerAttack : MonoBehaviour
         Vector3 enemyPos = GetEnemyPos(enemy);
 
         if (!canAttack || !canAdditionalAttack || enemy == null)
-            yield break;
+        {
+            if (enemy == null)
+                canAdditionalAttack = false;
 
+            yield break;
+        }
 
         SetCanAttack(0);
         curAttackData = additionalAttackData;
@@ -459,7 +463,7 @@ public class PlayerAttack : MonoBehaviour
     }
     public void HitDuringAttack()
     {
-     //   if (curAttackData != dashAttackData) return;
+        //   if (curAttackData != dashAttackData) return;
 
         player.components.ani.SetInteger("Attack", 0);
         canAttack = false;

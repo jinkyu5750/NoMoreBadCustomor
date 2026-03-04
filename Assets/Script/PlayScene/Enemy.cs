@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
         transform.localPosition = spawnPos;
         transform.localRotation = spawnRot;
         gameObject.SetActive(true);
+        col.enabled = true;
         rig.bodyType = RigidbodyType2D.Kinematic; // 한번도 활성화되지않은놈을 스폰하려해서생겼떤문제
 
     }

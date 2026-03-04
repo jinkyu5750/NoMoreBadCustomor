@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerHitDead : MonoBehaviour
 {
     private Player player;
+    private PlayerAttack playerAttack;
     [SerializeField] private CameraShakeProfile hitProfile;
     [SerializeField] float knockbackPower;
     [SerializeField] float hitCoolTime = 1;
@@ -28,23 +29,26 @@ public class PlayerHitDead : MonoBehaviour
             hitCurTime -= Time.deltaTime;
         }
     }
-    public void InitPlayer(Player player)
+    public void InitPlayer(Player player,PlayerAttack playerAttack)
     {
         this.player = player;
+        this.playerAttack = playerAttack;
     }
 
     public IEnumerator Hit(Collider2D col)
     {
 
         if (hitCurTime > 0) yield break;
-
         hitCurTime = hitCoolTime;
 
-        GetComponent<PlayerAttack>().HitDuringAttack();
+        player.isHit = true;
+        playerAttack.SetCanAttack(0);
+        playerAttack.HitDuringAttack();
 
         player.components.sp.material.color = new Color(250f / 255f, 70f / 255f, 70f / 255f);
         life--;
         UIManager.Instance.UpdateHPBar((float)life / life_Max);
+        SoundManager.instance.PlaySFX("PlayerHit");
         player.components.ani.SetTrigger("Hit");
 
 
@@ -57,10 +61,11 @@ public class PlayerHitDead : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         player.components.sp.material.color = Color.white;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         player.components.ani.SetTrigger("WakeUp");
         yield return new WaitForSeconds(0.5f);
-        GetComponent<PlayerAttack>().SetCanAttack(1);
+        playerAttack.SetCanAttack(1);
+        player.isHit = false;
 
     }
 
@@ -73,8 +78,9 @@ public class PlayerHitDead : MonoBehaviour
 
             oneMoreLife = false;
 
-            player.components.rig.velocity = Vector3.zero;
+            SoundManager.instance.PlaySFX("OneMoreLife");
 
+            player.components.rig.velocity = Vector3.zero;
             player.components.col.enabled = false;
             player.components.ani.SetBool("Spin", true);
             player.components.rig.velocity = Vector3.up*17;
@@ -90,7 +96,7 @@ public class PlayerHitDead : MonoBehaviour
 
         hitCurTime = hitCoolTime;
 
-        GetComponent<PlayerAttack>().HitDuringAttack();
+        playerAttack.HitDuringAttack();
 
 
         player.components.ani.SetTrigger("Hit");

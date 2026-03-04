@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     public Components components { get; private set; }
 
     public bool isGround; // 제거대상
-
+    public bool isHit;
 
     [SerializeField] private float _runSpeed;
     public float runSpeed { get { return _runSpeed; } private set { _runSpeed = value; } }
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerHitDead = GetComponent<PlayerHitDead>();
         playerAttack.InitPlayer(this);
-        playerHitDead.InitPlayer(this);
+        playerHitDead.InitPlayer(this,playerAttack);
 
     }
 
@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (isGround && playerAttack.canAttack) // 바닥에 붙어있으면서 공격이 가능한 상태
+        if (isGround && playerAttack.canAttack && !isHit) // 바닥에 붙어있으면서 공격이 가능한 상태
         {
             components.rig.velocity = new Vector2(1, 0) * runSpeed;
             runDust.SetActive(true);
@@ -101,7 +101,6 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            playerAttack.SetCanAttack(0);
             StartCoroutine(playerHitDead.Hit(collision));
         }
 
