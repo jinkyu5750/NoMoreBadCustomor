@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
+    public enum SoundType { BGM = 1, SFX = 2 }
     public static SoundManager instance;
 
+    [SerializeField] private AudioMixer audioMixer;
     private AudioSource BGMsource;
     private AudioSource SFXsource;
 
@@ -69,5 +72,8 @@ public class SoundManager : MonoBehaviour
         SFXsource.PlayOneShot(SFXdic[name]);
     }
 
-
+    public void SetVolume(SoundType type,float value)
+    {
+        audioMixer.SetFloat(type.ToString(), Mathf.Log10(value) * 20);
+    }
 }
