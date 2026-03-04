@@ -530,6 +530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7630827255952450426, guid: da5d05be57d57f740bd91af587154323, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -897,12 +901,56 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 246591739289529393, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_text
+      value: "\uB85C\uB529\uC911..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 246591739289529393, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: abdef95e2d94f3143bbc167c42a41c76, type: 2}
+    - target: {fileID: 246591739289529393, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4684506759086707109, guid: abdef95e2d94f3143bbc167c42a41c76, type: 2}
+    - target: {fileID: 246591739289529393, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2041801219151753984, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2864393039781218969, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bec2e483ceb8cce4ea7ac8c8681b2796, type: 2}
+    - target: {fileID: 3149811155082536444, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 182
+      objectReference: {fileID: 0}
     - target: {fileID: 3857171467447279065, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_Name
       value: LoadingCanvasPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 4057393601371632981, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4737157114304601153, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7314791596935676647, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: abdef95e2d94f3143bbc167c42a41c76, type: 2}
+    - target: {fileID: 7314791596935676647, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4684506759086707109, guid: abdef95e2d94f3143bbc167c42a41c76, type: 2}
+    - target: {fileID: 7314791596935676647, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7698730447860361525, guid: 0ea36f3f0834f2749b60467b61e303a4, type: 3}

@@ -36,6 +36,8 @@ public class LoadingManager : MonoBehaviour
     private GameObject lobbyToPlayFade;
 
     public string loadSceneName;
+
+    private float minLoadingTime = 3f;
     private void Awake()
     {
         if (Instance != this)
@@ -105,9 +107,9 @@ public class LoadingManager : MonoBehaviour
             else
             {
                 timer += Time.unscaledDeltaTime;
-                progressBar.value = Mathf.Lerp(0.9f, 1.0f, timer);
+                progressBar.value = Mathf.Clamp01(timer / minLoadingTime);
 
-                if (progressBar.value >= 1.0f)
+                if (progressBar.value >= 1.0f )
                 {
                     SoundManager.instance.PlayBGM("LobbyBGM");
                     async.allowSceneActivation = true;
