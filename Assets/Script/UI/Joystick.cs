@@ -8,7 +8,7 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public enum attackDir { Dash=1,Upper,Lower}
     public attackDir dir { get; private set; }
 
-    [SerializeField] float minDragDistance = 25f;
+    [SerializeField] float minDragDistance = 10f;
 
     RectTransform touchArea;
     private Image joystick_Parent;
