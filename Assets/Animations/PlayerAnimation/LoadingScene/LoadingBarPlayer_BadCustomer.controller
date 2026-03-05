@@ -7,8 +7,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LoadingBarPlayer
-  m_Speed: 1
+  m_Name: LoadingBarPlayer_BadCustomer
+  m_Speed: 1.3
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5c098d087b8d4a840ad9333897dc6f28, type: 2}
+  m_Motion: {fileID: 7400000, guid: c31d7388ac8b606428a4cb8191f68d43, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -32,7 +32,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LoadingBarPlayer
+  m_Name: LoadingBarPlayer_BadCustomer
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
