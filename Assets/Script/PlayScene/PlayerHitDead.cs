@@ -62,8 +62,9 @@ public class PlayerHitDead : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player.components.sp.material.color = Color.white;
         yield return new WaitForSeconds(0.5f);
-        player.components.ani.SetTrigger("WakeUp");
+        player.components.ani.SetBool("WakeUp",true);
         yield return new WaitForSeconds(0.5f);
+        player.components.ani.SetBool("WakeUp", false);
         playerAttack.SetCanAttack(1);
         player.isHit = false;
 

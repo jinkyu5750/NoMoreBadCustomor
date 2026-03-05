@@ -421,6 +421,14 @@ PrefabInstance:
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: 538b2bf6b1d588a43ae7260be46c9c9a, type: 2}
+    - target: {fileID: 1106903816190222969, guid: 67a990e559850e74b8e0b1fcb533e856, type: 3}
+      propertyPath: SFXclips.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106903816190222969, guid: 67a990e559850e74b8e0b1fcb533e856, type: 3}
+      propertyPath: 'SFXclips.Array.data[14]'
+      value: 
+      objectReference: {fileID: 8300000, guid: eabffcdeb214e7348bde1821fcf9ff43, type: 3}
     - target: {fileID: 1260496339373839712, guid: 67a990e559850e74b8e0b1fcb533e856, type: 3}
       propertyPath: m_Name
       value: SoundManager

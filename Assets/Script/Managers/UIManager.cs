@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image skillPanel_Top;
     [SerializeField] private Image skillPanel_Down;
     [SerializeField] private Image skillPanel_Portrait;
-
+    [SerializeField] private Image WarningPanel;
 
     //·Îºñ ¾À ³» UI
     [Header("LobbyScene UI")]
@@ -196,6 +196,16 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void MoveWarningPanel()
+    {
+
+        Sequence seq = DOTween.Sequence();
+        seq.Append(WarningPanel.rectTransform.DOAnchorPosX(0, 0.3f).SetEase(ease))
+            .Insert(1f, WarningPanel.rectTransform.DOAnchorPosX(1920f, 0.3f).SetEase(ease))
+            .OnComplete(() => WarningPanel.GetComponentInChildren<ParticleSystem>().Stop());
+
+        WarningPanel.GetComponentInChildren<ParticleSystem>().Play();
+    }
     public void SetReceiptPointText(string text)
     {
         receiptPointText.text = text;

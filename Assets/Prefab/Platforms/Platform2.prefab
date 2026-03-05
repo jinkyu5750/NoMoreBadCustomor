@@ -4265,9 +4265,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8267878995817728516}
     m_Modifications:
+    - target: {fileID: 205395903347468038, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 825041946648869196, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3332072952055755586, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_Name
       value: EnemyPrefab_throw
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851506278080088709, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7872232353095012554, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_LocalScale.x
@@ -4283,7 +4295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872232353095012554, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 7872232353095012554, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4316,6 +4328,10 @@ PrefabInstance:
     - target: {fileID: 7872232353095012554, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704995577698104275, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
+      propertyPath: throwPower
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

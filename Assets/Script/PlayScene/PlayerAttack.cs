@@ -235,6 +235,7 @@ public class PlayerAttack : MonoBehaviour
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
         UIManager.Instance.MoveSkillPanel(true);
+        SoundManager.instance.PlaySFX("MovePanel");
         skillCam.Priority = 11;
 
         player.components.col.enabled = false;
