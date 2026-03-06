@@ -157,9 +157,10 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (player.components.ani.GetBool("IsGround") == true)
                     {
+                     
+                        player.components.ani.SetInteger("Attack", 0);
                         curAttackData = null;
                         SetCanAttack(1);
-                        player.components.ani.SetInteger("Attack", 0);
                         yield break;
                     }
 
@@ -262,6 +263,7 @@ public class PlayerAttack : MonoBehaviour
             Vector3 enemyPos = GetEnemyPos(enemy);
             CalCamAngle(enemyPos);
 
+            player.components.ani.SetTrigger("SkillDash");
             yield return new WaitForSeconds(0.15f); // Dash 애니메이션으로의 트랜지션 딜레이
             SoundManager.instance.PlaySFX("SkillDashWhoosh");
             while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
@@ -283,7 +285,6 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        // 가까운 플랫폼 스폰포인트로... 
         player.components.col.enabled = true;
         player.components.ani.SetBool("SkillOn", false);
         GetComponent<GhostEffect>().IsGhostOn = false;
@@ -342,12 +343,11 @@ public class PlayerAttack : MonoBehaviour
     #region 타격을 위한 메소드(히트박스) // 애니메이션 이벤트 
     public void AttackAniEvent(string attackDir)
     {
+        player.components.ani.SetInteger("Attack", 0);
 
-        if (attackDir != "Lower") // Lower은 애니메이션이벤트로 따로처리
-        {
+        if (attackDir != "Lower") // Lower은 애니메이션이벤트로 따로처리      
             SetCanAttack(1);
-            player.components.ani.SetInteger("Attack", 0);
-        }
+        
 
         switch (attackDir)
         {

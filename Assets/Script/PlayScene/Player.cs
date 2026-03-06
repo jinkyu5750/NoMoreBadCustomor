@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Components
@@ -33,6 +34,8 @@ public class Player : MonoBehaviour
     private float max_runSpeed;
 
     [SerializeField] private Joystick joystick;
+
+    [SerializeField] TextMeshProUGUI x;
     private void Start()
     {
         components = new Components()
@@ -57,7 +60,8 @@ public class Player : MonoBehaviour
 
         if (playerHitDead.isDead) return;
 
-
+        x.text = components.ani.GetInteger("Attack").ToString();
+       
     
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -125,11 +129,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            components.ani.SetBool("IsGround", true);
+            components.ani.SetBool("IsRun", true);
             ParticleManager.instance.UseObject("LandingDust", transform.position, Quaternion.identity);
             //  playerAttack.SetCurAttackCombo();
             isGround = true;
-            components.ani.SetBool("IsGround", true);
-            components.ani.SetBool("IsRun", true);
+
         }
 
 
