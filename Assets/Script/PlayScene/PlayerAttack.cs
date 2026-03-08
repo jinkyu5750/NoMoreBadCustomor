@@ -279,7 +279,7 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             player.components.ani.SetInteger("SkillNum", 0);
 
-            DoSlowMotion();
+            DoSlowMotion(slowFactor);
             yield return new WaitUntil(() => nextAttack_Skill == true);
 
         }
@@ -295,7 +295,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     }
-    public void DoSlowMotion()
+    public void DoSlowMotion(float slowFactor)
     {
         Time.timeScale = slowFactor;
         Time.fixedDeltaTime = Time.timeScale * 0.02f;

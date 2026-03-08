@@ -13,7 +13,7 @@ public class Sound
 public class SoundSetting : MonoBehaviour
 {
     [SerializeField]Sound BGM;
-    [SerializeField]Sound SFX; // Sound배열로 하면 더 좋지만.. 그냥 당장은 BGM,SFX라는 이름으로 구분하고싶어서..
+    [SerializeField]Sound SFX; //  Enum만들고 Sound배열로 하면 더 좋지만.. 그냥 당장은 BGM,SFX라는 이름으로 구분하고싶어서..
     Sound s = null;
 
     [SerializeField] Sprite non_MuteImage;

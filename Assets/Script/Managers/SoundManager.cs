@@ -76,4 +76,16 @@ public class SoundManager : MonoBehaviour
     {
         audioMixer.SetFloat(type.ToString(), Mathf.Log10(value) * 20);
     }
+
+    public void SetFatalSound(bool isFatal)
+    {
+        if (isFatal)
+        {
+            audioMixer.SetFloat("LowPassCutOff", 975f);
+            audioMixer.SetFloat("LowPassCutOff", 975f);
+
+            audioMixer.SetFloat("LowPassCutOff", 975f);
+
+        }
+    }
 }

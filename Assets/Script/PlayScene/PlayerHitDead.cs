@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerHitDead : MonoBehaviour
 {
@@ -15,8 +17,10 @@ public class PlayerHitDead : MonoBehaviour
     public bool isDead { get; private set; } = false;
 
     bool oneMoreLife = true;
-
-
+    bool isFatal = false;
+    [SerializeField] private Volume volume;
+     float addedIntensity = 0.1f;
+ 
     private void Start()
     {
         life_Max += GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(0);
@@ -28,8 +32,14 @@ public class PlayerHitDead : MonoBehaviour
         {
             hitCurTime -= Time.deltaTime;
         }
+
+        if (life == 1 && !isFatal)
+        {
+            isFatal = true;
+            StartCoroutine(Fatal());
+        }
     }
-    public void InitPlayer(Player player,PlayerAttack playerAttack)
+    public void InitPlayer(Player player, PlayerAttack playerAttack)
     {
         this.player = player;
         this.playerAttack = playerAttack;
@@ -61,8 +71,7 @@ public class PlayerHitDead : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         player.components.sp.material.color = Color.white;
-        yield return new WaitForSeconds(0.5f);
-        player.components.ani.SetBool("WakeUp",true);
+        player.components.ani.SetBool("WakeUp", true);
         yield return new WaitForSeconds(0.5f);
         player.components.ani.SetBool("WakeUp", false);
         playerAttack.SetCanAttack(1);
@@ -74,7 +83,7 @@ public class PlayerHitDead : MonoBehaviour
     {
         //  if (hitCurTime > 0) yield break; // ¸Â¾Æ¼­ Æ¨°ÜÁ®³ª°¬À»¶§ Ã³¸®ÇØ¾ßµÅ
 
-        if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(4) == 1 && oneMoreLife )
+        if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(4) == 1 && oneMoreLife)
         {
 
             oneMoreLife = false;
@@ -84,7 +93,7 @@ public class PlayerHitDead : MonoBehaviour
             player.components.rig.velocity = Vector3.zero;
             player.components.col.enabled = false;
             player.components.ani.SetBool("Spin", true);
-            player.components.rig.velocity = Vector3.up*17;
+            player.components.rig.velocity = Vector3.up * 17;
 
             yield return new WaitForSeconds(1.5f);
             player.components.col.enabled = true;
@@ -116,9 +125,34 @@ public class PlayerHitDead : MonoBehaviour
 
     public IEnumerator Dead()
     {
+        StartCoroutine(CameraManager.instance.ZoomInOutCam());
+        playerAttack.DoSlowMotion(0.1f);
+
         isDead = true;
         player.components.ani.SetBool("Dead", true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         UIManager.Instance.ResultPanel(true);
+    }
+
+    public IEnumerator Fatal()
+    {
+
+
+        Vignette vignette;
+        if (volume.profile.TryGet<Vignette>(out vignette))
+        {
+            while (true)
+            {
+                vignette.intensity.value = 0.5f + Mathf.PingPong(Time.time * 0.2f, addedIntensity);
+                yield return null;
+            }
+
+        }
+
+        FilmGrain filmGrain;
+        if (volume.profile.TryGet<FilmGrain>(out filmGrain))
+        {
+            filmGrain.intensity.value = 0.5f + addedIntensity;
+        }
     }
 }

@@ -1,16 +1,21 @@
 using Cinemachine;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 public class CameraManager : MonoBehaviour
 {
 
     public static CameraManager instance;
 
+    [SerializeField] private float zoomInTime = 2f;
+    [SerializeField] private float targetOrthoSize = 3f;
+
     [SerializeField] private float shakeForce = 1f;
     [SerializeField] private CinemachineVirtualCamera cam;
     private CinemachineImpulseListener impulseListener;
     private CinemachineImpulseDefinition impulseDefinition;
- 
+    CinemachineFramingTransposer transposer;
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +27,7 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         impulseListener = cam.GetComponent<CinemachineImpulseListener>();
+        transposer = cam.GetCinemachineComponent<CinemachineFramingTransposer>();
     }
 
     public void ShakeCameraFromProfile(CameraShakeProfile profile, CinemachineImpulseSource impulseSource)
@@ -49,11 +55,31 @@ public class CameraManager : MonoBehaviour
     }
 
 
-    public IEnumerator ZoomInCam()
+    public IEnumerator ZoomInOutCam()
     {
-        cam.m_Lens.OrthographicSize = 5.8f;
-        yield return new WaitForSeconds(0.15f);
-        cam.m_Lens.OrthographicSize = 6f;
+        float startOrthoSize = cam.m_Lens.OrthographicSize;
+        Vector3 offset = transposer.m_TrackedObjectOffset;
+        transposer.m_TrackedObjectOffset = new Vector3(0, 0, 0);
+
+        yield return StartCoroutine(ZoomCam(startOrthoSize, targetOrthoSize, zoomInTime));
+        yield return StartCoroutine(ZoomCam(targetOrthoSize, startOrthoSize, zoomInTime / 2));
+    //    transposer.m_TrackedObjectOffset = offset;
+
     }
 
+
+    public IEnumerator ZoomCam(float startSize,float targetSize,float time)
+    {
+
+        float curTime = 0f;
+        while (curTime <= time) 
+        {
+
+            curTime += Time.deltaTime;
+            float t = curTime / time;
+            cam.m_Lens.OrthographicSize = Mathf.Lerp(startSize, targetSize, t);
+
+            yield return null;
+        }
+    }
 }
