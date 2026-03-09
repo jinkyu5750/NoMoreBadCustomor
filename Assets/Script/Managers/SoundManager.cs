@@ -17,6 +17,10 @@ public class SoundManager : MonoBehaviour
     Dictionary<string, AudioClip> BGMdic = new Dictionary<string, AudioClip>();
     Dictionary<string, AudioClip> SFXdic = new Dictionary<string, AudioClip>();
 
+    [SerializeField] AudioMixerSnapshot normalSnapshot;
+    [SerializeField] AudioMixerSnapshot fatalSnapshot;
+
+
     private void Awake()
     {
         if (instance == null)
@@ -81,11 +85,10 @@ public class SoundManager : MonoBehaviour
     {
         if (isFatal)
         {
-            audioMixer.SetFloat("LowPassCutOff", 975f);
-            audioMixer.SetFloat("LowPassCutOff", 975f);
-
-            audioMixer.SetFloat("LowPassCutOff", 975f);
+            fatalSnapshot.TransitionTo(0.1f);
 
         }
+        else
+            normalSnapshot.TransitionTo(0.1f);
     }
 }

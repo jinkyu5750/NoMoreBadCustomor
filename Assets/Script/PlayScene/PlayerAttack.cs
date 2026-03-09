@@ -12,8 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private bool _canAttack = true;
     public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
-    private float dashTime = 0.4f;
-    private float dashPower = 10;
+  [SerializeField]  private float dashTime = 0.4f;
+ [SerializeField]   private float dashPower = 10;
     private float jumpPower = 8;
     private float dropPower = 10;
 

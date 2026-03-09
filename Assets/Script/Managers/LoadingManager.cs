@@ -86,6 +86,7 @@ public class LoadingManager : MonoBehaviour
     private IEnumerator LoadScene_LoadingBar()
     {
         SoundManager.instance.StopBGM();
+        SoundManager.instance.SetFatalSound(false);
         SwitchLoadingImage(true);
         progressBar.value = 0;
 

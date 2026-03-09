@@ -154,5 +154,7 @@ public class PlayerHitDead : MonoBehaviour
         {
             filmGrain.intensity.value = 0.5f + addedIntensity;
         }
+
+        SoundManager.instance.SetFatalSound(true);
     }
 }

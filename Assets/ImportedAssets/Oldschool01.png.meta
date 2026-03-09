@@ -1,0 +1,1252 @@
+fileFormatVersion: 2
+guid: 202374bed5a06ae438b0a118cab5e832
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6582574459694907635
+    second: Oldschool01_0
+  - first:
+      213: 9161723417309391251
+    second: Oldschool01_1
+  - first:
+      213: -5957863844796671137
+    second: Oldschool01_2
+  - first:
+      213: 5975927039010385476
+    second: Oldschool01_3
+  - first:
+      213: 9002987328888668486
+    second: Oldschool01_4
+  - first:
+      213: 6988861353143490101
+    second: Oldschool01_5
+  - first:
+      213: -8187435470542104099
+    second: Oldschool01_6
+  - first:
+      213: 3115346712071095268
+    second: Oldschool01_7
+  - first:
+      213: 567877051434629089
+    second: Oldschool01_8
+  - first:
+      213: 3140756100763588650
+    second: Oldschool01_9
+  - first:
+      213: -4932462853091545990
+    second: Oldschool01_10
+  - first:
+      213: 1186124681695870281
+    second: Oldschool01_11
+  - first:
+      213: 5639322749369079199
+    second: Oldschool01_12
+  - first:
+      213: -1722980314936447351
+    second: Oldschool01_13
+  - first:
+      213: 7227537252325451289
+    second: Oldschool01_14
+  - first:
+      213: 7664182960476362754
+    second: Oldschool01_15
+  - first:
+      213: 4401036348172702215
+    second: Oldschool01_16
+  - first:
+      213: -3153153392403137559
+    second: Oldschool01_17
+  - first:
+      213: 6530151662112505366
+    second: Oldschool01_18
+  - first:
+      213: 201853595339839748
+    second: Oldschool01_19
+  - first:
+      213: -7923892876779159109
+    second: Oldschool01_20
+  - first:
+      213: -8950762502343092044
+    second: Oldschool01_21
+  - first:
+      213: 2119881549932886909
+    second: Oldschool01_22
+  - first:
+      213: -8501874196643164336
+    second: Oldschool01_23
+  - first:
+      213: 4781106371882610388
+    second: Oldschool01_24
+  - first:
+      213: -6803128933750804927
+    second: Oldschool01_25
+  - first:
+      213: -2963028003768216846
+    second: Oldschool01_26
+  - first:
+      213: 3394833627009033594
+    second: Oldschool01_27
+  - first:
+      213: -3041442712595487704
+    second: Oldschool01_28
+  - first:
+      213: -9137303548625654813
+    second: Oldschool01_29
+  - first:
+      213: 1228046516871076443
+    second: Oldschool01_30
+  - first:
+      213: -2481386727381148860
+    second: Oldschool01_31
+  - first:
+      213: -311805161049818938
+    second: Oldschool01_32
+  - first:
+      213: -7459995526996975466
+    second: Oldschool01_33
+  - first:
+      213: -4107912525128317373
+    second: Oldschool01_34
+  - first:
+      213: -2491487631939462919
+    second: Oldschool01_35
+  - first:
+      213: -7869340292605379692
+    second: Oldschool01_36
+  - first:
+      213: -292234589414656066
+    second: Oldschool01_37
+  - first:
+      213: 5349298487281595648
+    second: Oldschool01_38
+  - first:
+      213: 6983295357092420491
+    second: Oldschool01_39
+  - first:
+      213: -2713417033378322063
+    second: Oldschool01_40
+  - first:
+      213: -5403110544626361821
+    second: Oldschool01_41
+  - first:
+      213: -4127740037239282330
+    second: Oldschool01_42
+  - first:
+      213: 5055266333949273977
+    second: Oldschool01_43
+  - first:
+      213: -7306462464297022958
+    second: Oldschool01_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Oldschool01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 15
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0f7356a76ff5a4a0800000000000000
+      internalID: -6582574459694907635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_1
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 4
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 399aa1b38eaf42f70800000000000000
+      internalID: 9161723417309391251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5b50c6366a615da0800000000000000
+      internalID: -5957863844796671137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_3
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44eaddbeaf1cee250800000000000000
+      internalID: 5975927039010385476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_4
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64180c7964901fc70800000000000000
+      internalID: 9002987328888668486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_5
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 536d2924f5c6df060800000000000000
+      internalID: 6988861353143490101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_6
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd997e481d2606e80800000000000000
+      internalID: -8187435470542104099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_7
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e3cd2d245feb3b20800000000000000
+      internalID: 3115346712071095268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_8
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e77bd66b2181e700800000000000000
+      internalID: 567877051434629089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_9
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2897208805369b20800000000000000
+      internalID: 3140756100763588650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_10
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7c2bad1b2f5c8bb0800000000000000
+      internalID: -4932462853091545990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_11
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94d3ec71d16f57010800000000000000
+      internalID: 1186124681695870281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_12
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f955ce18926e24e40800000000000000
+      internalID: 5639322749369079199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_13
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98ee835488eb618e0800000000000000
+      internalID: -1722980314936447351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_14
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 916e2cd76de5d4460800000000000000
+      internalID: 7227537252325451289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_15
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2089bc4cbc5ac5a60800000000000000
+      internalID: 7664182960476362754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_16
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7029a60bd3f931d30800000000000000
+      internalID: 4401036348172702215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_17
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eb3e7b12bfbd34d0800000000000000
+      internalID: -3153153392403137559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_18
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61e74a5a652cf9a50800000000000000
+      internalID: 6530151662112505366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_19
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 409ddd686c02dc200800000000000000
+      internalID: 201853595339839748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_20
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 24
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb18451496da80290800000000000000
+      internalID: -7923892876779159109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_21
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 0
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b814f26de088c380800000000000000
+      internalID: -8950762502343092044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_22
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 0
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b77adb9055b6d10800000000000000
+      internalID: 2119881549932886909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_23
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 24
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f46088676430a80800000000000000
+      internalID: -8501874196643164336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_24
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4de6b61f9e6e95240800000000000000
+      internalID: 4781106371882610388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_25
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14ee99e774e6691a0800000000000000
+      internalID: -6803128933750804927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_26
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f25cd7bab531e6d0800000000000000
+      internalID: -2963028003768216846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_27
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a75ac69723fdc1f20800000000000000
+      internalID: 3394833627009033594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_28
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 824ab0797ff9ac5d0800000000000000
+      internalID: -3041442712595487704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_29
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eb604385d6c13180800000000000000
+      internalID: -9137303548625654813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_30
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5a91c5fcc5ea0110800000000000000
+      internalID: 1228046516871076443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_31
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44bd31c1be7509dd0800000000000000
+      internalID: -2481386727381148860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_32
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c8fd78abde3cabf0800000000000000
+      internalID: -311805161049818938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_33
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 690a75bc795c87890800000000000000
+      internalID: -7459995526996975466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_34
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3464953b253cdf6c0800000000000000
+      internalID: -4107912525128317373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_35
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f818fff2357c6dd0800000000000000
+      internalID: -2491487631939462919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_36
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b769a82bc7ac290800000000000000
+      internalID: -7869340292605379692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_37
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb77bd27036c1fbf0800000000000000
+      internalID: -292234589414656066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_38
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 0
+        width: 16
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00534f3e1a68c3a40800000000000000
+      internalID: 5349298487281595648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_39
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 0
+        width: 15
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8bd021d026a9e060800000000000000
+      internalID: 6983295357092420491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_40
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 11
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 179adfd9591085ad0800000000000000
+      internalID: -2713417033378322063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_41
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ad069269b4405b0800000000000000
+      internalID: -5403110544626361821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_42
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 0
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 665e13b4e4257b6c0800000000000000
+      internalID: -4127740037239282330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_43
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977a90062f9e72640800000000000000
+      internalID: 5055266333949273977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oldschool01_44
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21ac9da991b3a9a90800000000000000
+      internalID: -7306462464297022958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Oldschool01_0: -6582574459694907635
+      Oldschool01_1: 9161723417309391251
+      Oldschool01_10: -4932462853091545990
+      Oldschool01_11: 1186124681695870281
+      Oldschool01_12: 5639322749369079199
+      Oldschool01_13: -1722980314936447351
+      Oldschool01_14: 7227537252325451289
+      Oldschool01_15: 7664182960476362754
+      Oldschool01_16: 4401036348172702215
+      Oldschool01_17: -3153153392403137559
+      Oldschool01_18: 6530151662112505366
+      Oldschool01_19: 201853595339839748
+      Oldschool01_2: -5957863844796671137
+      Oldschool01_20: -7923892876779159109
+      Oldschool01_21: -8950762502343092044
+      Oldschool01_22: 2119881549932886909
+      Oldschool01_23: -8501874196643164336
+      Oldschool01_24: 4781106371882610388
+      Oldschool01_25: -6803128933750804927
+      Oldschool01_26: -2963028003768216846
+      Oldschool01_27: 3394833627009033594
+      Oldschool01_28: -3041442712595487704
+      Oldschool01_29: -9137303548625654813
+      Oldschool01_3: 5975927039010385476
+      Oldschool01_30: 1228046516871076443
+      Oldschool01_31: -2481386727381148860
+      Oldschool01_32: -311805161049818938
+      Oldschool01_33: -7459995526996975466
+      Oldschool01_34: -4107912525128317373
+      Oldschool01_35: -2491487631939462919
+      Oldschool01_36: -7869340292605379692
+      Oldschool01_37: -292234589414656066
+      Oldschool01_38: 5349298487281595648
+      Oldschool01_39: 6983295357092420491
+      Oldschool01_4: 9002987328888668486
+      Oldschool01_40: -2713417033378322063
+      Oldschool01_41: -5403110544626361821
+      Oldschool01_42: -4127740037239282330
+      Oldschool01_43: 5055266333949273977
+      Oldschool01_44: -7306462464297022958
+      Oldschool01_5: 6988861353143490101
+      Oldschool01_6: -8187435470542104099
+      Oldschool01_7: 3115346712071095268
+      Oldschool01_8: 567877051434629089
+      Oldschool01_9: 3140756100763588650
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

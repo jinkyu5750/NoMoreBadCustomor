@@ -67,6 +67,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2c33ed9d6a05c0c458d720fee70b9ab5, type: 3}
   - {fileID: 8300000, guid: caf20e6034f2f0e47aa8b087c59a8a82, type: 3}
   - {fileID: 8300000, guid: eabffcdeb214e7348bde1821fcf9ff43, type: 3}
+  normalSnapshot: {fileID: -1985991998297056338, guid: 538b2bf6b1d588a43ae7260be46c9c9a, type: 2}
+  fatalSnapshot: {fileID: 8225939318574317980, guid: 538b2bf6b1d588a43ae7260be46c9c9a, type: 2}
 --- !u!1 &6515898323139964335
 GameObject:
   m_ObjectHideFlags: 0
