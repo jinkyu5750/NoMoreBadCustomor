@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class Components
@@ -31,11 +30,9 @@ public class Player : MonoBehaviour
     private bool isDragging = false;
     private Vector3 startMousePos, curMousePos;
     private float minDragDistance = 150f;
-    private float max_runSpeed;
 
     [SerializeField] private Joystick joystick;
 
-    [SerializeField] TextMeshProUGUI x;
     private void Start()
     {
         components = new Components()
@@ -51,7 +48,7 @@ public class Player : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerHitDead = GetComponent<PlayerHitDead>();
         playerAttack.InitPlayer(this);
-        playerHitDead.InitPlayer(this,playerAttack);
+        playerHitDead.InitPlayer(this, playerAttack);
 
     }
 
@@ -60,13 +57,9 @@ public class Player : MonoBehaviour
 
         if (playerHitDead.isDead) return;
 
-        x.text = components.ani.GetInteger("Attack").ToString();
-       
-    
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            switch(joystick.dir)
+            switch (joystick.dir)
             {
                 case Joystick.attackDir.Dash:
                     StartCoroutine(playerAttack.Attack(PlayerAttack.attack.Dash));
@@ -81,7 +74,7 @@ public class Player : MonoBehaviour
             }
         }
 
-            if (playerHitDead.life == 0)
+        if (playerHitDead.life == 0)
             StartCoroutine(playerHitDead.Dead());
 
         Move();
@@ -100,6 +93,11 @@ public class Player : MonoBehaviour
     }
 
 
+    public void SetRunSpeed(float speed)
+    {
+
+        runSpeed = speed;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

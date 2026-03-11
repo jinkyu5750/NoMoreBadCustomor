@@ -81,6 +81,10 @@ public class SoundManager : MonoBehaviour
         audioMixer.SetFloat(type.ToString(), Mathf.Log10(value) * 20);
     }
 
+    public void SetBGMPitch(float value)
+    {
+        BGMsource.pitch = value;
+    }
     public void SetFatalSound(bool isFatal)
     {
         if (isFatal)

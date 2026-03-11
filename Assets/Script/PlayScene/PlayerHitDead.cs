@@ -137,6 +137,7 @@ public class PlayerHitDead : MonoBehaviour
     public IEnumerator Fatal()
     {
 
+        SoundManager.instance.SetFatalSound(true);
 
         Vignette vignette;
         if (volume.profile.TryGet<Vignette>(out vignette))
@@ -155,6 +156,5 @@ public class PlayerHitDead : MonoBehaviour
             filmGrain.intensity.value = 0.5f + addedIntensity;
         }
 
-        SoundManager.instance.SetFatalSound(true);
     }
 }
