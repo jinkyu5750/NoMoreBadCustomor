@@ -12,8 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private bool _canAttack = true;
     public bool canAttack { get { return _canAttack; } private set { _canAttack = value; } }
 
-  [SerializeField]  private float dashTime = 0.4f;
- [SerializeField]   private float dashPower = 10;
+    [SerializeField] private float dashTime = 0.4f;
+    [SerializeField] private float dashPower = 10;
     private float jumpPower = 8;
     private float dropPower = 10;
 
@@ -23,7 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     private int max_Combo = 2;
     private int curCombo = 0;
-
+    [SerializeField] private GameObject comboGaneSkillGageEffect;
     [SerializeField] CameraShakeProfile attackProfile;
     [SerializeField] CameraShakeProfile groundSlamProfile;
     [SerializeField] CameraShakeProfile additionalAttackProfile;
@@ -32,9 +32,9 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] CinemachineVirtualCamera skillCam;
     private float skillGage = 0;
-    private bool isSkill = false;
+    public bool isSkill { get; private set; } = false;
     private bool nextAttack_Skill = false;
-    private int skillattackCount = 3;
+    private int skillAttackCount = 3;
     public float slowFactor = 0.05f;
     public float slowLength = 1f;
 
@@ -46,6 +46,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private AttackData curAttackData;
 
     private bool canAdditionalAttack = false;
+
+    public int combo { get; private set; } = 0;
+    private CircleCollider2D magnetCol;
     public void InitPlayer(Player player)
     {
         this.player = player;
@@ -54,6 +57,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         impulseSource = GetComponent<CinemachineImpulseSource>();
+        magnetCol = transform.Find("MagnetRange").GetComponent<CircleCollider2D>();
     }
 
     private void Update()
@@ -157,7 +161,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     if (player.components.ani.GetBool("IsGround") == true)
                     {
-                     
+
                         player.components.ani.SetInteger("Attack", 0);
                         curAttackData = null;
                         SetCanAttack(1);
@@ -179,7 +183,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     #region 스킬
-    public void GaneSkillGage()
+    public void GaneSkillGage(string name) // Receipt랑 공격 수치조절필요
     {
         if (isSkill) return;
 
@@ -187,6 +191,18 @@ public class PlayerAttack : MonoBehaviour
         //   skillGage += 5 + (5 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); // 100까지 대략 6~7회
         skillGage += 134 + Random.Range(-3, 5); // 100까지 대략 6~7회
 
+        /*   switch (name)
+           {
+               case "Attack":
+                      skillGage += 3 + (3 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); 
+                   break;
+               case "Receipt":
+                   skillGage += 0.1f;
+                   break;
+               case "Combo":
+                   skillGage += 5f;
+                   break;
+           }*/
         UIManager.Instance.UpdateSkillGage(skillGage);
 
     }
@@ -232,25 +248,26 @@ public class PlayerAttack : MonoBehaviour
         isSkill = true;
         SetCanAttack(0);
         skillGage = 0;
-        skillattackCount += GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
+        int attackCount =  skillAttackCount +GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
         UIManager.Instance.MoveSkillPanel(true);
         SoundManager.instance.PlaySFX("MovePanel");
         skillCam.Priority = 11;
 
-        player.components.col.enabled = false;
+        magnetCol.enabled = true;
+        player.components.hurtCol.enabled = false;
         player.components.rig.velocity = Vector3.zero;
         player.components.ani.SetBool("SkillOn", true); //선동작
 
         // 여기까지 UI세팅과 필요한 변수 세팅
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         player.components.ani.SetTrigger("SkillStart");
         GetComponent<GhostEffect>().IsGhostOn = true;
 
         //공격시작
-        for (int i = 0; i < skillattackCount; i++)
+        for (int i = 0; i < attackCount; i++)
         {
             nextAttack_Skill = false;
             GetComponent<GhostEffect>().SetDelay("SkillDash");
@@ -268,7 +285,7 @@ public class PlayerAttack : MonoBehaviour
             SoundManager.instance.PlaySFX("SkillDashWhoosh");
             while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, enemyPos, 60f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, enemyPos, 70f * Time.deltaTime);
                 yield return null;
             }
 
@@ -285,10 +302,11 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        player.components.col.enabled = true;
+        player.components.hurtCol.enabled = true;
         player.components.ani.SetBool("SkillOn", false);
         GetComponent<GhostEffect>().IsGhostOn = false;
         isSkill = false;
+        magnetCol.enabled = false;
         UIManager.Instance.MoveSkillPanel(false);
         skillCam.Priority = 9;
         skillCam.m_Lens.Dutch = 0;
@@ -328,7 +346,7 @@ public class PlayerAttack : MonoBehaviour
         curAttackData = additionalAttackData;
 
         player.components.ani.SetInteger("AdditionalAttack", 1); // 추격
-        player.components.col.enabled = false;
+        player.components.hurtCol.enabled = false;
 
         while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
         {
@@ -347,7 +365,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (attackDir != "Lower") // Lower은 애니메이션이벤트로 따로처리      
             SetCanAttack(1);
-        
+
 
         switch (attackDir)
         {
@@ -371,7 +389,7 @@ public class PlayerAttack : MonoBehaviour
                 player.components.ani.SetInteger("AdditionalAttack", 0);
                 player.components.rig.velocity = Vector2.right * player.runSpeed;
                 player.components.rig.gravityScale = g;
-                player.components.col.enabled = true;
+                player.components.hurtCol.enabled = true;
                 Collider2D col = Physics2D.OverlapBox(transform.position + new Vector3(0, -0.5f, 0), additionalAttackData.hitBoxSize, 0, LayerMask.GetMask("Ground"));
                 if (col != null) player.components.ani.SetBool("AddiToJump", false);
                 else player.components.ani.SetBool("AddiToJump", true);
@@ -401,6 +419,16 @@ public class PlayerAttack : MonoBehaviour
             if (hit != null)
             {
                 SoundManager.instance.PlaySFX(curAttackData.sfxName);
+                UIManager.Instance.SetComboUI(++combo);
+                if (combo % 10 == 0)
+                {
+                    // 콤보로얻었을떄 이펙트
+                    GameObject go = Instantiate(comboGaneSkillGageEffect);
+                    go.transform.SetParent(transform, false);
+                    go.transform.localPosition = new Vector3(0, 0.5f, 0);
+                    Destroy(go,2f);
+                    GaneSkillGage("Combo");
+                }
 
                 StartCoroutine(hit.gameObject.GetComponent<Enemy>().EnemyDead());
                 // -> 적 Dead
@@ -414,7 +442,8 @@ public class PlayerAttack : MonoBehaviour
                 ParticleManager.instance.UseObject(curAttackData.particleName, hit.transform.position + new Vector3(randomCircle.x, randomCircle.y, 0), Quaternion.identity);
                 // -> 히트 파티클
 
-                GaneSkillGage();
+                if (curAttackData != skillAttackData)
+                    GaneSkillGage("Attack");
                 ScoreManager.instance.MonsterScore(isSkill);
                 // -> 스코어,스킬게이지 증가
 
@@ -473,6 +502,11 @@ public class PlayerAttack : MonoBehaviour
     }
 
     #endregion
+
+    public void SetComboZero()
+    {
+        this.combo = 0;
+    }
     void OnDrawGizmos()
     {
         /*    Gizmos.color = Color.red;
@@ -482,4 +516,10 @@ public class PlayerAttack : MonoBehaviour
 
             Gizmos.DrawWireCube(transform.position + new Vector3(12.5f, 0.5f, 0), new Vector3(25, 20, 0));*/
     }
+
+
+
+
+
+
 }

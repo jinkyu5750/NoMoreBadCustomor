@@ -51,6 +51,8 @@ public class PlayerHitDead : MonoBehaviour
         if (hitCurTime > 0) yield break;
         hitCurTime = hitCoolTime;
 
+        playerAttack.SetComboZero();
+        UIManager.Instance.SetComboUI(0);
         player.isHit = true;
         playerAttack.SetCanAttack(0);
         playerAttack.HitDuringAttack();
@@ -107,7 +109,8 @@ public class PlayerHitDead : MonoBehaviour
         hitCurTime = hitCoolTime;
 
         playerAttack.HitDuringAttack();
-
+        playerAttack.SetComboZero();
+        UIManager.Instance.SetComboUI(0);
 
         player.components.ani.SetTrigger("Hit");
 

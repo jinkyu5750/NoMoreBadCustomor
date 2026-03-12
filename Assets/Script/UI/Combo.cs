@@ -11,6 +11,9 @@ public class Combo : MonoBehaviour
 
     public void SetComboUI(int combo)
     {
+        if (combo == 0)
+            return;
+
         string str = combo.ToString();
         int idx = str.Length - 1;
         for (int i = numberUI.Length - 1; i >= 0; i--)

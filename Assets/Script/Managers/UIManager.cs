@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image skillPanel_Down;
     [SerializeField] private Image skillPanel_Portrait;
     [SerializeField] private Image WarningPanel;
+    [SerializeField] private Image comboPanel;
+    [SerializeField] private Image[] numberUI;
+    [SerializeField] private Sprite[] numberImage;
 
     //·Îºñ ¾À ³» UI
     [Header("LobbyScene UI")]
@@ -66,8 +69,6 @@ public class UIManager : MonoBehaviour
             stopButton.onClick.AddListener(() => MenuPanel(true));
             resultExitButton.onClick.AddListener(() => ResultPanel(false, false));
             resultRetryButton.onClick.AddListener(() => ResultPanel(false, true));
-
-
             menuPanel.gameObject.SetActive(false);
         }
     }
@@ -88,6 +89,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #region PlayScene
     public void UpdateHPBar(float hp)
     {
         hpBar.fillAmount = hp;
@@ -179,7 +181,7 @@ public class UIManager : MonoBehaviour
             Sequence seq = DOTween.Sequence();
             seq.Append(skillPanel_Portrait.rectTransform.DOAnchorPosX(0, 0.5f).SetEase(ease))
                 .Insert(3f, skillPanel_Portrait.rectTransform.DOAnchorPosX(1920f, 0.5f).SetEase(ease))
-                .OnComplete(()=>skillPanel_Portrait.GetComponentInChildren<ParticleSystem>().Stop());
+                .OnComplete(() => skillPanel_Portrait.GetComponentInChildren<ParticleSystem>().Stop());
 
             skillPanel_Portrait.GetComponentInChildren<ParticleSystem>().Play();
 
@@ -189,7 +191,7 @@ public class UIManager : MonoBehaviour
             skillPanel_Top.rectTransform.DOAnchorPosY(300f, 0.5f).SetEase(ease);
             skillPanel_Down.rectTransform.DOAnchorPosY(-300f, 0.5f).SetEase(ease);
             skillPanel_Portrait.rectTransform.anchoredPosition = new Vector2(-1920f, 0);
-            
+
 
 
         }
@@ -206,6 +208,41 @@ public class UIManager : MonoBehaviour
 
         WarningPanel.GetComponentInChildren<ParticleSystem>().Play();
     }
+
+    public void SetComboUI(int combo)
+    {
+        if (combo == 0)
+        {
+            comboPanel.gameObject.SetActive(false);
+            return;
+        }
+
+        comboPanel.gameObject.SetActive(true);
+
+        string str = combo.ToString();
+        int idx = str.Length - 1;
+        for (int i = numberUI.Length - 1; i >= 0; i--)
+        {
+            if (idx < 0)
+            {
+                numberUI[i].gameObject.SetActive(false);
+                continue;
+            }
+
+            int number = str[idx--] - '0'; // string to int
+
+            numberUI[i].sprite = numberImage[number];
+            numberUI[i].gameObject.SetActive(true);
+            if (combo % 10 == 0)
+                numberUI[i].transform.DOPunchScale(Vector3.one * 1.5f, 0.1f, 6, 0.5f);
+            else
+                numberUI[i].transform.DOPunchScale(Vector3.one, 0.1f, 6, 0.5f);
+        }
+    }
+
+    #endregion
+
+    #region LobbyScene
     public void SetReceiptPointText(string text)
     {
         receiptPointText.text = text;
@@ -249,6 +286,7 @@ public class UIManager : MonoBehaviour
 
 
     }
+    #endregion
 
 }
 

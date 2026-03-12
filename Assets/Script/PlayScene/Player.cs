@@ -4,7 +4,9 @@ public class Components
 {
     public Rigidbody2D rig;
     public Animator ani;
-    public CapsuleCollider2D col;
+    public CapsuleCollider2D col; // 영수증획득 콜라이더
+    public CapsuleCollider2D hurtCol; // 피격콜라이더를 따로 둠 
+
     public SpriteRenderer sp;
 
 }
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
             rig = GetComponent<Rigidbody2D>(),
             ani = GetComponent<Animator>(),
             col = GetComponent<CapsuleCollider2D>(),
+            hurtCol = transform.Find("HurtCollider").GetComponent<CapsuleCollider2D>(),
             sp = GetComponent<SpriteRenderer>()
         };
 
@@ -109,6 +112,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag.Equals("Receipt"))
         {
             collision.gameObject.SetActive(false);
+            if (!playerAttack.isSkill)
+                playerAttack.GaneSkillGage("Receipt");
             SoundManager.instance.PlaySFX("GetReceipt");
             ScoreManager.instance.ReceiptScore();
         }
