@@ -5,7 +5,7 @@ public class GhostEffect : MonoBehaviour
     private SpriteRenderer sp;
 
     private float ghostDelay;
-    private float dashDelay = 0.03f;
+    private float dashDelay = 0.015f;
     private float skillDashDelay = 0.02f;
     private float skillAttackDelay = 0.1f;
 

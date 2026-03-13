@@ -285,7 +285,7 @@ public class PlayerAttack : MonoBehaviour
             SoundManager.instance.PlaySFX("SkillDashWhoosh");
             while (Vector3.Distance(transform.position, enemyPos) > 0.3f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, enemyPos, 70f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, enemyPos, 80f * Time.deltaTime);
                 yield return null;
             }
 
@@ -422,7 +422,7 @@ public class PlayerAttack : MonoBehaviour
                 UIManager.Instance.SetComboUI(++combo);
                 if (combo % 10 == 0)
                 {
-                    // ÄÞº¸·Î¾ò¾úÀ»‹š ÀÌÆåÆ®
+                    SoundManager.instance.PlaySFX("GaneSkillGage");
                     GameObject go = Instantiate(comboGaneSkillGageEffect);
                     go.transform.SetParent(transform, false);
                     go.transform.localPosition = new Vector3(0, 0.5f, 0);

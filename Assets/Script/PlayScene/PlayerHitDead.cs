@@ -9,7 +9,7 @@ public class PlayerHitDead : MonoBehaviour
     private PlayerAttack playerAttack;
     [SerializeField] private CameraShakeProfile hitProfile;
     [SerializeField] float knockbackPower;
-    [SerializeField] float hitCoolTime = 1;
+    [SerializeField] float hitCoolTime = 3;
     float hitCurTime = 0;
     [SerializeField] private int life_Max = 3;
     [SerializeField] private int _life;

@@ -87,6 +87,7 @@ public class LoadingManager : MonoBehaviour
     {
         SoundManager.instance.StopBGM();
         SoundManager.instance.SetFatalSound(false);
+        SoundManager.instance.SetBGMPitch(1f);
         SwitchLoadingImage(true);
         progressBar.value = 0;
 
