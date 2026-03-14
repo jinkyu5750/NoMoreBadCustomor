@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    BoxCollider2D col;
-    Rigidbody2D rig;
+    protected BoxCollider2D col;
+    protected Rigidbody2D rig;
     Vector3 spawnPos;
     Quaternion spawnRot;
 
@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         spawnPos = transform.localPosition;
         spawnRot = transform.localRotation;
     }
-    private void Start()
+    protected virtual void Start()
     {
         col = GetComponent<BoxCollider2D>();
         rig = GetComponent<Rigidbody2D>();

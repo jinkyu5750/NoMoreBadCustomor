@@ -50,8 +50,8 @@ MonoBehaviour:
     prefab: {fileID: 2490566407249698097, guid: 14f68bff650d89a459c8c29df23b3af6, type: 3}
     count: 3
     returnTime: 0
-  - objectName: AttackHit
-    prefab: {fileID: 3042519775331041172, guid: 841004c4c6a39e244abe2257394de913, type: 3}
+  - objectName: NormalAttackHit
+    prefab: {fileID: 4791765311604230967, guid: 9eb0128eb6d34e64fa64894230d61f8a, type: 3}
     count: 3
     returnTime: 0
   - objectName: GhostEffect
@@ -77,23 +77,31 @@ MonoBehaviour:
   - objectName: Platform1
     prefab: {fileID: 4834544435668687298, guid: f21e34ce39a3d564f8d79658403fe5f1, type: 3}
     count: 2
-    returnTime: 20
+    returnTime: 40
   - objectName: Platform2
     prefab: {fileID: 7844552220521088459, guid: a12a698e2dfe0914ba8e52a9123bf852, type: 3}
     count: 2
-    returnTime: 20
+    returnTime: 40
   - objectName: Platform3
     prefab: {fileID: 5510139199481899644, guid: c86aaf95f52f44f46941af02c37f2cd7, type: 3}
     count: 2
-    returnTime: 20
+    returnTime: 40
   - objectName: Receipt
     prefab: {fileID: 6131277764259573781, guid: 96b4525b311f49c49b1d75ab91ebcf65, type: 3}
     count: 20
-    returnTime: 20
+    returnTime: 40
   - objectName: Click
     prefab: {fileID: 7510427348883613167, guid: c94d951b727c4c44c8aa04a11e3af78a, type: 3}
     count: 5
     returnTime: 1
+  - objectName: SkillAttackHit
+    prefab: {fileID: 3042519775331041172, guid: c65ce51248c594a4eb8a474025fd359b, type: 3}
+    count: 3
+    returnTime: 1
+  - objectName: ThrownEnemy
+    prefab: {fileID: 2962620825842405007, guid: 0cec3341ff137e7428f49cfb41529328, type: 3}
+    count: 5
+    returnTime: 5
   refillCount: 7
   tfPoolParent: {fileID: 2019444123923443831}
 --- !u!1001 &7726729132145301645
@@ -110,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2455768159973086798, guid: 641eb79a8b34cf540959b49614936f19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.03
+      value: -6.19
       objectReference: {fileID: 0}
     - target: {fileID: 2455768159973086798, guid: 641eb79a8b34cf540959b49614936f19, type: 3}
       propertyPath: m_LocalPosition.z
@@ -147,10 +155,6 @@ PrefabInstance:
     - target: {fileID: 4486042913230230151, guid: 641eb79a8b34cf540959b49614936f19, type: 3}
       propertyPath: m_Name
       value: InitPlatform
-      objectReference: {fileID: 0}
-    - target: {fileID: 7461048368471529004, guid: 641eb79a8b34cf540959b49614936f19, type: 3}
-      propertyPath: m_Name
-      value: Platform
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
