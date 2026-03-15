@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      1-Photoroom_0: -3192813042056521047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
