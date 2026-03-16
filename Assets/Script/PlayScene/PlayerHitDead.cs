@@ -45,7 +45,7 @@ public class PlayerHitDead : MonoBehaviour
         this.playerAttack = playerAttack;
     }
 
-    public IEnumerator Hit(Collider2D col)
+    public IEnumerator Hit()
     {
 
         if (hitCurTime > 0) yield break;

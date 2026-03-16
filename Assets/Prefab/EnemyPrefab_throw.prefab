@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isReverse: 0
-  coolTime: 5
+  coolTime: 8
   curTime: 0
   detectSize: {x: 20, y: 20}
   throwPower: 1.3

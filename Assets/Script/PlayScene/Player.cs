@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Enemy"))
         {
-            StartCoroutine(playerHitDead.Hit(collision));
+            StartCoroutine(playerHitDead.Hit());
         }
 
         if (collision.gameObject.tag.Equals("Receipt"))
@@ -152,6 +152,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+            StartCoroutine(playerHitDead.Hit());
+
+    }
 
 
 
