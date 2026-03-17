@@ -5,8 +5,8 @@ public class Enemy : MonoBehaviour
 {
     protected BoxCollider2D col;
     protected Rigidbody2D rig;
-    Vector3 spawnPos;
-    Quaternion spawnRot;
+    protected Vector3 spawnPos;
+    protected Quaternion spawnRot;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
     }
 
-    public void SpawnEnemy()
+    public virtual void SpawnEnemy()
     {
         if (gameObject.activeSelf) return;
 
@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     {
 
         //지금 좀 높고 느려 -> addforce힘줄이고 중력높여
+        rig.velocity = Vector3.zero;
         col.enabled = false;
         rig.bodyType = RigidbodyType2D.Dynamic; // 물리 활성화
         rig.gravityScale = 1.5f;

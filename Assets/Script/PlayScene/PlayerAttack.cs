@@ -22,6 +22,7 @@ public class PlayerAttack : MonoBehaviour
     private float gravityScale = 3.3f;
 
     private int max_Combo = 2;
+
     private int curCombo = 0;
     [SerializeField] private GameObject comboGaneSkillGageEffect;
     [SerializeField] CameraShakeProfile attackProfile;
@@ -248,7 +249,7 @@ public class PlayerAttack : MonoBehaviour
         isSkill = true;
         SetCanAttack(0);
         skillGage = 0;
-        int attackCount =  skillAttackCount +GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
+        int attackCount = skillAttackCount + GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(2);
         UIManager.Instance.UpdateSkillGage(0);
         UIManager.Instance.ResetSkillGageBar();
         UIManager.Instance.MoveSkillPanel(true);
@@ -420,13 +421,17 @@ public class PlayerAttack : MonoBehaviour
             {
                 SoundManager.instance.PlaySFX(curAttackData.sfxName);
                 UIManager.Instance.SetComboUI(++combo);
+
+                if (ScoreManager.instance.maxCombo < combo)
+                    ScoreManager.instance.SetMaxCombo(combo);
+
                 if (combo % 10 == 0)
                 {
                     SoundManager.instance.PlaySFX("GaneSkillGage");
                     GameObject go = Instantiate(comboGaneSkillGageEffect);
                     go.transform.SetParent(transform, false);
                     go.transform.localPosition = new Vector3(0, 0.5f, 0);
-                    Destroy(go,2f);
+                    Destroy(go, 2f);
                     GaneSkillGage("Combo");
                 }
 

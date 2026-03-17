@@ -26,7 +26,13 @@ public class PlatformGenerator : MonoBehaviour
             spawnPoint = transform.Find("SpawnPoint").position;
   
             isGenerated = true;
-            int num = Random.Range(1, 4);
+
+            int num;
+            if (PhaseManager.instance.curPhase <= 2)
+                num = Random.Range(1, 3);
+            else 
+                num = Random.Range(3, 7);
+
             ParticleManager.instance.UseObject($"Platform{num}",spawnPoint+new Vector3(3,0,0),Quaternion.identity);
 
 

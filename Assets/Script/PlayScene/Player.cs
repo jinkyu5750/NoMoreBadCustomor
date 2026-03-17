@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
             StartCoroutine(playerHitDead.Hit());
         }
 
+
         if (collision.gameObject.tag.Equals("Receipt"))
         {
             collision.gameObject.SetActive(false);
@@ -119,15 +120,13 @@ public class Player : MonoBehaviour
         }
 
 
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
         if (collision.gameObject.tag.Equals("FallingLine"))
         {
             StartCoroutine(playerHitDead.Fall());
         }
+
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

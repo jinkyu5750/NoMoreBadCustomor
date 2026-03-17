@@ -28,6 +28,8 @@ public class Combo : MonoBehaviour
 
             numberUI[i].sprite = numberImage[number];
             numberUI[i].gameObject.SetActive(true);
+            numberUI[i].transform.DOKill();
+            numberUI[i].transform.localScale = Vector3.one;
             numberUI[i].transform.DOPunchScale(Vector3.one * 0.35f, 0.25f, 6, 0.5f);
         }
     }

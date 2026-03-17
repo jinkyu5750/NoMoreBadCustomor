@@ -4,6 +4,7 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     private int _score = 0;
+    public int maxCombo { get; private set; }
     public int score { get { return _score; } private set { _score = value; } }
     public float playTime { get; private set; } = 0f; // score랑 표현이 같은건가..?
 
@@ -19,7 +20,7 @@ public class ScoreManager : MonoBehaviour
     {
         playTime += Time.deltaTime;
 
-        if (score >= 1000 && !warningStart)
+        if (PhaseManager.instance.curPhase == 2 && !warningStart)
         {
             warningStart = true;
             UIManager.Instance.MoveWarningPanel();
@@ -43,5 +44,10 @@ public class ScoreManager : MonoBehaviour
     public void ResultScore()
     {
         GameManager.Instance.dataManager.IncreaseReceiptPoint(score);
+    }
+
+    public void SetMaxCombo(int maxCombo)
+    {
+        this.maxCombo = maxCombo;
     }
 }

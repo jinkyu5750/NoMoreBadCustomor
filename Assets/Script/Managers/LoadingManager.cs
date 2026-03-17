@@ -64,14 +64,15 @@ public class LoadingManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded; // 이게머지??
         loadSceneName = sceneName;
 
-        if(isLodingBarLoad)
-        {
-            StartCoroutine(LoadScene_LoadingBar());
-        }
-        else
-        {
+        SoundManager.instance.StopBGM();
+        SoundManager.instance.SetFatalSound(false);
+        SoundManager.instance.SetBGMPitch(1f);
+
+        if (isLodingBarLoad)        
+            StartCoroutine(LoadScene_LoadingBar());       
+        else   
             StartCoroutine(LoadScene_Fade());
-        }
+        
 
     }
 
@@ -85,9 +86,7 @@ public class LoadingManager : MonoBehaviour
     }
     private IEnumerator LoadScene_LoadingBar()
     {
-        SoundManager.instance.StopBGM();
-        SoundManager.instance.SetFatalSound(false);
-        SoundManager.instance.SetBGMPitch(1f);
+
         SwitchLoadingImage(true);
         progressBar.value = 0;
 

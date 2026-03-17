@@ -153,8 +153,10 @@ public class UIManager : MonoBehaviour
                                                                                   //  네가 if (isActive) 안에 또 if를 넣기 시작한다
         if (isActive)                                                           //  버튼마다 ResultPanel(false, true/false)가 난무한다
         {
-            resultPanel.transform.Find("ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
-            resultPanel.transform.Find("TimeText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ((int)(ScoreManager.instance.playTime - 1f)).ToString() + " Sec";
+            resultPanel.transform.Find("TimePanel/TimeText").GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.FloorToInt(ScoreManager.instance.playTime).ToString() + "초";
+            resultPanel.transform.Find("ScorePanel/ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
+            resultPanel.transform.Find("MaxComboPanel/MaxComboText").GetChild(0).GetComponent<TextMeshProUGUI>().text =  ScoreManager.instance.maxCombo.ToString();
+            resultPanel.transform.Find("EarnPanel/EarnText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
 
             resultPanel.rectTransform.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBounce);
         }
@@ -162,7 +164,7 @@ public class UIManager : MonoBehaviour
         {
             ScoreManager.instance.ResultScore();
             if (isRetry)
-                LoadingManager.instance.LoadScene("PlayScene", true); // 다시하기 // 페이드아웃필요할듯
+                LoadingManager.instance.LoadScene("PlayScene", false); // 다시하기 // 페이드아웃필요할듯
             else
                 LoadingManager.instance.LoadScene("LobbyScene", true); // 나가기
 
