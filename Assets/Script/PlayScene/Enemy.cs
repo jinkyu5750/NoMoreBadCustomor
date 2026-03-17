@@ -3,32 +3,39 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    BoxCollider2D col;
-    Rigidbody2D rig;
-    Vector3 spawnPos;
-    Quaternion spawnRot;
+    protected BoxCollider2D col;
+    protected Rigidbody2D rig;
+    protected Vector3 spawnPos;
+    protected Quaternion spawnRot;
 
     private void Awake()
     {
+
         spawnPos = transform.localPosition;
         spawnRot = transform.localRotation;
     }
-    private void Start()
+    protected virtual void Start()
     {
         col = GetComponent<BoxCollider2D>();
         rig = GetComponent<Rigidbody2D>();
     }
 
-    public void SpawnEnemy()
+    public virtual void SpawnEnemy()
     {
+        if (gameObject.activeSelf) return;
+
         transform.localPosition = spawnPos;
         transform.localRotation = spawnRot;
         gameObject.SetActive(true);
+        col.enabled = true;
+        rig.bodyType = RigidbodyType2D.Kinematic; // 한번도 활성화되지않은놈을 스폰하려해서생겼떤문제
+
     }
-     public IEnumerator EnemyDead()
+    public IEnumerator EnemyDead()
     {
 
         //지금 좀 높고 느려 -> addforce힘줄이고 중력높여
+        rig.velocity = Vector3.zero;
         col.enabled = false;
         rig.bodyType = RigidbodyType2D.Dynamic; // 물리 활성화
         rig.gravityScale = 1.5f;

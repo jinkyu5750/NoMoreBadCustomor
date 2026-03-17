@@ -44,11 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca6658b8f480214194e9ef7a82b18a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  clickPrefab: {fileID: 7510427348883613167, guid: c94d951b727c4c44c8aa04a11e3af78a, type: 3}
   hpBar: {fileID: 0}
   stopButton: {fileID: 0}
+  resultExitButton: {fileID: 0}
+  resultRetryButton: {fileID: 0}
   menuPanel: {fileID: 0}
+  resultPanel: {fileID: 0}
   skillGage: {fileID: 0}
-  skillGageText: {fileID: 0}
   ease: 15
   scoreText: {fileID: 0}
-  playButton: {fileID: 0}
+  skillPanel_Top: {fileID: 0}
+  skillPanel_Down: {fileID: 0}
+  shopButton: {fileID: 0}
+  settingButton: {fileID: 0}
+  receiptPointText: {fileID: 0}

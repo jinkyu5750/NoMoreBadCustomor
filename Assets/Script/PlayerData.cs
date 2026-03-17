@@ -16,7 +16,7 @@ public class CurrencyData
     public void AddReceiptPoint(int point)
     {
         receiptPoint += point;
-        UIManager.Instance.SetReceiptPointText(receiptPoint.ToString());
+     //   UIManager.Instance.SetReceiptPointText(receiptPoint.ToString());
     }
 }
 public class ShopData

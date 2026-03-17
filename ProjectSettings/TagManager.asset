@@ -20,11 +20,11 @@ TagManager:
   - Enemy
   - Player
   - SpawnPoint
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Receipt
+  - Magnet
+  - FallingLIne
+  - HurtCollider
   - 
   - 
   - 

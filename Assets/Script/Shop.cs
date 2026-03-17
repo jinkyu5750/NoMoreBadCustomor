@@ -63,7 +63,7 @@ public class Shop : MonoBehaviour
         if (!TryPurchase(itemIdx, itemLv, ownedReceiptPoint))
             return false;
 
-
+        SoundManager.instance.PlaySFX("PurchaseItem");
         GameManager.Instance.dataManager.DecreaseReceiptPoint(items[itemIdx].price[itemLv]);
         GameManager.Instance.dataManager.playerData.shopData.AddItem(itemID);
         return true;

@@ -32,7 +32,10 @@ public class ParticleManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
         else Destroy(gameObject);
     }
 
@@ -138,6 +141,29 @@ public class ParticleManager : MonoBehaviour
         return obj;
     }
 
+    public void UseClickEffect(Vector3 pos)
+    {
+        if (!objectPoolList.ContainsKey("Click"))
+        {
+            Debug.LogWarning($"Object pool for Click not found!");
+            return;
+
+        }
+
+        if (objectPoolList["Click"].Count == 0)
+            FillQueue("Click");
+
+        float returnTime = GetReturnTime("Click");
+
+        GameObject obj = objectPoolList["Click"].Dequeue();
+
+        obj.transform.SetParent(UIManager.Instance.canvas.transform, false);
+        obj.SetActive(true);
+        obj.GetComponent<RectTransform>().localPosition = pos;
+
+        StartCoroutine(ReturnObject("Click", obj, returnTime));
+
+    }
     public float GetReturnTime(String objName)
     {
         ParticleSystem ps = objectPoolList[objName].Peek().GetComponent<ParticleSystem>();
