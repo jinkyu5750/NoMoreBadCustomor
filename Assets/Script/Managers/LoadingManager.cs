@@ -59,6 +59,7 @@ public class LoadingManager : MonoBehaviour
     public void IntroToStart()
     {
         SceneManager.LoadScene("StartScene");
+        StartCoroutine(Fade(false));
     }
     public void LoadScene(string sceneName, bool isLodingBarLoad)
     {
