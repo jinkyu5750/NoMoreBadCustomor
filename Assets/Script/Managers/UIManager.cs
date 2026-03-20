@@ -252,7 +252,7 @@ public class UIManager : MonoBehaviour
     public void ShopPanel(bool isActive)
     {
 
-        if ((isActive && shopPanel.gameObject.activeSelf ) || !TutorialManager.instance.finish_Lobby) return;
+        if ((isActive && shopPanel.gameObject.activeSelf ) || !GameManager.Instance.finishTutorial_Lobby) return;
         shopPanel.gameObject.SetActive(isActive);
 
         if (isActive)

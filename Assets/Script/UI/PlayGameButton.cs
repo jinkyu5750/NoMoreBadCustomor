@@ -5,9 +5,9 @@ public class PlayGameButton : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (TutorialManager.instance.finish_Lobby)
+        if (GameManager.Instance.finishTutorial_Lobby)
         {
-            TutorialManager.instance.OffPanel_Lobby();
+            TutorialManager.instance.Finish_Lobby();
             GameManager.Instance.StartGame();
         }
     }
