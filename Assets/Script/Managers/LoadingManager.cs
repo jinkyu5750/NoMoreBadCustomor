@@ -50,15 +50,18 @@ public class LoadingManager : MonoBehaviour
 
     private void Start()
     {
-        progressBar = GetComponentInChildren<Slider>();
-        canvasGroup = GetComponent<CanvasGroup>();
-        loadingGage = progressBar.GetComponentInChildren<TextMeshProUGUI>();
 
         loadingImage = transform.Find("Loading...").gameObject;
         lobbyToPlayFade = transform.Find("LobbyToPlayFade").gameObject;
 
     }
-    public void LoadScene(string sceneName,bool isLodingBarLoad)
+
+    public void IntroToStart()
+    {
+        SceneManager.LoadScene("StartScene");
+        StartCoroutine(Fade(false));
+    }
+    public void LoadScene(string sceneName, bool isLodingBarLoad)
     {
         gameObject.SetActive(true);
         SceneManager.sceneLoaded += OnSceneLoaded; // 이게머지??
@@ -68,11 +71,11 @@ public class LoadingManager : MonoBehaviour
         SoundManager.instance.SetFatalSound(false);
         SoundManager.instance.SetBGMPitch(1f);
 
-        if (isLodingBarLoad)        
-            StartCoroutine(LoadScene_LoadingBar());       
-        else   
-            StartCoroutine(LoadScene_Fade());
-        
+        if (isLodingBarLoad)
+            StartCoroutine(LoadScene_Lobby());
+        else
+            StartCoroutine(LoadScene_Game());
+
 
     }
 
@@ -80,11 +83,11 @@ public class LoadingManager : MonoBehaviour
     {
         if (arg0.name == loadSceneName)
         {
-            StartCoroutine(Fade(false));
+            canvasGroup.alpha = 0;
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
-    private IEnumerator LoadScene_LoadingBar()
+    private IEnumerator LoadScene_Lobby()
     {
 
         SwitchLoadingImage(true);
@@ -110,7 +113,7 @@ public class LoadingManager : MonoBehaviour
                 timer += Time.unscaledDeltaTime;
                 progressBar.value = Mathf.Clamp01(timer / minLoadingTime);
 
-                if (progressBar.value >= 1.0f )
+                if (progressBar.value >= 1.0f)
                 {
                     SoundManager.instance.PlayBGM("LobbyBGM");
                     async.allowSceneActivation = true;
@@ -143,7 +146,7 @@ public class LoadingManager : MonoBehaviour
         yield return new WaitForSeconds(delayTime);
         StartCoroutine(Fade(true));
     }
-    public IEnumerator LoadScene_Fade()
+    public IEnumerator LoadScene_Game()
     {
 
         if (!GameManager.Instance.isGameStarted) yield break;
@@ -161,7 +164,7 @@ public class LoadingManager : MonoBehaviour
                 if (GameManager.Instance.canLoadPlayScene)
                 {
                     SoundManager.instance.PlayBGM("PlayBGM" + Random.Range(1, 3));
-                    Fade(false);
+                   StartCoroutine( Fade(false));
                     async.allowSceneActivation = true;
                     yield break;
                 }

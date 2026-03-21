@@ -101,6 +101,27 @@ public class PlayerAttack : MonoBehaviour
 
         if (!canAttack || curCombo >= max_Combo) yield break;
 
+
+        if (TutorialManager.instance.idx_Play == 1)
+        {
+            if (dir != attack.Dash) yield break;
+            StartCoroutine(TutorialManager.instance.SetPlayerStop(false));
+            yield return null;
+        }
+        else if (TutorialManager.instance.idx_Play == 2)
+        {
+            if (dir != attack.Upper) yield break;
+            StartCoroutine(TutorialManager.instance.SetPlayerStop(false));
+            yield return null;
+
+
+        }
+        else if (TutorialManager.instance.idx_Play == 3)
+        {
+            if (dir != attack.Lower) yield break;
+            Time.timeScale = 1f;
+        }
+
         switch (dir)
         {
             case attack.Dash:
@@ -257,6 +278,7 @@ public class PlayerAttack : MonoBehaviour
         skillCam.Priority = 11;
 
         magnetCol.enabled = true;
+
         player.components.hurtCol.enabled = false;
         player.components.rig.velocity = Vector3.zero;
         player.components.ani.SetBool("SkillOn", true); //선동작
@@ -374,6 +396,7 @@ public class PlayerAttack : MonoBehaviour
                 StartCoroutine(AttackHitbox(dashAttackData.hitBoxPos, dashAttackData.hitBoxSize, 0.3f));
                 SoundManager.instance.PlaySFX("DashSlash");
                 player.components.rig.gravityScale = g;
+                if (!TutorialManager.instance.playerStop) StartCoroutine(TutorialManager.instance.SetPlayerStop(true));
                 break;
             case "Upper":
                 StartCoroutine(AttackHitbox(upperAttackData.hitBoxPos, upperAttackData.hitBoxSize, 0.3f));
@@ -419,6 +442,9 @@ public class PlayerAttack : MonoBehaviour
 
             if (hit != null)
             {
+
+
+
                 SoundManager.instance.PlaySFX(curAttackData.sfxName);
                 UIManager.Instance.SetComboUI(++combo);
 
@@ -464,6 +490,22 @@ public class PlayerAttack : MonoBehaviour
 
 
                 // 한 메소드에서 너무 여러기능을 한다지만.. 따로 뺴는것도 애매함 한두줄짜린데 메소드만 몇억개될거같음 
+
+                if (!GameManager.Instance.finishTutorial_Play)
+                {
+                    if (TutorialManager.instance.idx_Play == 2)
+                    {
+                        yield return new WaitForSeconds(0.2f);
+                        Time.timeScale = 0;
+                    }
+                    else if (TutorialManager.instance.idx_Play == 3)
+                        StartCoroutine(TutorialManager.instance.SetPlayerStop(true));
+
+
+                    TutorialManager.instance.idx_Play++;
+                    TutorialManager.instance.nextTutorial_Play();
+                }
+
             }
 
             elapsed += Time.deltaTime;

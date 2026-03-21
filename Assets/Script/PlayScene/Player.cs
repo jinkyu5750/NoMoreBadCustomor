@@ -86,6 +86,11 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        if(TutorialManager.instance.playerStop)
+        {
+            components.rig.velocity = Vector3.zero;
+            return;
+        }
         if (isGround && playerAttack.canAttack && !isHit) // 바닥에 붙어있으면서 공격이 가능한 상태
         {
             components.rig.velocity = new Vector2(1, 0) * runSpeed;

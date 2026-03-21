@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
     public bool canLoadPlayScene { get; private set; } = false;
 
     public bool itemTestMode;
+
+    public bool finishTutorial_Lobby { get; private set; } = false;
+    public bool finishTutorial_Play { get; private set; } = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,6 +67,15 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Load GameScene Started!");
 
+    }
+
+    public void FinishTutorial_Lobby()
+    {
+        finishTutorial_Lobby = true;
+    }
+    public void FinishTutorial_Play()
+    {
+        finishTutorial_Play = true;
     }
 
 }
