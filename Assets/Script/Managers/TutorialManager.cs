@@ -21,7 +21,7 @@ public class TutorialManager : MonoBehaviour
 
 
     Script[] scripts_Lobby = new Script[5];
-    Script[] scripts_Play = new Script[8];
+    Script[] scripts_Play = new Script[9];
 
     public  int idx_Lobby = 0;
     public int idx_Play = 0;
@@ -54,11 +54,11 @@ public class TutorialManager : MonoBehaviour
         {
 
             text_Lobby = scriptPanel_Lobby.GetComponentInChildren<TextMeshProUGUI>();
-            scripts_Lobby[0] = new Script("시작", new Vector2(0f, 0f));
-            scripts_Lobby[1] = new Script("asd", new Vector2(340f, -250f));
-            scripts_Lobby[2] = new Script("asd", new Vector2(-300f, -250f));
-            scripts_Lobby[3] = new Script("asd", new Vector2(-300f, 250f));
-            scripts_Lobby[4] = new Script("zxc", new Vector2(340f, -250f));
+            scripts_Lobby[0] = new Script("잠깐 ! 시작하기 전 몇가지 알려줄게", new Vector2(0f, 0f));
+            scripts_Lobby[1] = new Script("여기, 이 버튼으로 게임을 시작할 수 있어.", new Vector2(340f, -250f));
+            scripts_Lobby[2] = new Script("플레이를 통해 모은 영수증으로 여기 포스기에서 아이템을 구매할 수 있어.", new Vector2(-300f, -250f));
+            scripts_Lobby[3] = new Script("여기 보이지 ? 현재 보유중인 영수증의 갯수야", new Vector2(-300f, 250f));
+            scripts_Lobby[4] = new Script("좋아, 이제 시작해보자 플레이 버튼을 눌러 !", new Vector2(340f, -250f));
 
             nextTutorial_Lobby();
         }
@@ -66,14 +66,15 @@ public class TutorialManager : MonoBehaviour
         {
 
             text_Play = scriptPanel_Play.GetComponentInChildren<TextMeshProUGUI>();
-            scripts_Play[0] = new Script("안녕 내가 알려줄게", new Vector2(0f, -400f));
-            scripts_Play[1] = new Script("대쉬를해", new Vector2(0f, -400f));
-            scripts_Play[2] = new Script("어퍼를해", new Vector2(0f, -400f));
-            scripts_Play[3] = new Script("아래를해", new Vector2(0f, -400f));
-            scripts_Play[4] = new Script("3번까지", new Vector2(0f, -400f));
-            scripts_Play[5] = new Script("스킬", new Vector2(0f, -400f));
-            scripts_Play[6] = new Script("파이팅", new Vector2(0f, -400f));
-            scripts_Play[7] = new Script("", new Vector2(0f, -400f));
+            scripts_Play[0] = new Script("이제 싸우는 방법을 알려줄게 !", new Vector2(0f, -400f));
+            scripts_Play[1] = new Script("화면을 오른쪽으로 드래그하면서 Space를 눌러볼래 ? 바코드 스캐너로 공격할 수 있어 ! !", new Vector2(0f, -400f));
+            scripts_Play[2] = new Script("좋은데 ? 이번에는 위로 드래그하면서 Space를 눌러봐 !", new Vector2(0f, -400f));
+            scripts_Play[3] = new Script("마지막으로, 아래를 드래그하면서 Space를 눌러봐", new Vector2(0f, -400f));
+            scripts_Play[4] = new Script("잘했어, 하단 공격은 공중에서만 가능한거 알지 ?", new Vector2(0f, -400f));
+            scripts_Play[5] = new Script("공격은 연속으로 3번까지만 가능해. ", new Vector2(0f, -400f));
+            scripts_Play[6] = new Script("그리고 우측 게이지가 차오르면 기술도 사용할 수 있어 ! !", new Vector2(0f, -400f));
+            scripts_Play[7] = new Script("이제 알려줄 건 끝이야. 파이팅 ! ! !", new Vector2(0f, -400f));
+            scripts_Play[8] = new Script("", new Vector2(0f, -400f));
 
 
 
@@ -163,9 +164,14 @@ public class TutorialManager : MonoBehaviour
         }
         else if (idx_Play == 7)
         {
+        }
+        else if (idx_Play == 8)
+        {
             Finish_Play();
             GameManager.Instance.FinishTutorial_Play();
         }
+
+
         idx_Play++;
 
     }

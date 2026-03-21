@@ -21,11 +21,11 @@ public class TimelineScript : MonoBehaviour
         player[4] = "뭐지, 어제부터 갑자기 진상이 왜이렇게 많아졌지 ? ? . . .";
         player[5] = " ! ! ! 저게 뭐야 ! ! !";
         player[6] = "과자가 . . 걸어다녀 . . ?";
-        player[7] = "저걸 따라가면 진상을 알 수 있을거야";
+        player[7] = ". . ? 내 시계가 . . ? " +
+            "저걸 따라가면 진상을 알 수 있다는건가 . . ?";
 
         badCustomer[0] = "안녕하세요, 담배 하나 주세요 ! !";
         badCustomer[1] = "감사합니다 안녕히계세요~";
-
         badCustomer[2] = "야 알바야 담배 하나 .";
 
 

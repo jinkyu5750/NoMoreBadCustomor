@@ -278,6 +278,7 @@ public class PlayerAttack : MonoBehaviour
         skillCam.Priority = 11;
 
         magnetCol.enabled = true;
+
         player.components.hurtCol.enabled = false;
         player.components.rig.velocity = Vector3.zero;
         player.components.ani.SetBool("SkillOn", true); //º±µø¿€

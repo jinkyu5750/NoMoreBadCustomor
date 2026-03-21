@@ -76,17 +76,9 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-        {
-
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.GetComponent<RectTransform>(), Input.mousePosition, null, out Vector2 Point))
-            {
-                GameObject go = Instantiate(clickPrefab);
-                go.transform.SetParent(canvas.transform, false);
-                go.transform.localPosition = Point;
+                ParticleManager.instance.UseClickEffect(Point);
 
-            }
-
-        }
     }
 
     #region PlayScene
@@ -155,7 +147,7 @@ public class UIManager : MonoBehaviour
         {
             resultPanel.transform.Find("TimePanel/TimeText").GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.FloorToInt(ScoreManager.instance.playTime).ToString() + "√ ";
             resultPanel.transform.Find("ScorePanel/ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
-            resultPanel.transform.Find("MaxComboPanel/MaxComboText").GetChild(0).GetComponent<TextMeshProUGUI>().text =  ScoreManager.instance.maxCombo.ToString();
+            resultPanel.transform.Find("MaxComboPanel/MaxComboText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.maxCombo.ToString();
             resultPanel.transform.Find("EarnPanel/EarnText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
 
             resultPanel.rectTransform.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBounce);
@@ -252,7 +244,7 @@ public class UIManager : MonoBehaviour
     public void ShopPanel(bool isActive)
     {
 
-        if ((isActive && shopPanel.gameObject.activeSelf ) || !GameManager.Instance.finishTutorial_Lobby) return;
+        if ((isActive && shopPanel.gameObject.activeSelf) || !GameManager.Instance.finishTutorial_Lobby) return;
         shopPanel.gameObject.SetActive(isActive);
 
         if (isActive)
