@@ -47,6 +47,10 @@ public class SoundManager : MonoBehaviour
         BGMsource = transform.Find("BGM").GetComponent<AudioSource>();
         SFXsource = transform.Find("SFX").GetComponent<AudioSource>();
 
+
+        SetVolume(SoundType.BGM, 1f);
+        SetVolume(SoundType.SFX, 1f);
+
     }
 
     private void Update()
