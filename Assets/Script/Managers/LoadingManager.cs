@@ -67,9 +67,8 @@ public class LoadingManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded; // 이게머지??
         loadSceneName = sceneName;
 
-        SoundManager.instance.StopBGM();
         SoundManager.instance.SetFatalSound(false);
-        SoundManager.instance.SetBGMPitch(1f);
+        SoundManager.instance.StopBGM();
 
         if (isLodingBarLoad)
             StartCoroutine(LoadScene_Lobby());
@@ -115,6 +114,7 @@ public class LoadingManager : MonoBehaviour
 
                 if (progressBar.value >= 1.0f)
                 {
+                    SoundManager.instance.SetBGMPitch(1f);
                     SoundManager.instance.PlayBGM("LobbyBGM");
                     async.allowSceneActivation = true;
                     yield break;
@@ -164,7 +164,7 @@ public class LoadingManager : MonoBehaviour
                 if (GameManager.Instance.canLoadPlayScene)
                 {
                     SoundManager.instance.PlayBGM("PlayBGM" + Random.Range(1, 3));
-                   StartCoroutine( Fade(false));
+                    StartCoroutine(Fade(false));
                     async.allowSceneActivation = true;
                     yield break;
                 }

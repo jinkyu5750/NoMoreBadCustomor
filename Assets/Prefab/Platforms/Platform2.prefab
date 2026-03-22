@@ -7485,7 +7485,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 205395903347468038, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 205395903347468038, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 825041946648869196, guid: 6637bbf0baf38cc4caf97c46e1b8874e, type: 3}
       propertyPath: m_IsActive

@@ -11,7 +11,7 @@ public class PlayerData
 [System.Serializable]
 public class CurrencyData
 {
-    public int receiptPoint { get; private set; } = 300;
+    public int receiptPoint { get; private set; } = 100;
 
     public void AddReceiptPoint(int point)
     {
@@ -43,7 +43,7 @@ public class ShopData
     {
         int idx = FindItemIndex(itemID);
 
-        return itemID == 3 ? ((GetItemLevel(itemID) + 1) * 10) / 2 : GetItemLevel(itemID) + 1;
+        return itemID == 3 || itemID == 1 ? ((GetItemLevel(itemID) + 1) * 10) / 2 : GetItemLevel(itemID) + 1;
     }
     public void AddItem(int itemID)
     {
@@ -67,7 +67,7 @@ public class ShopData
     {
 
         purchasedItem.Add(new OwnedItem { itemID = 0, level = 3 });
-        purchasedItem.Add(new OwnedItem { itemID = 1, level = 1 });
+        purchasedItem.Add(new OwnedItem { itemID = 1, level = 3 });
         purchasedItem.Add(new OwnedItem { itemID = 2, level = 3 });
         purchasedItem.Add(new OwnedItem { itemID = 3, level = 5 });
         purchasedItem.Add(new OwnedItem { itemID = 4, level = 1 });

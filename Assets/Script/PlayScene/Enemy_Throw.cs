@@ -36,7 +36,7 @@ public class Enemy_Throw : Enemy
     private void Update()
     {
 
-        if (ScoreManager.instance.score < 1000f)
+        if (!ScoreManager.instance.warningStart)
             return;
 
         if (curTime <= 0)
@@ -49,7 +49,7 @@ public class Enemy_Throw : Enemy
         target = Physics2D.OverlapBox(transform.position, detectSize, 0, LayerMask.GetMask("Player"));
         if (target != null)
         {
-
+            sp.enabled = true;
             warning.SetActive(true);
             curTime = Random.Range(coolTime - 0.5f, coolTime + 0.5f);
 
@@ -70,7 +70,7 @@ public class Enemy_Throw : Enemy
 
     public void Fire()
     {
-        sp.enabled = true;
+      
         warning.SetActive(false);
 
         throwDir = (target.transform.position - transform.position) + new Vector3(0, 0.3f, 0);

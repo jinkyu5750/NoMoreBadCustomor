@@ -32,15 +32,17 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] RectTransform scriptPanel_Lobby;
     TextMeshProUGUI text_Lobby;
 
+    [SerializeField] private GameObject playButton;
+
     [Header("Play")]
     [SerializeField] Image blackBackground_Play;
     [SerializeField] RectTransform scriptPanel_Play;
     TextMeshProUGUI text_Play;
 
 
-    [SerializeField] private GameObject playButton;
-
     public bool playerStop = false;
+
+    public GameObject[] tutorialEnemy;
     private void Awake()
     {
         if (instance == null)
@@ -65,6 +67,11 @@ public class TutorialManager : MonoBehaviour
         else if (scene.name.Equals("PlayScene"))
         {
 
+            if (GameManager.Instance.finishTutorial_Play)
+            {
+                for(int i=0;i<3;i++)
+                    tutorialEnemy[i].gameObject.SetActive(false);
+            }
             text_Play = scriptPanel_Play.GetComponentInChildren<TextMeshProUGUI>();
             scripts_Play[0] = new Script("이제 싸우는 방법을 알려줄게 !", new Vector2(0f, -400f));
             scripts_Play[1] = new Script("화면을 오른쪽으로 드래그하면서 Space를 눌러볼래 ? 바코드 스캐너로 공격할 수 있어 ! !", new Vector2(0f, -400f));
@@ -107,7 +114,7 @@ public class TutorialManager : MonoBehaviour
         else if (idx_Lobby == 1)
         {
             playButton.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            playButton.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 1;
+            playButton.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = 2;
 
         }
         else if (idx_Lobby == 2)

@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: ShopItemInfo 1
   m_EditorClassIdentifier: 
   itemID: 1
-  image: {fileID: 541390730, guid: 6663a5bf76494514ab7c7937267e7ef1, type: 3}
-  itemName: "\uC608\uB9AC\uD55C \uCD94\uACA9"
-  discription: "\uAE30\uBCF8\uACF5\uACA9 \uC801\uC911 \uC2DC \uB2E4\uC74C \uD0C0\uAC9F\uC744
-    \uCD94\uACA9\uD574 \uACF5\uACA9\uD569\uB2C8\uB2E4."
-  maxLv: 1
-  price: 05000000
   clip: {fileID: 7400000, guid: 6a1ce51c3d0b0b84abb7ee41e901a26e, type: 2}
+  itemName: "\uC608\uB9AC\uD55C \uCD94\uACA9"
+  discription: "\uAE30\uBCF8\uACF5\uACA9 \uC801\uC911 \uC2DC {0}%\uD655\uB960\uB85C
+    \uB2E4\uC74C \uD0C0\uAC9F\uC744 \uCD94\uACA9\uD574 \uACF5\uACA9\uD569\uB2C8\uB2E4."
+  maxLv: 3
+  price: 1e0000003c00000050000000
