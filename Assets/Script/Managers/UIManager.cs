@@ -90,7 +90,7 @@ public class UIManager : MonoBehaviour
     {
 
         skillGageBar.fillAmount = (float)gage / 100;
-        skillGageText.text = (gage <= 100 ? gage : 100).ToString() + "%";
+        skillGageText.text = Mathf.FloorToInt(gage <= 100 ? gage : 100).ToString() + "%";
 
         if (gage > 100)
             FullSkillGageBar();
@@ -104,6 +104,7 @@ public class UIManager : MonoBehaviour
     public void FullSkillGageBar()
     {
         skillGage.GetComponentInChildren<Animator>().enabled = true;
+        skillGage.transform.DOKill();
         skillGage.transform.DOShakeRotation(0.3f, new Vector3(0, 0, 5), 20, 10).SetLoops(-1);
     }
 
@@ -118,7 +119,6 @@ public class UIManager : MonoBehaviour
 
     public void MenuPanel(bool isActive)
     {
-        SoundManager.instance.PauseBGM();
         menuPanel.gameObject.SetActive(isActive);
 
         if (isActive)
@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
             resultPanel.transform.Find("TimePanel/TimeText").GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.FloorToInt(ScoreManager.instance.playTime).ToString() + "√ ";
             resultPanel.transform.Find("ScorePanel/ScoreText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
             resultPanel.transform.Find("MaxComboPanel/MaxComboText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.maxCombo.ToString();
-            resultPanel.transform.Find("EarnPanel/EarnText").GetChild(0).GetComponent<TextMeshProUGUI>().text = ScoreManager.instance.score.ToString();
+            resultPanel.transform.Find("EarnPanel/EarnText").GetChild(0).GetComponent<TextMeshProUGUI>().text = (ScoreManager.instance.score/3).ToString();
 
             resultPanel.rectTransform.DOAnchorPosY(0f, 1f).SetEase(Ease.OutBounce);
         }

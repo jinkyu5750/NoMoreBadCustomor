@@ -31,7 +31,7 @@ public class PhaseManager : MonoBehaviour
 
         if (ScoreManager.instance.score > 500f && ScoreManager.instance.score <= 1500f && curPhase == 0)
             SetPhase(1);
-        else if (ScoreManager.instance.score > 2000f && curPhase == 1)
+        else if (ScoreManager.instance.score > 1500f &&ScoreManager.instance.score < 2000f && curPhase == 1)
             SetPhase(2);
         else if (ScoreManager.instance.score >= 2000f && ScoreManager.instance.score < 3000 && curPhase == 2)
             SetPhase(3);

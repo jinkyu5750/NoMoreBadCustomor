@@ -211,9 +211,9 @@ public class PlayerAttack : MonoBehaviour
 
         // 5에 몇퍼센트를 하나.. 미미한디
         //   skillGage += 5 + (5 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); // 100까지 대략 6~7회
-        skillGage += 134 + Random.Range(-3, 5); // 100까지 대략 6~7회
+     //   skillGage += 134 + Random.Range(-3, 5); // 100까지 대략 6~7회
 
-        /*   switch (name)
+           switch (name)
            {
                case "Attack":
                       skillGage += 3 + (3 * GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(3)) + Random.Range(-3, 5); 
@@ -224,7 +224,7 @@ public class PlayerAttack : MonoBehaviour
                case "Combo":
                    skillGage += 5f;
                    break;
-           }*/
+           }
         UIManager.Instance.UpdateSkillGage(skillGage);
 
     }
@@ -249,7 +249,7 @@ public class PlayerAttack : MonoBehaviour
 
     public Vector3 GetEnemyPos(Collider2D enemy)
     {
-        if (enemy == null) return Vector3.zero;
+        if (!enemy.gameObject.activeSelf) return Vector3.zero;
 
         SpriteRenderer enemySp = enemy.GetComponent<SpriteRenderer>();
         float x = enemySp.bounds.min.x + 0.15f;
@@ -365,6 +365,9 @@ public class PlayerAttack : MonoBehaviour
             yield break;
         }
 
+        float random = Random.Range(0, 101);
+        if (random > GameManager.Instance.dataManager.playerData.shopData.GetValueByLevel(1)) yield break;
+
         SetCanAttack(0);
         curAttackData = additionalAttackData;
 
@@ -478,7 +481,7 @@ public class PlayerAttack : MonoBehaviour
                 ScoreManager.instance.MonsterScore(isSkill);
                 // -> 스코어,스킬게이지 증가
 
-                if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(1) == 1)
+                if (GameManager.Instance.dataManager.playerData.shopData.GetItemLevel(1) >= 1)
                 {
                     if (curAttackData.canTriggerAdditionalAttack)
                         canAdditionalAttack = true;      //트랜지션문제는 트랜지션설정에서 해결하자~    

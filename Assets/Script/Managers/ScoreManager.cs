@@ -10,7 +10,7 @@ public class ScoreManager : MonoBehaviour
 
     [SerializeField] int monsterScore = 15;
     [SerializeField] int receiptScore = 3;
-    private bool warningStart = false;
+    public bool warningStart = false;
     private void Awake()
     {
         instance = this;
@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ResultScore()
     {
-        GameManager.Instance.dataManager.IncreaseReceiptPoint(score);
+        GameManager.Instance.dataManager.IncreaseReceiptPoint(score/3);
     }
 
     public void SetMaxCombo(int maxCombo)
